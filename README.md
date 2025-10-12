@@ -9,18 +9,3 @@ This section will be populated with the specific features and functionalities of
 *   **[Feature 1]:** Script for every executers.
 *   **[Feature 2]:** Roblox detect.
 *   **[Feature 3]:** For every game.
-
-#
-
-```json
-[
-    {
-        "id": 1,
-        "name": "Resource 1"
-    },
-    {
-        "id": 2,
-        "name": "Resource 2"
-    }
-]
-```
