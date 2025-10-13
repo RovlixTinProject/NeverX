@@ -17,16 +17,5 @@ This section will be populated with the specific features and functionalities of
 loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/NeverXloading'))()
 -- neverx
 ```
-# NeverX
-
-NeverX для всех!
-
-## Особенности и функциональность
-
-В этом разделе будут описаны особенности и функции проекта NeverX.  Поскольку помимо информации о репозитории не было предоставлено никакого конкретного кода или файлов, этот раздел будет оставаться пустым до тех пор, пока не появятся эти сведения.  Примеры функций:
-
-*   **[Особенность 1]:** Скрипт для всех инжекторов.
-*   **[Особенность 2]:** Инжектится легко.
-*   **[Особенность 3]:** Для всех плейсов.
-
+![Gif](https://github.com/RovlixTinProject/NeverX/blob/main/Image.gif)
 [Discord](https://discord.gg/Re7fVRsUHX)
