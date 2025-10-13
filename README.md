@@ -14,7 +14,7 @@ This section will be populated with the specific features and functionalities of
 ```
 -- NeverX
 -- https://discord.gg/Re7fVRsUHX
-loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/NeverXloading'))()
+loadstring(game:HttpGet('https://github.com/RovlixTinProject/NeverX/blob/main/Hub'))()
 -- neverx
 ```
 ![Gif](https://github.com/RovlixTinProject/NeverX/blob/main/Image.gif)
