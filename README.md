@@ -18,4 +18,6 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/Neve
 -- neverx
 ```
 ![Gif](https://github.com/RovlixTinProject/NeverX/blob/main/Image.gif)
-[Discord](https://discord.gg/Re7fVRsUHX)
+<a href="https://discord.gg/Re7fVRsUHX" target="_blank">
+  <img src="https://github.com/dheereshag/coloured-icons/blob/master/public/logos/social%20media/discord/discord.svg" width="180px" />
+</a>
