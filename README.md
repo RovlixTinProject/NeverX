@@ -29,4 +29,4 @@ NeverX для всех!
 *   **[Особенность 2]:** Инжектится легко.
 *   **[Особенность 3]:** Для всех плейсов.
 
-[Gif](https://github.com/RovlixTinProject/NeverX/raw/heads/main/Image.gif)
+[Discord]([https://github.com/RovlixTinProject/NeverX/raw/heads/main/Image.gif](https://discord.gg/Re7fVRsUHX))
