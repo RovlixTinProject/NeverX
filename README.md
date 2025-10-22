@@ -17,7 +17,8 @@ This section will be populated with the specific features and functionalities of
 loadstring(game:HttpGet('https://github.com/RovlixTinProject/NeverX/blob/main/Hub'))()
 -- neverx
 ```
+
+> [!IMPORTANT]
+> Если вы будите играть *с* **скриптом** вас могут **заблокировать**, **забанить в роблоксе**, или **удалить аккаунт**!
+
 ![Gif](https://github.com/RovlixTinProject/NeverX/blob/main/Image.gif)
-<a href="https://discord.gg/Re7fVRsUHX" target="_blank">
-  <img src="https://github.com/dheereshag/coloured-icons/blob/master/public/logos/social%20media/discord/discord.svg" width="180px" />
-</a>
