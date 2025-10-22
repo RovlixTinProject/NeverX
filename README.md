@@ -1,14 +1,16 @@
 # NeverX
 
-NeverX for every!
+**NeverX** for every!
 
 ## Features and Functionality
 
-This section will be populated with the specific features and functionalities of the NeverX project.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
+This section will be populated with the **specific features** and functionalities of the **NeverX** *project*.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
 
-*   **[Feature 1]:** Script for every executers.
-*   **[Feature 2]:** Inject easy.
-*   **[Feature 3]:** For every places.
+>   **[Feature 1]:** Script for every executers.
+
+>   **[Feature 2]:** Inject easy.
+
+>   **[Feature 3]:** For every places.
 
 # **Script**
 ```
