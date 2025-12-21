@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://gist.githubusercontent.com/RovlixTinProject/a6d11d0328d74dece24e32c2434ea94c/raw/4eb7a2614c989ba0309cf23d2861c58a0ca4991a/enternalx17beta.lua'))()
+loadstring(game:HttpGet('https://gist.githubusercontent.com/RovlixTinProject/1d531f062c0d436d9ce7e7f1868d90f4/raw/5df556e8be597f1cc83a7af379522957d4e8b9fd/EternalX17betaFix.lua'))()
