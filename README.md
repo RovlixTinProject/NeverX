@@ -1,10 +1,10 @@
-# NeverX
+# EternalX
 
-**NeverX** for every!
+**EternalX** for every!
 
 ## Features and Functionality
 
-This section will be populated with the **specific features** and functionalities of the **NeverX** *project*.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
+This section will be populated with the **specific features** and functionalities of the **EternalX** *project*.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
 
 >   **[Feature 1]:** Script for every executers.
 
@@ -14,11 +14,10 @@ This section will be populated with the **specific features** and functionalitie
 
 # **Script**
 ```
--- NeverX
--- https://discord.gg/Re7fVRsUHX
-loadstring(game:HttpGet('https://github.com/RovlixTinProject/NeverX/blob/main/Hub'))()
--- neverx
+-- EternalX
+loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua'))()
 ```
+or open [script](https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua) and copy
 
 > [!IMPORTANT]
 > Если вы будите играть *с* **скриптом** вас могут **заблокировать**, **забанить в роблоксе**, или **удалить аккаунт**!
