@@ -20,6 +20,6 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/Neve
 or open [script](https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua) and copy
 
 > [!IMPORTANT]
-> Если вы будите играть *с* **скриптом** вас могут **заблокировать**, **забанить в роблоксе**, или **удалить аккаунт**!
+> [Античит выкл.] Если вы будите играть *с* **скриптом** вас могут **заблокировать**, **забанить в роблоксе**, или **удалить аккаунт**!
 
 ![Gif](https://github.com/RovlixTinProject/NeverX/blob/main/Image.gif)
