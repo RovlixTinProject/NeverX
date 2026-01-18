@@ -6904,7 +6904,6 @@ G2L["31a"]["ZIndex"] = 2;
 G2L["31a"]["BorderSizePixel"] = 0;
 G2L["31a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 -- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
-G2L["31a"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["31a"]["Image"] = [[rbxassetid://134669175143859]];
 G2L["31a"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["31a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -7182,51 +7181,51 @@ G2L["33a"] = Instance.new("LocalScript", G2L["337"]);
 G2L["33a"]["Name"] = [[ColorChanger]];
 
 
+-- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
+G2L["33b"] = Instance.new("LocalScript", G2L["337"]);
+G2L["33b"]["Name"] = [[Wallhack]];
+
+
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surfaceold
-G2L["33b"] = Instance.new("SurfaceGui", G2L["337"]);
-G2L["33b"]["LightInfluence"] = 1;
-G2L["33b"]["AlwaysOnTop"] = true;
-G2L["33b"]["Name"] = [[surfaceold]];
+G2L["33c"] = Instance.new("SurfaceGui", G2L["337"]);
+G2L["33c"]["LightInfluence"] = 1;
+G2L["33c"]["AlwaysOnTop"] = true;
+G2L["33c"]["Name"] = [[surfaceold]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surfaceold.surfaceface
-G2L["33c"] = Instance.new("TextLabel", G2L["33b"]);
-G2L["33c"]["TextStrokeTransparency"] = 2;
-G2L["33c"]["BorderSizePixel"] = 0;
-G2L["33c"]["TextSize"] = 14;
-G2L["33c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["33c"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["33c"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["33c"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["33c"]["Text"] = [[]];
-G2L["33c"]["Name"] = [[surfaceface]];
+G2L["33d"] = Instance.new("TextLabel", G2L["33c"]);
+G2L["33d"]["TextStrokeTransparency"] = 2;
+G2L["33d"]["BorderSizePixel"] = 0;
+G2L["33d"]["TextSize"] = 14;
+G2L["33d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["33d"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["33d"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["33d"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+G2L["33d"]["Text"] = [[]];
+G2L["33d"]["Name"] = [[surfaceface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surface
-G2L["33d"] = Instance.new("SurfaceGui", G2L["337"]);
-G2L["33d"]["Face"] = Enum.NormalId.Top;
-G2L["33d"]["LightInfluence"] = 1;
-G2L["33d"]["AlwaysOnTop"] = true;
-G2L["33d"]["Name"] = [[surface]];
+G2L["33e"] = Instance.new("SurfaceGui", G2L["337"]);
+G2L["33e"]["Face"] = Enum.NormalId.Top;
+G2L["33e"]["LightInfluence"] = 1;
+G2L["33e"]["AlwaysOnTop"] = true;
+G2L["33e"]["Name"] = [[surface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surface.surfaceface
-G2L["33e"] = Instance.new("TextLabel", G2L["33d"]);
-G2L["33e"]["TextStrokeTransparency"] = 2;
-G2L["33e"]["BorderSizePixel"] = 0;
-G2L["33e"]["TextSize"] = 14;
-G2L["33e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["33e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["33e"]["BackgroundTransparency"] = 0.45;
-G2L["33e"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["33e"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["33e"]["Text"] = [[]];
-G2L["33e"]["Name"] = [[surfaceface]];
-
-
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
-G2L["33f"] = Instance.new("LocalScript", G2L["337"]);
-G2L["33f"]["Name"] = [[Wallhack]];
+G2L["33f"] = Instance.new("TextLabel", G2L["33e"]);
+G2L["33f"]["TextStrokeTransparency"] = 2;
+G2L["33f"]["BorderSizePixel"] = 0;
+G2L["33f"]["TextSize"] = 14;
+G2L["33f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["33f"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["33f"]["BackgroundTransparency"] = 0.45;
+G2L["33f"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["33f"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+G2L["33f"]["Text"] = [[]];
+G2L["33f"]["Name"] = [[surfaceface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Text
@@ -7433,7 +7432,7 @@ G2L["355"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["355"]["BackgroundTransparency"] = 0.4;
 G2L["355"]["Size"] = UDim2.new(1, 0, 0.02884, 0);
 G2L["355"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["355"]["Text"] = [[Version: Beta 2.5]];
+G2L["355"]["Text"] = [[Version: Beta 2.6]];
 G2L["355"]["Name"] = [[1A1]];
 G2L["355"]["Position"] = UDim2.new(0, 0, 0.05876, 0);
 
@@ -13696,25 +13695,29 @@ local script = G2L["33a"];
 			script.Parent.Parent.Text.Text = "Green"
 			script.Parent.Parent.Text.TextColor3 = Color3.fromRGB(0, 255, 0)
 			script.Parent.surface.surfaceface.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			script.Parent.Parent.Parent.Parent.Parent.Parent.So123.Frame.ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
 			elseif script.Parent.Parent.Text.Text == "Green" then
 			script.Parent.Parent.Text.Text = "Red"
 			script.Parent.Parent.Text.TextColor3 = Color3.fromRGB(255, 0, 0)
 			script.Parent.surface.surfaceface.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			script.Parent.Parent.Parent.Parent.Parent.Parent.So123.Frame.ImageLabel.ImageColor3 = Color3.fromRGB(255, 0, 0)
 			elseif script.Parent.Parent.Text.Text == "Red" then
 			script.Parent.Parent.Text.Text = "Yellow"
 			script.Parent.Parent.Text.TextColor3 = Color3.fromRGB(255, 200, 0)
 			script.Parent.surface.surfaceface.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
+			script.Parent.Parent.Parent.Parent.Parent.Parent.So123.Frame.ImageLabel.ImageColor3 = Color3.fromRGB(255, 200, 0)
 			elseif script.Parent.Parent.Text.Text == "Yellow" then
 			script.Parent.Parent.Text.Text = "White"
 			script.Parent.Parent.Text.TextColor3 = Color3.fromRGB(255, 255, 255)
 			script.Parent.surface.surfaceface.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			script.Parent.Parent.Parent.Parent.Parent.Parent.So123.Frame.ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
 		end
 	end)
 end;
 task.spawn(C_33a);
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
-local function C_33f()
-local script = G2L["33f"];
+local function C_33b()
+local script = G2L["33b"];
 	local debounce = true
 	local status = false
 	local active = true
@@ -13801,7 +13804,7 @@ local script = G2L["33f"];
 		end
 	end
 end;
-task.spawn(C_33f);
+task.spawn(C_33b);
 -- StarterGui.EternalX.MainFrame.NavFrame.2ScrollingFrame.LocalScript
 local function C_34a()
 local script = G2L["34a"];
