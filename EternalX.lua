@@ -7778,7 +7778,7 @@ G2L["37e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["37e"]["BackgroundTransparency"] = 0.4;
 G2L["37e"]["Size"] = UDim2.new(1, 0, 0.02884, 0);
 G2L["37e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["37e"]["Text"] = [[EternalX • 3.0]];
+G2L["37e"]["Text"] = [[EternalX • 3.0a]];
 G2L["37e"]["Name"] = [[1A1]];
 G2L["37e"]["Position"] = UDim2.new(0, 0, 0.05876, 0);
 
