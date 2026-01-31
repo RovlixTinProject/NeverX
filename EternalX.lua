@@ -7502,24 +7502,22 @@ G2L["359"]["Padding"] = UDim.new(0, 10);
 G2L["359"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextBox
-G2L["35a"] = Instance.new("TextBox", G2L["34c"]);
-G2L["35a"]["CursorPosition"] = -1;
-G2L["35a"]["BorderSizePixel"] = 0;
+-- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextButton
+G2L["35a"] = Instance.new("TextButton", G2L["34c"]);
 G2L["35a"]["TextWrapped"] = true;
+G2L["35a"]["BorderSizePixel"] = 0;
 G2L["35a"]["TextSize"] = 14;
-G2L["35a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["35a"]["TextScaled"] = true;
+G2L["35a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["35a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["35a"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["35a"]["ClearTextOnFocus"] = false;
+G2L["35a"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["35a"]["BackgroundTransparency"] = 1;
 G2L["35a"]["Size"] = UDim2.new(0.87, 0, 1, 0);
 G2L["35a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["35a"]["Text"] = [[1]];
-G2L["35a"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextBox.LocalScript
+-- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextButton.LocalScript
 G2L["35b"] = Instance.new("LocalScript", G2L["35a"]);
 
 
@@ -13763,7 +13761,7 @@ local script = G2L["355"];
 	end)
 end;
 task.spawn(C_355);
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextBox.LocalScript
+-- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextButton.LocalScript
 local function C_35b()
 local script = G2L["35b"];
 	local mult = 1
@@ -13799,22 +13797,26 @@ local script = G2L["35b"];
 		end
 	end
 	
-	-- Основной цикл ожидания ввода и обновления
-	while true do
-		wait(0.2)
-		-- Читаем значение из поля ввода
-		local inputValue = script.Parent.Text
-		-- Проверяем, является ли значение числом
-		local success, numberValue = pcall(tonumber, inputValue)
-		if success and type(numberValue) == "number" then
-			mult = numberValue
-		else
-			-- Если введённое значение неправильно, устанавливаем mult равным 1
+	-- Обработчик кликов мыши
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Text == "1" then
+			mult = 1.3
+			script.Parent.Text = "1.3"
+		elseif script.Parent.Text == "1.3" then
+			mult = 1.5
+			script.Parent.Text = "1.5"
+		elseif script.Parent.Text == "1.5" then
+			mult = 1.8
+			script.Parent.Text = "1.8"
+		elseif script.Parent.Text == "1.8" then
+			mult = 2
+			script.Parent.Text = "2"
+		elseif script.Parent.Text == "2" then
 			mult = 1
 			script.Parent.Text = "1"
 		end
 		updateAllHeads()
-	end
+	end)
 	
 	-- Подписываемся на появление новых игроков
 	Players.PlayerAdded:Connect(function(player)
@@ -13824,7 +13826,7 @@ local script = G2L["35b"];
 			-- Следим за событием смерти персонажа
 			local humanoid = character:WaitForChild("Humanoid")
 			humanoid.Died:Connect(function()
-				wait(0.1) -- Ждём секунду, чтобы персонаж успел возродиться
+				wait(0.1) -- Короткая задержка для надежного детектирования нового персонажа
 				local newChar = player.Character
 				if newChar then
 					changeHeadSize(newChar)
@@ -13832,6 +13834,15 @@ local script = G2L["35b"];
 			end)
 		end)
 	end)
+	
+	-- Первый проход по существующим игрокам и обновление размеров голов
+	updateAllHeads()
+	
+	-- Периодическое обновление голов каждые полсекунды
+	while true do
+		wait(0.5)
+		updateAllHeads()
+	end
 end;
 task.spawn(C_35b);
 -- StarterGui.EternalX.MainFrame.NavFrame.2ScrollingFrame.LocalScript
