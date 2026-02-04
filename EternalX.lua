@@ -5763,6 +5763,7 @@ G2L["299"]["Color"] = Color3.fromRGB(255, 255, 255);
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame3.Jump
 G2L["29a"] = Instance.new("Frame", G2L["260"]);
+G2L["29a"]["Visible"] = false;
 G2L["29a"]["BorderSizePixel"] = 0;
 G2L["29a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["29a"]["Size"] = UDim2.new(0, 333, 0, 100);
@@ -5890,7 +5891,8 @@ G2L["2a7"]["Name"] = [[Animations]];
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.SetFOV.Button.LocalScript
 G2L["2a8"] = Instance.new("LocalScript", G2L["2a6"]);
-
+G2L["2a8"]["Enabled"] = false;
+G2L["2a8"]["Disabled"] = true;
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.SetFOV.Text
@@ -5917,6 +5919,7 @@ G2L["2aa"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.FOVSet
 G2L["2ab"] = Instance.new("TextBox", G2L["2a0"]);
+G2L["2ab"]["CursorPosition"] = -1;
 G2L["2ab"]["Name"] = [[FOVSet]];
 G2L["2ab"]["PlaceholderColor3"] = Color3.fromRGB(169, 169, 169);
 G2L["2ab"]["TextWrapped"] = true;
@@ -5928,7 +5931,7 @@ G2L["2ab"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json
 G2L["2ab"]["PlaceholderText"] = [[70]];
 G2L["2ab"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["2ab"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["2ab"]["Text"] = [[70]];
+G2L["2ab"]["Text"] = [[]];
 G2L["2ab"]["BackgroundTransparency"] = 1;
 
 
@@ -6668,51 +6671,51 @@ G2L["300"]["Name"] = [[Wallhacknew]];
 G2L["300"]["Disabled"] = true;
 
 
+-- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
+G2L["301"] = Instance.new("LocalScript", G2L["2fd"]);
+G2L["301"]["Name"] = [[Wallhack]];
+
+
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surfaceold
-G2L["301"] = Instance.new("SurfaceGui", G2L["2fd"]);
-G2L["301"]["LightInfluence"] = 1;
-G2L["301"]["AlwaysOnTop"] = true;
-G2L["301"]["Name"] = [[surfaceold]];
+G2L["302"] = Instance.new("SurfaceGui", G2L["2fd"]);
+G2L["302"]["LightInfluence"] = 1;
+G2L["302"]["AlwaysOnTop"] = true;
+G2L["302"]["Name"] = [[surfaceold]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surfaceold.surfaceface
-G2L["302"] = Instance.new("TextLabel", G2L["301"]);
-G2L["302"]["TextStrokeTransparency"] = 2;
-G2L["302"]["BorderSizePixel"] = 0;
-G2L["302"]["TextSize"] = 14;
-G2L["302"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["302"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["302"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["302"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["302"]["Text"] = [[]];
-G2L["302"]["Name"] = [[surfaceface]];
+G2L["303"] = Instance.new("TextLabel", G2L["302"]);
+G2L["303"]["TextStrokeTransparency"] = 2;
+G2L["303"]["BorderSizePixel"] = 0;
+G2L["303"]["TextSize"] = 14;
+G2L["303"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["303"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["303"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["303"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+G2L["303"]["Text"] = [[]];
+G2L["303"]["Name"] = [[surfaceface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surface
-G2L["303"] = Instance.new("SurfaceGui", G2L["2fd"]);
-G2L["303"]["Face"] = Enum.NormalId.Top;
-G2L["303"]["LightInfluence"] = 1;
-G2L["303"]["AlwaysOnTop"] = true;
-G2L["303"]["Name"] = [[surface]];
+G2L["304"] = Instance.new("SurfaceGui", G2L["2fd"]);
+G2L["304"]["Face"] = Enum.NormalId.Top;
+G2L["304"]["LightInfluence"] = 1;
+G2L["304"]["AlwaysOnTop"] = true;
+G2L["304"]["Name"] = [[surface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.surface.surfaceface
-G2L["304"] = Instance.new("TextLabel", G2L["303"]);
-G2L["304"]["TextStrokeTransparency"] = 2;
-G2L["304"]["BorderSizePixel"] = 0;
-G2L["304"]["TextSize"] = 14;
-G2L["304"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["304"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["304"]["BackgroundTransparency"] = 0.7;
-G2L["304"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["304"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["304"]["Text"] = [[]];
-G2L["304"]["Name"] = [[surfaceface]];
-
-
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
-G2L["305"] = Instance.new("LocalScript", G2L["2fd"]);
-G2L["305"]["Name"] = [[Wallhack]];
+G2L["305"] = Instance.new("TextLabel", G2L["304"]);
+G2L["305"]["TextStrokeTransparency"] = 2;
+G2L["305"]["BorderSizePixel"] = 0;
+G2L["305"]["TextSize"] = 14;
+G2L["305"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["305"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["305"]["BackgroundTransparency"] = 0.7;
+G2L["305"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["305"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+G2L["305"]["Text"] = [[]];
+G2L["305"]["Name"] = [[surfaceface]];
 
 
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Text
@@ -13704,23 +13707,6 @@ local script = G2L["2a7"];
 	end)
 end;
 task.spawn(C_2a7);
--- StarterGui.EternalX.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.SetFOV.Button.LocalScript
-local function C_2a8()
-local script = G2L["2a8"];
-	local uis = game:GetService("UserInputService")
-	uis.InputBegan:Connect(function(input, gameProcessedEvent)
-		if input.KeyCode == Enum.KeyCode.Return then
-			local nm = tonumber(script.Parent.Parent.Parent.FOVSet.Text)
-			local cam = workspace.CurrentCamera
-			local tween = game:GetService("TweenService")
-			local inf = TweenInfo.new(.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, 0, false, 0)
-			local goal = {FieldOfView = nm}
-			local tweenp = tween:Create(cam, inf, goal)
-			tweenp:Play()
-		end
-	end)
-end;
-task.spawn(C_2a8);
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.ONOFF.Slider.Animations
 local function C_2b7()
 local script = G2L["2b7"];
@@ -14009,8 +13995,8 @@ local script = G2L["2ff"];
 end;
 task.spawn(C_2ff);
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
-local function C_305()
-local script = G2L["305"];
+local function C_301()
+local script = G2L["301"];
 	local debounce = true
 	local status = false
 	local active = true
@@ -14097,7 +14083,7 @@ local script = G2L["305"];
 		end
 	end
 end;
-task.spawn(C_305);
+task.spawn(C_301);
 -- StarterGui.EternalX.MainFrame.CommandFrame.Frame5.ONOFF.Slider.Animations
 local function C_317()
 local script = G2L["317"];
