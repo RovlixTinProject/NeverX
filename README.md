@@ -1,6 +1,6 @@
-# EternalX
+# Erestive
 
-**EternalX** for every!
+**Erestive** for every!
 
 ## Features and Functionality
 
