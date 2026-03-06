@@ -14,7 +14,7 @@ This section will be populated with the **specific features** and functionalitie
 
 # **Script**
 ```
--- EternalX
+-- Erestive
 loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua'))()
 ```
 or open [script](https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua) and copy
