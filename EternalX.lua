@@ -6446,7 +6446,6 @@ G2L["2eb"]["Padding"] = UDim.new(0, 10);
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame5
 G2L["2ec"] = Instance.new("ScrollingFrame", G2L["a6"]);
-G2L["2ec"]["Visible"] = false;
 G2L["2ec"]["Active"] = true;
 G2L["2ec"]["ZIndex"] = 3;
 G2L["2ec"]["BorderSizePixel"] = 0;
@@ -16799,36 +16798,32 @@ local script = G2L["385"];
 	
 	-- НАСТРОЙКИ
 	local Button = script.Parent
-	local fovRadius = 10
-	local enabled = false -- Состояние (вкл/выкл)
+	local fovRadius = 150 -- Размер визуального круга
+	local shootingRange = 15 -- РАССТОЯНИЕ ОТ ЦЕНТРА ДЛЯ ВЫСТРЕЛА (чем меньше, тем точнее в прицел)
+	local enabled = false 
 	local cooldown = false
 	
-	-- 1. СОЗДАЕМ UI КРУГА
+	-- 1. UI КРУГА
 	local ScreenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 	ScreenGui.Name = "FOVSys"
 	ScreenGui.IgnoreGuiInset = true 
 	
 	local CircleFrame = Instance.new("Frame", ScreenGui)
-	CircleFrame.Name = "FOVCircle"
 	CircleFrame.BackgroundTransparency = 1
 	CircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	CircleFrame.Visible = false
 	
-	local UICorner = Instance.new("UICorner", CircleFrame)
-	UICorner.CornerRadius = UDim.new(1, 0)
-	
 	local UIStroke = Instance.new("UIStroke", CircleFrame)
 	UIStroke.Thickness = 2
 	UIStroke.Color = Color3.fromRGB(255, 255, 255)
+	Instance.new("UICorner", CircleFrame).CornerRadius = UDim.new(1, 0)
 	
-	-- 2. ЛОГИКА КНОПКИ (Включение/Выключение)
-	-- Если Button это TextButton или ImageButton
+	-- 2. ЛОГИКА КНОПКИ
 	if Button:IsA("GuiButton") then
 		Button.MouseButton1Click:Connect(function()
 			enabled = not enabled
 			CircleFrame.Visible = enabled
 			Button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
-			print("FOV Status:", enabled)
 		end)
 	end
 	
@@ -16842,10 +16837,8 @@ local script = G2L["385"];
 	
 		local isEnemyInCircle = false
 	
-		-- Поиск ближайшего врага
 		for _, p in pairs(Players:GetPlayers()) do
 			if p ~= player and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
-				-- Проверка команды (если есть)
 				if p.Team ~= player.Team or p.Team == nil then
 					local hrp = p.Character.HumanoidRootPart
 					local screenPos, onScreen = camera:WorldToViewportPoint(hrp.Position)
@@ -16853,17 +16846,20 @@ local script = G2L["385"];
 					if onScreen then
 						local distToCenter = (Vector2.new(screenPos.X, screenPos.Y) - center).Magnitude
 	
+						-- Проверка: Враг просто в круге (для цвета)
 						if distToCenter <= fovRadius and p.Character.Humanoid.Health > 0 then
 							isEnemyInCircle = true
 	
-							-- ТРИГГЕРБОТ (Xeno поддерживает mouse1click)
-							if not cooldown then
-								cooldown = true
-								mouse1click() 
-								task.wait(0.07)
-								cooldown = false
+							-- ПРОВЕРКА ДЛЯ ВЫСТРЕЛА (только если очень близко к центру)
+							if distToCenter <= shootingRange then
+								if not cooldown then
+									cooldown = true
+									if mouse1click then mouse1click() end 
+									task.wait(0.07)
+									cooldown = false
+								end
 							end
-							break -- Нашли одного, больше не перебираем в этом кадре
+							break 
 						end
 					end
 				end
@@ -17835,7 +17831,7 @@ task.spawn(C_43a);
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.ONOFF.Slider.Button.LocalScript
 local function C_43f()
 local script = G2L["43f"];
-	-- Локальный скрипт для обработки события нажатия кнопки
+	-- Локальный скрипт для обработки события нажа��ия кнопки
 	local button = script.Parent.Parent.Button -- Убедись, что кнопка названа именно так!
 	
 	button.MouseButton1Click:Connect(function()
