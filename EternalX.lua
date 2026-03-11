@@ -14994,7 +14994,2837 @@ local script = G2L["24f"];
 	end)
 end;
 task.spawn(C_24f);
--- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.ript.Parent.MouseLeave:Connect(function()
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Frame.night.FOVConfig.SetFOV.Button.LocalScript
+local function C_253()
+local script = G2L["253"];
+	local function applyLightingSettings()
+		local lighting = game.Lighting
+	
+		-- Удаляем существующие эффекты освещения
+		for _, obj in ipairs(lighting:GetChildren()) do
+			if obj.ClassName == "Sky" or obj.ClassName == "Atmosphere" or obj.Name == "Bloom" or obj.Name == "DepthOfField" or obj.Name == "SunRays" or obj.Name == "ColorCorrection" then
+				obj:Destroy()
+			end
+		end
+	
+		wait(0.3)
+	
+		-- Добавляем новые элементы из Folder
+		local folder = script.Parent.Parent.Folder -- Убедись, что название папки соответствует твоей структуре!
+		for _, child in pairs(folder:GetChildren()) do
+			if child.ClassName == "Sky" or child.ClassName == "Atmosphere" or child.Name == "Bloom" or child.Name == "ColorCorrection" or child.Name == "SunRays" or child.Name == "DepthOfField" then
+				child:Clone().Parent = lighting
+			end
+		end
+	end
+	
+	script.Parent.MouseButton1Click:Connect(applyLightingSettings)
+end;
+task.spawn(C_253);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Frame.night.FOVConfig.SetFOV.Button.Animations
+local function C_254()
+local script = G2L["254"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_254);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Frame.night.FOVConfig.SetFOV.Button.LocalScript
+local function C_255()
+local script = G2L["255"];
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.ImageLabel.Visible = true
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.ImageLabel.Visible = false
+	end)
+end;
+task.spawn(C_255);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Dark.FOV.FOVConfig.SetFOV.Animations
+local function C_26c()
+local script = G2L["26c"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_26c);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Dark.FOV.FOVConfig.SetFOV.Button.LocalScript
+local function C_270()
+local script = G2L["270"];
+	local Lighting = game:GetService("Lighting")
+	local TextBox = script.Parent.Parent.Parent.FOVSet
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		local percent = tonumber(TextBox.Text)
+	
+		if percent then
+			percent = math.clamp(percent, 0, 100)
+			local factor = (100 - percent) / 100 -- 0% = 1 (светло), 100% = 0 (темно)
+	
+			-- Основные настройки глобального освещения:
+			Lighting.Brightness = 2 * factor -- Обычная яркость ~2
+			Lighting.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5):Lerp(Color3.new(0, 0, 0), percent/100)
+			Lighting.ClockTime = 14 - (percent * 0.12) -- Сдвигает время к вечеру (опционально)
+	
+			-- Если хочешь реальный "мрак", меняем экспозицию:
+			Lighting.ExposureCompensation = - (percent / 20) -- Уходит в минус при росте %
+	
+			print("Мир затемнен на: " .. percent .. "%")
+		else
+			warn("Введи число в поле!")
+		end
+	end)
+	
+end;
+task.spawn(C_270);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Dark.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_271()
+local script = G2L["271"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_271);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Animations
+local function C_277()
+local script = G2L["277"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_277);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Button.server
+local function C_27c()
+local script = G2L["27c"];
+	local RunService = game:GetService("RunService")
+	local player = game.Players.LocalPlayer
+	local camera = workspace.CurrentCamera
+	
+	_G.ReverseWalk = false 
+	
+	local button = script.Parent
+	button.Text = "Reverse: OFF"
+	
+	RunService.RenderStepped:Connect(function()
+		local char = player.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		local hum = char and char:FindFirstChild("Humanoid")
+	
+		if _G.ReverseWalk and root and hum and hum.Health > 0 then
+			if hum.MoveDirection.Magnitude > 0 then
+				hum.AutoRotate = false
+				local camLook = camera.CFrame.LookVector
+				-- Поворачиваем только по горизонтали, чтобы не наклоняться в землю
+				local targetCF = CFrame.lookAt(root.Position, root.Position - Vector3.new(camLook.X, 0, camLook.Z))
+				root.CFrame = targetCF
+			else
+				hum.AutoRotate = true
+			end
+		end
+	end)
+	
+	
+	button.MouseButton1Click:Connect(function()
+		_G.ReverseWalk = not _G.ReverseWalk
+		button.Text = _G.ReverseWalk and "Reverse: ON" or "Reverse: OFF"
+		button.BackgroundColor3 = _G.ReverseWalk and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 0, 0)
+	end)
+	
+end;
+task.spawn(C_27c);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Animations
+local function C_284()
+local script = G2L["284"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_284);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Button.server
+local function C_289()
+local script = G2L["289"];
+	local RunService = game:GetService("RunService")
+	local Players = game:GetService("Players")
+	local player = Players.LocalPlayer
+	
+	local button = script.Parent
+	local statusText = button:FindFirstChild("Value") -- Если у тебя есть BoolValue, иначе удали эту строку
+	
+	_G.SpinBot = false -- Изначально выключен
+	local spinSpeed = 50 -- Скорость вращения
+	
+	-- 1. Логика кнопки
+	button.MouseButton1Click:Connect(function()
+		_G.SpinBot = not _G.SpinBot
+	
+		-- Обновляем текст и цвет кнопки
+		button.Text = _G.SpinBot and "SpinBot: ON" or "SpinBot: OFF"
+		button.BackgroundColor3 = _G.SpinBot and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 0, 0)
+	end)
+	
+	-- 2. Логика вращения (всегда активна, но работает только если _G.SpinBot == true)
+	RunService.Heartbeat:Connect(function()
+		if _G.SpinBot then
+			local char = player.Character
+			local root = char and char:FindFirstChild("HumanoidRootPart")
+			local hum = char and char:FindFirstChild("Humanoid")
+	
+			if root and hum and hum.Health > 0 then
+				-- Отключаем авто-поворот, чтобы персонаж не дергался
+				hum.AutoRotate = false
+				-- Вращаем CFrame
+				root.CFrame = root.CFrame * CFrame.Angles(0, math.rad(spinSpeed), 0)
+			end
+		else
+			-- Возвращаем нормальный поворот, если выключено
+			local char = player.Character
+			local hum = char and char:FindFirstChild("Humanoid")
+			if hum then
+				hum.AutoRotate = true
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_289);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Animations
+local function C_291()
+local script = G2L["291"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_291);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.RW.Slider.Button.server
+local function C_296()
+local script = G2L["296"];
+	local RunService = game:GetService("RunService")
+	local player = game:GetService("Players").LocalPlayer
+	
+	local Button = script.Parent -- Скрипт должен лежать внутри TextButton
+	local jumpingEnabled = false
+	
+	-- Переключатель
+	Button.MouseButton1Click:Connect(function()
+		jumpingEnabled = not jumpingEnabled
+		Button.Text = jumpingEnabled and "AutoJump: ON" or "AutoJump: OFF"
+		Button.BackgroundColor3 = jumpingEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+	end)
+	
+	RunService.RenderStepped:Connect(function()
+		if not jumpingEnabled then return end
+	
+		local character = player.Character
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	
+		if humanoid and humanoid.FloorMaterial ~= Enum.Material.Air then
+			humanoid.Jump = true
+		end
+	end)
+	
+end;
+task.spawn(C_296);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2a0()
+local script = G2L["2a0"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.Keyboard.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.Keyboard.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.Keyboard.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2a0);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2a1()
+local script = G2L["2a1"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2a1);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2a5()
+local script = G2L["2a5"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.NeverXText.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.NeverXText.Visible = false
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.NeverXText.Visible = true
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2a5);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2a6()
+local script = G2L["2a6"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2a6);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible1.LocalScript
+local function C_2aa()
+local script = G2L["2aa"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.aim1.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.aim1.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.aim1.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2aa);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible1.Animations
+local function C_2ab()
+local script = G2L["2ab"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2ab);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2af()
+local script = G2L["2af"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Parent.Parent.Erestive:Destroy()
+	end)
+end;
+task.spawn(C_2af);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2b0()
+local script = G2L["2b0"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2b0);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2b4()
+local script = G2L["2b4"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.bindsActive.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.bindsActive.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.bindsActive.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2b4);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2b5()
+local script = G2L["2b5"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2b5);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2b9()
+local script = G2L["2b9"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.Keyboard.BackgroundTransparency == 1 then
+			script.Parent.Parent.Parent.Parent.Parent.Keyboard.BackgroundTransparency = 0.3
+		else
+			script.Parent.Parent.Parent.Parent.Parent.Keyboard.BackgroundTransparency = 1
+		end
+	end)
+end;
+task.spawn(C_2b9);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2ba()
+local script = G2L["2ba"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2ba);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2be()
+local script = G2L["2be"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.FakeLag.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.FakeLag.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.FakeLag.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2be);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2bf()
+local script = G2L["2bf"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2bf);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2c3()
+local script = G2L["2c3"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.TopInformation["1Frame"].AvaTextLabel.Visible == false then
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation["1Frame"].AvaTextLabel.Visible = true
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation["1Frame"]["1Image"].Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation["1Frame"].AvaTextLabel.Visible = false
+			script.Parent.Parent.Parent.Parent.Parent.TopInformation["1Frame"]["1Image"].Visible = true
+		end
+	end)
+end;
+task.spawn(C_2c3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2c4()
+local script = G2L["2c4"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2c4);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.LocalScript
+local function C_2c8()
+local script = G2L["2c8"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.NeverXText.blur.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.NeverXText.blur.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.NeverXText.blur.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2c8);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.TextButton.Animations
+local function C_2c9()
+local script = G2L["2c9"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2c9);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible2.LocalScript
+local function C_2cd()
+local script = G2L["2cd"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.aim2.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.aim2.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.aim2.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2cd);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible2.Animations
+local function C_2ce()
+local script = G2L["2ce"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2ce);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible3.LocalScript
+local function C_2d2()
+local script = G2L["2d2"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.Parent.Parent.aim3.Visible == true then
+			script.Parent.Parent.Parent.Parent.Parent.aim3.Visible = false
+		else
+			script.Parent.Parent.Parent.Parent.Parent.aim3.Visible = true
+		end
+	end)
+end;
+task.spawn(C_2d2);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.CrosshairVisible3.Animations
+local function C_2d3()
+local script = G2L["2d3"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	
+	
+	
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent, Info, {TextColor3 = ColorColor}):Play()
+	end)
+	-- Image --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(152, 152, 152)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.UIStroke, Info, {Color = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2d3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.SetFOV.Animations
+local function C_2df()
+local script = G2L["2df"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_2df);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame3.Jump.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_2e3()
+local script = G2L["2e3"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_2e3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.ONOFF.Slider.Animations
+local function C_2f3()
+local script = G2L["2f3"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_2f3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.ONOFF.Slider.Button.LocalScript
+local function C_2f8()
+local script = G2L["2f8"];
+	-- Локальный скрипт для обработки события нажатия кнопки
+	local button = script.Parent.Parent.Button -- Убедись, что кнопка названа именно так!
+	
+	button.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.OnOrOff.Text == "On" then
+			button.BackgroundColor3 = Color3.new(0.215686, 0, 0)
+			script.Parent.Parent.Parent.OnOrOff.Text = "Off"
+		else
+			button.BackgroundColor3 = Color3.new(0.027451, 0.215686, 0)
+			script.Parent.Parent.Parent.OnOrOff.Text = "On"
+		end
+	end)
+	task.spawn(function()
+		while task.wait() do
+			if _G.Settings.Aimbot == true then
+				script.Parent.Parent.Parent.OnOrOff.Text = "On"
+				button.BackgroundColor3 = Color3.new(0.027451, 0.215686, 0)
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_2f8);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.aimpart.LocalScript
+local function C_300()
+local script = G2L["300"];
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.TextLabel.Visible = true
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.TextLabel.Visible = false
+	end)
+end;
+task.spawn(C_300);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.aimpart.FOV.FOVConfig.TextButton.LocalScript
+local function C_308()
+local script = G2L["308"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Text == "Head" then
+			script.Parent.Text = "HumanoidRootPart"
+			script.Parent.TextLabel.Text = "Torso"
+		else
+			script.Parent.Text = "Head"
+			script.Parent.TextLabel.Text = "Head"
+		end
+	end)
+	
+end;
+task.spawn(C_308);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed2.LocalScript
+local function C_313()
+local script = G2L["313"];
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.TextLabel.Visible = true
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.TextLabel.Visible = false
+	end)
+end;
+task.spawn(C_313);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.FOVSet.LocalScript
+local function C_31a()
+local script = G2L["31a"];
+	local TextBox = script.Parent
+	
+	-- Обработчик события FocusLost
+	TextBox.FocusLost:Connect(function()
+		local inputText = TextBox.Text
+	
+		-- Проверяем каждую букву и оставляем только цифры
+		local filteredText = ""
+		for i = 1, #inputText do
+			local char = string.sub(inputText, i, i)
+	
+			if string.match(char, "%d") then -- Оставляем только цифры
+				filteredText = filteredText .. char
+			end
+		end
+	
+		-- Устанавливаем очищенный текст обратно в TextBox
+		TextBox.Text = filteredText
+	end)
+end;
+task.spawn(C_31a);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.SetFOV.Animations
+local function C_31c()
+local script = G2L["31c"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_31c);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_320()
+local script = G2L["320"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_320);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed2.FOV.FOVConfig.TextButton.legit
+local function C_326()
+local script = G2L["326"];
+	local btn = script.Parent
+	local Players = game:GetService("Players")
+	
+	-- Функция для изменения размера
+	local function applyHeadSize(character, multiplier)
+		local head = character:WaitForChild("Head", 5) -- Ждем голову
+		if head then
+			-- Для R15 и R6 важно менять не только Size, но и масштаб меша
+			head.Size = Vector3.new(1.2, 1.2, 1.2) * multiplier -- Базовый размер головы ~1.2
+	
+			local mesh = head:FindFirstChildOfClass("SpecialMesh")
+			if mesh then
+				mesh.Scale = Vector3.new(1, 1, 1) * multiplier
+			end
+		end
+	end
+	
+	-- Функция обновления всех игроков
+	local function updateAllHeads()
+		local m = tonumber(btn.Text) or 1
+		for _, player in ipairs(Players:GetPlayers()) do
+			if player.Character then
+				applyHeadSize(player.Character, m)
+			end
+		end
+	end
+	
+	-- Логика кнопки
+	btn.MouseButton1Click:Connect(function()
+		local current = tonumber(btn.Text) or 1
+		local sizes = {1, 1.3, 1.5, 1.8, 2}
+		local nextSize = sizes[1]
+	
+		for i, v in ipairs(sizes) do
+			if v == current then
+				nextSize = sizes[i+1] or sizes[1]
+				break
+			end
+		end
+	
+		btn.Text = tostring(nextSize)
+		updateAllHeads()
+	end)
+	
+	-- ГЛАВНОЕ: Отслеживание переспавна
+	local function onPlayerAdded(player)
+		player.CharacterAdded:Connect(function(character)
+			-- Даем физике и мешам время прогрузиться после смерти
+			task.wait(0.5) 
+			local m = tonumber(btn.Text) or 1
+			applyHeadSize(character, m)
+		end)
+	end
+	
+	Players.PlayerAdded:Connect(onPlayerAdded)
+	for _, player in ipairs(Players:GetPlayers()) do
+		onPlayerAdded(player)
+	end
+	
+end;
+task.spawn(C_326);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed.FOV.FOVConfig.FOVSet.LocalScript
+local function C_336()
+local script = G2L["336"];
+	local TextBox = script.Parent
+	
+	-- Обработчик события FocusLost
+	TextBox.FocusLost:Connect(function()
+		local inputText = TextBox.Text
+	
+		-- Проверяем каждую букву и оставляем только цифры
+		local filteredText = ""
+		for i = 1, #inputText do
+			local char = string.sub(inputText, i, i)
+	
+			if string.match(char, "%d") then -- Оставляем только цифры
+				filteredText = filteredText .. char
+			end
+		end
+	
+		-- Устанавливаем очищенный текст обратно в TextBox
+		TextBox.Text = filteredText
+	end)
+end;
+task.spawn(C_336);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed.FOV.FOVConfig.SetFOV.Animations
+local function C_338()
+local script = G2L["338"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_338);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_33c()
+local script = G2L["33c"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_33c);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed.FOV.FOVConfig.SetFOV.Button.Loca3
+local function C_33e()
+local script = G2L["33e"];
+	local userInputService = game:GetService("UserInputService")
+	
+	local Camera = workspace.CurrentCamera
+	local Players = game:GetService("Players")
+	local LocalPlayer = Players.LocalPlayer
+	
+	-- Переменная для управления режимом слежения
+	local TrackingEnabled = false
+	
+	-- Максимальная дистанция слежения (в метрах)
+	local DistationMax = 200
+	
+	-- Скорость слежения камеры (от 0 до 1, где 1 — мгновенное перемещение, около 0.5 — быстрое, но не резкое)
+	local SpeedCam = 0.3  -- Здесь можешь подбирать значение от 0 до 1
+	
+	-- Ищет ближайшего игрока
+	local function findNearestPlayer()
+		local nearestPlayer = nil
+		local minDistance = math.huge
+	
+		-- Выбор части персонажа, за которой следить (Head или HumanoidRootPart)
+		local aimPartText = script.Parent.Parent.Parent.Parent.Parent.Parent.aimpart.FOV.FOVConfig.TextButton.Text
+		local aimPart = aimPartText == "Head" and "Head" or "HumanoidRootPart"
+	
+		for _, player in pairs(Players.GetPlayers(Players)) do
+			if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild(aimPart) then
+				local targetPart = player.Character[aimPart]
+				local dist = (targetPart.Position - Camera.CoordinateFrame.Position).magnitude
+				if dist < minDistance and dist <= DistationMax then
+					minDistance = dist
+					nearestPlayer = player
+				end
+			end
+		end
+	
+		return nearestPlayer
+	end
+	
+	-- Камера быстро и плавно ориентируется на ближайшую цель
+	local function trackNearestPlayer()
+		while true do
+			if TrackingEnabled then
+				local nearestPlayer = findNearestPlayer()
+				if nearestPlayer then
+					-- Выбор части персонажа, за которой следить (Head или HumanoidRootPart)
+					local aimPartText = script.Parent.Parent.Parent.Parent.Parent.Parent.aimpart.FOV.FOVConfig.TextButton.Text
+					local aimPart = aimPartText == "Head" and "Head" or "HumanoidRootPart"
+	
+					local targetPart = nearestPlayer.Character[aimPart]
+					Camera.CoordinateFrame = Camera.CoordinateFrame:Lerp(CFrame.new(Camera.CoordinateFrame.Position, targetPart.Position), SpeedCam)
+				end
+			end
+			wait(0.01)
+		end
+	end
+	
+	-- Переключение слежения
+	local function toggleTracking()
+		TrackingEnabled = not TrackingEnabled
+		if TrackingEnabled then
+			print("Слежение ВКЛЮЧЕНО")
+		else
+			print("Слежение ОТКЛЮЧЕНО")
+		end
+	end
+	
+	-- Управление переключателями
+	local function setupToggleSwitch()
+		local switchText = script.Parent.Parent.Parent.Parent.Parent.Parent.ONOFF.OnOrOff
+		switchText.Changed:Connect(function(prop)
+			if prop == "Text" then
+				if switchText.Text == "On" then
+					toggleTracking()
+				elseif switchText.Text == "Off" then
+					toggleTracking()
+				end
+			end
+		end)
+	end
+	
+	setupToggleSwitch()
+	
+	-- Запускаем слежение
+	trackNearestPlayer()
+end;
+task.spawn(C_33e);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Speed.FOV.FOVConfig.TextButton.LocalScript
+local function C_34a()
+local script = G2L["34a"];
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Text == "RageAim" then
+			script.Parent.Text = "SilentAim"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+		elseif script.Parent.Text == "SilentAim" then
+			script.Parent.Text = "SmoothAim"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+			elseif script.Parent.Text == "SmoothAim" then
+			script.Parent.Text = "Legit"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+			elseif script.Parent.Text == "Legit" then
+			script.Parent.Text = "UltraRage"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+		elseif script.Parent.Text == "UltraRage" then
+			script.Parent.Text = "Rage"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+		elseif script.Parent.Text == "Rage" then
+			script.Parent.Text = "TeamRage"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = true
+		elseif script.Parent.Text == "TeamRage" then
+			script.Parent.Text = "RageAim"
+			script.Parent.Parent.SetFOV.Button.Loca6.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca2.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca5.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca4.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca1.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca3.Enabled = false
+			script.Parent.Parent.SetFOV.Button.Loca7.Enabled = true
+			script.Parent.Parent.SetFOV.Button.Loca8.Enabled = false
+				
+		end
+	end)
+	
+end;
+task.spawn(C_34a);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Headsizer.Slider.Animations
+local function C_355()
+local script = G2L["355"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_355);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.DoubleTap.Slider.Animations
+local function C_365()
+local script = G2L["365"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_365);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.DoubleTap.Slider.Button.LocalScript
+local function C_36a()
+local script = G2L["36a"];
+	local UIS = game:GetService("UserInputService")
+	local VIM = game:GetService("VirtualInputManager")
+	local player = game.Players.LocalPlayer
+	local mouse = player:GetMouse()
+	
+	local button = script.Parent 
+	local statusText = script.Parent.Parent:FindFirstChild("Button")
+	
+	local isDoubleTapOn = false
+	local cooldown = false 
+	-- Вставь это в начало своего скрипта DoubleTap
+	local function updateDoubleTapState()
+		if statusText.Text == "On" then
+			isDoubleTapOn = true
+			button.BackgroundColor3 = Color3.fromRGB(0, 150, 0) -- Зеленый
+		else
+			isDoubleTapOn = false
+			button.BackgroundColor3 = Color3.fromRGB(150, 0, 0) -- Красный
+		end
+	end
+	
+	-- Этот сигнал "ловит" изменения от бинда
+	statusText:GetPropertyChangedSignal("Text"):Connect(updateDoubleTapState)
+	updateDoubleTapState() -- Запуск при старте
+	
+	-- 1. ЗВУК (Создаем программно, если его нет)
+	local beep = script:FindFirstChild("ToggleSound") or Instance.new("Sound", script)
+	beep.Name = "ToggleSound"
+	beep.SoundId = "rbxassetid://140332520808560" -- Короткий "бип"
+	beep.Volume = 0.5
+	
+	-- Точка
+	local dot = Instance.new("Frame")
+	dot.Size = UDim2.new(0, 6, 0, 6)
+	dot.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	dot.AnchorPoint = Vector2.new(0.5, 0.5)
+	dot.Position = UDim2.new(0.5, 0, 0.5, 0)
+	dot.Visible = false
+	dot.Parent = script:FindFirstAncestorOfClass("ScreenGui")
+	Instance.new("UICorner", dot).CornerRadius = UDim.new(1, 0)
+	
+	-- 2. СИНХРОНИЗАЦИЯ (Работает и для клика, и для БИНДА)
+	local function syncState()
+		if not statusText then return end
+	
+		if statusText.Text == "On" then
+			isDoubleTapOn = true
+			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.InformationText.DT.Visible = true
+			button.BackgroundColor3 = Color3.fromRGB(0, 150, 0) -- Зеленый
+			beep.Pitch = 1.2 -- Чуть выше тон при включении
+		else
+			isDoubleTapOn = false
+			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.InformationText.DT.Visible = false
+			button.BackgroundColor3 = Color3.fromRGB(150, 0, 0) -- Красный
+			beep.Pitch = 0.8 -- Чуть ниже тон при выключении
+		end
+	
+		beep:Play() -- Играем звук при любом изменении (бинд или клик)
+	end
+	
+	-- Следим за текстом (ДЛЯ БИНДА)
+	if statusText then
+		statusText:GetPropertyChangedSignal("Text"):Connect(syncState)
+	end
+	
+	-- Логика клика по кнопке
+	button.MouseButton1Click:Connect(function()
+		statusText.Text = (statusText.Text == "On") and "Off" or "On"
+	end)
+	
+	-- 3. ЛОГИКА ВЫСТРЕЛА
+	UIS.InputBegan:Connect(function(input, processed)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 and isDoubleTapOn and not processed then
+			if not cooldown then
+				cooldown = true
+				task.wait(0.06) 
+	
+				dot.Visible = true
+				task.delay(0.08, function() dot.Visible = false end)
+	
+				local x, y = mouse.X, mouse.Y
+				VIM:SendMouseButtonEvent(x, y, 0, true, game, 0)
+				task.wait(0.01)
+				VIM:SendMouseButtonEvent(x, y, 0, false, game, 0)
+	
+				task.wait(0.15) 
+				cooldown = false
+			end
+		end
+	end)
+	
+	syncState() -- Проверка при старте
+	
+end;
+task.spawn(C_36a);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Backtrack.Slider.Animations
+local function C_373()
+local script = G2L["373"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_373);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.Backtrack.Slider.Button.server
+local function C_378()
+local script = G2L["378"];
+	local RunService = game:GetService("RunService")
+	local player = game.Players.LocalPlayer
+	
+	local button = script.Parent 
+	local statusText = script.Parent.Parent:FindFirstChild("Button") or script.Parent.Parent.Parent:FindFirstChild("OnOrOff")
+	
+	-- Настройки
+	local isBacktrackOn = false
+	local intensity = 3 
+	local ghostColor = Color3.fromRGB(0, 255, 255)
+	local ghostParts = {}
+	
+	local function clearGhost()
+		for _, p in pairs(ghostParts) do p:Destroy() end
+		table.clear(ghostParts)
+	end
+	
+	local function createGhost(char)
+		clearGhost()
+		for _, part in ipairs(char:GetChildren()) do
+			if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+				local g = Instance.new("Part")
+				g.Name = part.Name
+				g.Size = part.Size
+				g.Anchored, g.CanCollide, g.CanTouch, g.CanQuery = true, false, false, false
+				g.Material, g.Color, g.Transparency = Enum.Material.ForceField, ghostColor, 0.5
+				g.Parent = workspace
+				local mesh = part:FindFirstChildOfClass("SpecialMesh") or part:FindFirstChildOfClass("MeshPart")
+				if mesh then mesh:Clone().Parent = g end
+				ghostParts[part.Name] = g
+			end
+		end
+	end
+	
+	-- ГЛАВНЫЙ ЦИКЛ (ФИКС СТРАННОЙ ХОДЬБЫ)
+	RunService.Heartbeat:Connect(function()
+		local char = player.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		local hum = char and char:FindFirstChild("Humanoid")
+	
+		if isBacktrackOn and root and hum and hum.Health > 0 then
+			if hum.MoveDirection.Magnitude > 0 then
+				-- 1. Обновляем призрака (плавное следование)
+				if next(ghostParts) == nil then createGhost(char) end
+				for name, g in pairs(ghostParts) do
+					local orig = char:FindFirstChild(name)
+					if orig then g.CFrame = orig.CFrame end
+				end
+	
+				-- 2. МЯГКИЙ DESYNC (Без тряски)
+				-- Мы используем RenderStepped:Wait(), чтобы синхронизировать подмену с кадрами отрисовки
+				local oldVel = root.AssemblyLinearVelocity
+	
+				-- Вместо вычитания, мы имитируем "потерю пакета" на долю секунды
+				root.AssemblyLinearVelocity = oldVel * 0.1 -- Сервер видит 10% скорости
+	
+				RunService.RenderStepped:Wait() -- Ждем отрисовку следующего кадра
+	
+				if root then
+					root.AssemblyLinearVelocity = oldVel -- Моментально возвращаем скорость
+				end
+			end
+		else
+			clearGhost()
+		end
+	end)
+	
+	-- UI Sync
+	statusText:GetPropertyChangedSignal("Text"):Connect(function()
+		isBacktrackOn = (statusText.Text == "On")
+		button.BackgroundColor3 = isBacktrackOn and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 0, 0)
+		if not isBacktrackOn then clearGhost() end
+	end)
+	button.MouseButton1Click:Connect(function() statusText.Text = (statusText.Text == "On") and "Off" or "On" end)
+	
+end;
+task.spawn(C_378);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider.Animations
+local function C_380()
+local script = G2L["380"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_380);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider.Button.server
+local function C_385()
+local script = G2L["385"];
+	local RunService = game:GetService("RunService")
+	local Players = game:GetService("Players")
+	local player = Players.LocalPlayer
+	local camera = workspace.CurrentCamera
+	
+	-- НАСТРОЙКИ
+	local Button = script.Parent
+	local fovRadius = 150 
+	local enabled = false -- Состояние (вкл/выкл)
+	local cooldown = false
+	
+	-- 1. СОЗДАЕМ UI КРУГА
+	local ScreenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+	ScreenGui.Name = "FOVSys"
+	ScreenGui.IgnoreGuiInset = true 
+	
+	local CircleFrame = Instance.new("Frame", ScreenGui)
+	CircleFrame.Name = "FOVCircle"
+	CircleFrame.BackgroundTransparency = 1
+	CircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+	CircleFrame.Visible = false
+	
+	local UICorner = Instance.new("UICorner", CircleFrame)
+	UICorner.CornerRadius = UDim.new(1, 0)
+	
+	local UIStroke = Instance.new("UIStroke", CircleFrame)
+	UIStroke.Thickness = 2
+	UIStroke.Color = Color3.fromRGB(255, 255, 255)
+	
+	-- 2. ЛОГИКА КНОПКИ (Включение/Выключение)
+	-- Если Button это TextButton или ImageButton
+	if Button:IsA("GuiButton") then
+		Button.MouseButton1Click:Connect(function()
+			enabled = not enabled
+			CircleFrame.Visible = enabled
+			Button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+			print("FOV Status:", enabled)
+		end)
+	end
+	
+	-- 3. ОСНОВНОЙ ЦИКЛ
+	RunService.RenderStepped:Connect(function()
+		if not enabled then return end
+	
+		local center = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
+		CircleFrame.Position = UDim2.new(0, center.X, 0, center.Y)
+		CircleFrame.Size = UDim2.new(0, fovRadius * 2, 0, fovRadius * 2)
+	
+		local isEnemyInCircle = false
+	
+		-- Поиск ближайшего врага
+		for _, p in pairs(Players:GetPlayers()) do
+			if p ~= player and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+				-- Проверка команды (если есть)
+				if p.Team ~= player.Team or p.Team == nil then
+					local hrp = p.Character.HumanoidRootPart
+					local screenPos, onScreen = camera:WorldToViewportPoint(hrp.Position)
+	
+					if onScreen then
+						local distToCenter = (Vector2.new(screenPos.X, screenPos.Y) - center).Magnitude
+	
+						if distToCenter <= fovRadius and p.Character.Humanoid.Health > 0 then
+							isEnemyInCircle = true
+	
+							-- ТРИГГЕРБОТ (Xeno поддерживает mouse1click)
+							if not cooldown then
+								cooldown = true
+								mouse1click() 
+								task.wait(0.07)
+								cooldown = false
+							end
+							break -- Нашли одного, больше не перебираем в этом кадре
+						end
+					end
+				end
+			end
+		end
+	
+		UIStroke.Color = isEnemyInCircle and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(255, 255, 255)
+	end)
+	
+end;
+task.spawn(C_385);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.Aim.FOV.TextButton.LocalScript
+local function C_398()
+local script = G2L["398"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	-- Установим начальное значение, чтобы не было ошибки до первого бинда
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Находим Frame один раз, чтобы не писать длинные цепочки Parent каждый раз
+	-- Подправь путь, если структура вложенности изменится
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		-- Игнорируем ввод, если игрок в чате, НО только если мы НЕ в режиме назначения бинда
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка срабатывания
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			-- Ссылка на твой SpeedValue
+			-- Используем твой путь, если FindFirstAncestor не подходит:
+			local Value = script.Parent.Parent.Parent.Parent.Parent.Parent.CommandFrame.Frame5.ONOFF.OnOrOff
+	
+			-- Логика переключения (Toggle)
+			if Value.Text == "On" then
+				Value.Text = "Off"
+			else
+				Value.Text = "On"
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_398);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.SG.FOV.TextButton.LocalScript
+local function C_3a3()
+local script = G2L["3a3"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	-- Установим начальное значение, чтобы не было ошибки до первого бинда
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Находим Frame один раз, чтобы не писать длинные цепочки Parent каждый раз
+	-- Подправь путь, если структура вложенности изменится
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		-- Игнорируем ввод, если игрок в чате, НО только если мы НЕ в режиме назначения бинда
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка срабатывания
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			-- Ссылка на твой SpeedValue
+			-- Используем твой путь, если FindFirstAncestor не подходит:
+			local Value = script.Parent.Parent.Parent.Parent.Parent.Parent.CommandFrame.Frame2.ONOFF.OnOrOff
+	
+			-- Логика переключения (Toggle)
+			if Value.Text == "On" then
+				Value.Text = "Off"
+			else
+				Value.Text = "On"
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_3a3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.ESP.FOV.TextButton.LocalScript
+local function C_3ae()
+local script = G2L["3ae"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	-- Установим начальное значение, чтобы не было ошибки до первого бинда
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Находим Frame один раз, чтобы не писать длинные цепочки Parent каждый раз
+	-- Подправь путь, если структура вложенности изменится
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		-- Игнорируем ввод, если игрок в чате, НО только если мы НЕ в режиме назначения бинда
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка срабатывания
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			-- Ссылка на твой SpeedValue
+			-- Используем твой путь, если FindFirstAncestor не подходит:
+			local Value = script.Parent.Parent.Parent.Parent.Parent.Parent.CommandFrame.Frame6.ONOFF2.OnOrOff
+	
+			-- Логика переключения (Toggle)
+			if Value.Text == "On" then
+				Value.Text = "Off"
+			else
+				Value.Text = "On"
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_3ae);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.AimPointer.FOV.TextButton.LocalScript
+local function C_3b9()
+local script = G2L["3b9"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	-- Установим начальное значение, чтобы не было ошибки до первого бинда
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Находим Frame один раз, чтобы не писать длинные цепочки Parent каждый раз
+	-- Подправь путь, если структура вложенности изменится
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		-- Игнорируем ввод, если игрок в чате, НО только если мы НЕ в режиме назначения бинда
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка срабатывания
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			-- Ссылка на твой SpeedValue
+			-- Используем твой путь, если FindFirstAncestor не подходит:
+			local Value = script.Parent.Parent.Parent.Parent.Parent.Parent.CommandFrame.Frame5.aimpart.FOV.FOVConfig.TextButton
+			local Value2 = script.Parent.Parent.Parent.Parent.Parent.Parent.CommandFrame.Frame5.aimpart.FOV.FOVConfig.TextButton.TextLabel
+	
+			if Value2.Text == "Head" then
+				Value2.Text = "Torso"
+			else
+				Value2.Text = "Head"
+			end
+			if Value.Text == "Head" then
+				Value.Text = "HumanoidRootPart"
+			else
+				Value.Text = "Head"
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_3b9);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.DT.FOV.TextButton.LocalScript
+local function C_3c4()
+local script = G2L["3c4"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Твой главный фрейм
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка нажатия назначенной клавиши
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			-- ИСПОЛЬЗУЕМ CommandFrame ДЛЯ ПУТИ (так надежнее)
+			-- Проверь: кнопка должна лежать внутри CommandFrame -> Frame5 -> DoubleTap -> Slider -> Button
+			local DT_Button = CommandFrame:FindFirstChild("Frame5"):FindFirstChild("DoubleTap"):FindFirstChild("Slider"):FindFirstChild("Button")
+	
+			if DT_Button then
+				-- Просто меняем текст. Скрипт DoubleTap (который мы писали раньше) это увидит
+				if DT_Button.Text == "On" then
+					DT_Button.Text = "Off"
+				else
+					DT_Button.Text = "On"
+				end
+				print("Бинд сработал! DT теперь: " .. DT_Button.Text)
+			else
+				warn("Кнопка DoubleTap не найдена внутри CommandFrame!")
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_3c4);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame4.FL.FOV.TextButton.LocalScript
+local function C_3cf()
+local script = G2L["3cf"];
+	local UIS = game:GetService("UserInputService")
+	local button = script.Parent
+	
+	local isBinding = false
+	-- Установим начальное значение, чтобы не было ошибки до первого бинда
+	local currentBind = Enum.KeyCode.F12 
+	local currentInputType = Enum.UserInputType.Keyboard
+	
+	-- Находим Frame один раз, чтобы не писать длинные цепочки Parent каждый раз
+	-- Подправь путь, если структура вложенности изменится
+	local CommandFrame = script:FindFirstAncestor("CommandFrame") 
+	
+	local function getFriendlyName(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then return "LMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton2 then return "RMB" end
+		if input.UserInputType == Enum.UserInputType.MouseButton3 then return "MMB" end
+		if input.UserInputType.Name:find("MouseButton") then
+			return input.UserInputType.Name:gsub("MouseButton", "MB")
+		end
+		return input.KeyCode.Name
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		isBinding = true
+		button.Text = "..."
+	end)
+	
+	UIS.InputBegan:Connect(function(input, processed)
+		-- Игнорируем ввод, если игрок в чате, НО только если мы НЕ в режиме назначения бинда
+		if processed and not isBinding then return end
+	
+		if isBinding then
+			local isKeyboard = input.UserInputType == Enum.UserInputType.Keyboard
+			local isMouse = input.UserInputType.Name:find("MouseButton")
+	
+			if isKeyboard or isMouse then
+				currentBind = isKeyboard and input.KeyCode or input.UserInputType
+				currentInputType = input.UserInputType
+				button.Text = getFriendlyName(input)
+				isBinding = false
+			end
+			return
+		end
+	
+		-- Проверка срабатывания
+		local triggered = false
+		if currentInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == currentBind then triggered = true end
+		else
+			if input.UserInputType == currentBind then triggered = true end
+		end
+	
+		if triggered then
+			local Value = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.FakeLag.ImageLabel.Lag.Value
+	
+			-- Логика переключения (Toggle)
+			if Value.Value == true then
+				Value.Value = false
+			else
+				Value.Value = true
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_3cf);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Time.FOV.FOVConfig.SetFOV.Animations
+local function C_3de()
+local script = G2L["3de"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_3de);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Time.FOV.FOVConfig.SetFOV.Button.LocalScript
+local function C_3e2()
+local script = G2L["3e2"];
+	-- Объявляем глобальную переменную
+	local Enabled = false
+	while wait(0.001) do
+		if Enabled == true then
+			game.Lighting.TimeOfDay = script.Parent.Parent.Parent.FOVSet.Text
+		end
+		script.Parent.MouseButton1Click:Connect(function()
+			if Enabled == true then
+				Enabled = false
+				script.Parent.Parent.Parent.SetFOV.BackgroundColor3 = Color3.new(0.164706, 0, 0)
+			else
+				Enabled = true
+				script.Parent.Parent.Parent.SetFOV.BackgroundColor3 = Color3.new(0, 0.164706, 0.0196078)
+			end
+	
+			-- Анимация успеха
+			local successNotification = script.Parent.Parent.Parent.FOVSuccess
+			successNotification:TweenPosition(UDim2.new(-1.042, 0,3.23, 0),"In","Linear",0.1,true)
+			wait(3)
+			successNotification:TweenPosition(UDim2.new(-1.042, 0,3.7, 0),"In","Linear",0.1,true)
+		end)
+	end
+end;
+task.spawn(C_3e2);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Time.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_3e3()
+local script = G2L["3e3"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_3e3);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.FOVSet.LocalScript
+local function C_3ee()
+local script = G2L["3ee"];
+	local TextBox = script.Parent
+	
+	-- Обработчик события FocusLost
+	TextBox.FocusLost:Connect(function()
+		local inputText = TextBox.Text
+	
+		-- Проверяем каждую букву и оставляем только цифры
+		local filteredText = ""
+		for i = 1, #inputText do
+			local char = string.sub(inputText, i, i)
+	
+			if string.match(char, "%d") then -- Оставляем только цифры
+				filteredText = filteredText .. char
+			end
+		end
+	
+		-- Устанавливаем очищенный текст обратно в TextBox
+		TextBox.Text = filteredText
+	end)
+end;
+task.spawn(C_3ee);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Animations
+local function C_3f0()
+local script = G2L["3f0"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_3f0);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Animations
+local function C_3f4()
+local script = G2L["3f4"];
+	local TweenService = game:GetService("TweenService")
+	local TweenSpeed = 0.1
+	local Info = TweenInfo.new(TweenSpeed, Enum.EasingStyle.Quad, Enum.EasingDirection.In, 0)
+	
+	local frame = script.Parent.Parent
+	
+	-- Button --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(frame, Info, {BackgroundColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(42, 42, 42)
+		TweenService:Create(frame, Info, {BackgroundColor3 = ColorColor}):Play()
+	end)
+	
+	-- Text --
+	
+	script.Parent.MouseEnter:Connect(function()
+		local Color = Color3.fromRGB(38, 38, 38)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = Color}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		local ColorColor = Color3.fromRGB(255, 255, 255)
+		TweenService:Create(script.Parent.Parent.Text, Info, {TextColor3 = ColorColor}):Play()
+	end)
+end;
+task.spawn(C_3f4);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
+local function C_3f6()
+local script = G2L["3f6"];
+	local debounce = true
+	local status = false
+	local active = true
+	local ON_OFF = script.Parent.Parent.Parent.Parent.Parent.Parent.ONOFF2.OnOrOff 
+	
+	local surfaceTemplate = script.Parent.surface 
+	
+	-- Функция для получения цвета в зависимости от HP
+	local function GetHealthColor(humanoid)
+		local healthPercent = humanoid.Health / humanoid.MaxHealth
+		-- Интерполяция от красного (0 HP) к зеленому (Full HP)
+		return Color3.new(1, 0, 0):Lerp(Color3.new(0, 1, 0), healthPercent)
+	end
+	
+	function CreateESP()
+		for _, player in pairs(game.Players:GetChildren()) do
+			if player.Character and player.Name ~= game.Players.LocalPlayer.Name then
+				local hum = player.Character:FindFirstChildOfClass("Humanoid")
+				if hum then
+					-- Вычисляем цвет один раз для всего персонажа
+					local hpColor = GetHealthColor(hum)
+	
+					for _, part in pairs(player.Character:GetChildren()) do
+						if part:IsA("BasePart") then
+							-- Список сторон для создания
+							local faces = {
+								Enum.NormalId.Front, Enum.NormalId.Back, 
+								Enum.NormalId.Left, Enum.NormalId.Right, 
+								Enum.NormalId.Top, Enum.NormalId.Bottom
+							}
+	
+							for _, face in pairs(faces) do
+								local gui = surfaceTemplate:Clone()
+								gui.Parent = part
+								gui.Face = face
+	
+								-- Ищем внутри шаблона Frame или объект, который нужно покрасить
+								-- Если твой шаблон - это просто Frame внутри SurfaceGui:
+								local frame = gui:FindFirstChildOfClass("TextLabel")
+								if frame then
+									frame.BackgroundColor3 = hpColor
+								else
+									-- Если цвет должен быть у самого SurfaceGui (через CanvasGroup или т.п.)
+									gui.BackgroundColor3 = hpColor
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	function ClearESP()
+		for _, player in pairs(game.Players:GetChildren()) do
+			if player.Character then
+				for _, part in pairs(player.Character:GetChildren()) do
+					if part:IsA("BasePart") then
+						for _, gui in pairs(part:GetChildren()) do
+							-- Проверяем, что это именно наш ESP (чтобы не удалить лишнее)
+							if gui:IsA("SurfaceGui") and gui.Name == surfaceTemplate.Name then
+								gui:Destroy()
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	ON_OFF.Changed:Connect(function()
+		local currentText = ON_OFF.Text
+		if currentText == "On" and debounce and active then
+			debounce = false
+			status = true
+			CreateESP()
+		elseif currentText == "Off" and debounce and active then
+			debounce = false
+			status = false
+			ClearESP()
+		end
+		debounce = true
+	end)
+	
+	while true do
+		task.wait(1.5) -- Используй task.wait, он стабильнее
+		if status == true then
+			ClearESP()
+			CreateESP()
+		else
+			ClearESP()
+		end
+	end
+	
+end;
+task.spawn(C_3f6);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.PlayerESP
+local function C_3f7()
+local script = G2L["3f7"];
+	local Players = game:GetService("Players")
+	local localPlayer = Players.LocalPlayer
+	
+	local debounce = true
+	local status = false
+	local active = true
+	local ON_OFF = script.Parent.Parent.Parent.Parent.Parent.Parent.ONOFF2.OnOrOff 
+	
+	-- Ссылка на твой градиент
+	local gradientTemplate = script.Parent:FindFirstChild("UIGradient")
+	
+	-- Функция для получения цвета от HP (Красный -> Зеленый)
+	local function GetHealthColor(humanoid)
+		local healthPercent = math.clamp(humanoid.Health / humanoid.MaxHealth, 0, 1)
+		return Color3.new(1, 0, 0):Lerp(Color3.new(0, 1, 0), healthPercent)
+	end
+	
+	function CreateESP()
+		for _, player in pairs(Players:GetPlayers()) do
+			-- Рисуем только для других живых игроков
+			if player.Character and player ~= localPlayer then
+				local head = player.Character:FindFirstChild("Head")
+				local hum = player.Character:FindFirstChildOfClass("Humanoid")
+	
+				if head and hum then
+					local hpColor = GetHealthColor(hum)
+	
+					-- 1. Создаем BillboardGui (Контейнер над головой)
+					local bGui = Instance.new("BillboardGui")
+					bGui.Name = "PlayerESP"
+					bGui.Size = UDim2.new(4, 0, 5, 0) -- Фиксированный размер
+					bGui.StudsOffset = Vector3.new(0, 3, 0) -- Высота над игроком
+					bGui.AlwaysOnTop = true -- Видно сквозь стены
+					bGui.MaxDistance = 250 
+					bGui.Parent = head
+	
+					-- 2. Создаем текст никнейма
+					local label = Instance.new("TextLabel")
+					label.Name = "NameLabel"
+					label.Parent = bGui
+					label.Size = UDim2.new(1, 0, 1, 0)
+					label.BackgroundTransparency = 1 
+					label.TextColor3 = hpColor -- Цвет текста зависит от ХП
+					label.Text = player.DisplayName
+					label.TextScaled = true
+					label.Font = Enum.Font.Roboto
+					label.ZIndex = 10
+	
+					-- 3. Применяем твой градиент
+					if gradientTemplate then
+						local newGradient = gradientTemplate:Clone()
+						newGradient.Parent = label
+					end
+	
+					-- 4. Обводка для читаемости
+					local uiStroke = Instance.new("UIStroke")
+					uiStroke.Thickness = 0.6
+					uiStroke.Color = Color3.new(1, 1, 1) -- Черная обводка
+					uiStroke.Parent = label
+				end
+			end
+		end
+	end
+	
+	function ClearESP()
+		for _, player in pairs(Players:GetPlayers()) do
+			if player.Character and player.Character:FindFirstChild("Head") then
+				local existingEsp = player.Character.Head:FindFirstChild("PlayerESP")
+				if existingEsp then
+					existingEsp:Destroy()
+				end
+			end
+		end
+	end
+	
+	-- Переключатель On/Off
+	ON_OFF.Changed:Connect(function()
+		if not debounce or not active then return end
+		debounce = false
+	
+		if ON_OFF.Text == "On" then
+			status = true
+			CreateESP()
+		else
+			status = false
+			ClearESP()
+		end
+	
+		task.wait(0.1) 
+		debounce = true
+	end)
+	
+	-- Обновление ХП и проверка новых игроков
+	while true do
+		task.wait(1.5)
+		if status == true then
+			ClearESP()
+			CreateESP()
+		end
+	end
+	
+end;
+task.spawn(C_3f7);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed.FOV.FOVConfig.FOVSet.LocalScript
+local function C_40e()
+local script = G2L["40e"];
+	local TextBox = script.Parent
+	
+	-- Обработчик события FocusLost
+	TextBox.FocusLost:Connect(function()
+		local inputText = TextBox.Text
+	
+		-- Проверяем каждую букву и оставляем только цифры
+		local filteredText = ""
+		for i = 1, #inputText do
+			local char = string.sub(inputText, i, i)
+	
+			if string.match(char, "%d") then -- Оставляем только цифры
+				filteredText = filteredText .. char
+			end
+		end
+	
+		-- Устанавливаем очищенный текст обратно в TextBox
+		TextBox.Text = filteredText
+	end)
+end;
+task.spawn(C_40e);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed.FOV.FOVConfig.SetFOV.Animations
+local function C_410()
+local script = G2L["410"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+end;
+task.spawn(C_410);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.ONOFF2.LocalScript
+local function C_424()
+local script = G2L["424"];
+	script.Parent.MouseEnter:Connect(function()
+		script.Parent.TextLabel.Visible = true
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		script.Parent.TextLabel.Visible = false
+	end)
+end;
+task.spawn(C_424);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.ONOFF2.Slider.Animations
+local function C_428()
+local script = G2L["428"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+	end)
+end;
+task.spawn(C_428);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.ONOFF2.Slider.Button.LocalScript
+local function C_42d()
+local script = G2L["42d"];
+	-- Локальный скрипт для обработки события нажатия кнопки
+	local button = script.Parent.Parent.Button -- Убедись, что кнопка названа именно так!
+	
+	button.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.Parent.OnOrOff.Text == "On" then
+			button.BackgroundColor3 = Color3.new(0.215686, 0, 0)
+			script.Parent.Parent.Parent.OnOrOff.Text = "Off"
+		else
+			button.BackgroundColor3 = Color3.new(0.027451, 0.215686, 0)
+			script.Parent.Parent.Parent.OnOrOff.Text = "On"
+		end
+	end)
+end;
+task.spawn(C_42d);
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.ONOFF.Slider.Animations
+local function C_43a()
+local script = G2L["43a"];
+	local ms = game.Players.LocalPlayer:GetMouse()
+	
+	local btn = script.Parent.Button
+	local sample = script:WaitForChild("Sample")
+	
+	script.Parent.Button.MouseButton1Click:Connect(function()
+		
+		local c = sample:Clone()
+		c.Parent = btn
+		local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+		c.Position = UDim2.new(0, x, 0, y)
+		local len, size = 0.35, nil
+		if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+			size = (btn.AbsoluteSize.X * 1.5)
+		else
+			size = (btn.AbsoluteSize.Y * 1.5)
+		end
+		c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+		for i = 1, 10 do
+			c.ImageTransparency = c.ImageTransparency + 0.05
+			wait(len / 12)
+		end
+		c:Destroy()
+	end)
+	
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+	end)
+	
+	script.Parent.MouseLeave:Connect(function()
 		game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
 	end)
 end;
