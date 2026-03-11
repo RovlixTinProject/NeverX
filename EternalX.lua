@@ -16833,7 +16833,7 @@ local script = G2L["36a"];
 		if input.UserInputType == Enum.UserInputType.MouseButton1 and isDoubleTapOn and not processed then
 			if not cooldown then
 				cooldown = true
-				task.wait(0.06) 
+				task.wait(0.6) 
 	
 				dot.Visible = true
 				task.delay(0.08, function() dot.Visible = false end)
@@ -17018,18 +17018,29 @@ local script = G2L["385"];
 	local player = Players.LocalPlayer
 	local camera = workspace.CurrentCamera
 	
-	-- НАСТРОЙКИ (Пути к объектам внутри кнопки)
 	local Button = script.Parent
-	local shootingRangeValue = Button:WaitForChild("shootingRange")
-	local cooldownValue = Button:WaitForChild("cooldown")
-	local targetPartValue = Button:WaitForChild("TargetPart")
-	local fireModeValue = Button:WaitForChild("FireMode")
-	local fireRateValue = Button:WaitForChild("FireRate")
+	
+	-- БЕЗОПАСНОЕ ПОЛУЧЕНИЕ НАСТРОЕК
+	local function getSetting(name, className, defaultValue)
+		local obj = Button:FindFirstChild(name)
+		if not obj then
+			obj = Instance.new(className, Button)
+			obj.Name = name
+			obj.Value = defaultValue
+		end
+		return obj
+	end
+	
+	local shootingRangeValue = getSetting("shootingRange", "NumberValue", 150)
+	local cooldownValue = getSetting("cooldown", "BoolValue", false)
+	local targetPartValue = getSetting("TargetPart", "StringValue", "All")
+	local fireModeValue = getSetting("FireMode", "StringValue", "Click")
+	local fireRateValue = getSetting("FireRate", "NumberValue", 0.05)
 	
 	local enabled = false
 	local isFiring = false
 	
-	-- 1. UI КРУГА (FOV)
+	-- 1. UI КРУГА
 	local ScreenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 	ScreenGui.Name = "AutoFireUI"
 	ScreenGui.IgnoreGuiInset = true 
@@ -17044,7 +17055,7 @@ local script = G2L["385"];
 	UIStroke.Color = Color3.fromRGB(255, 255, 255)
 	Instance.new("UICorner", CircleFrame).CornerRadius = UDim.new(1, 0)
 	
-	-- Функция проверки видимости (WallCheck)
+	-- ФУНКЦИЯ ПРОВЕРКИ СТЕН (Её не хватало!)
 	local function isPartVisible(part, character)
 		local origin = camera.CFrame.Position
 		local destination = part.Position
@@ -17056,25 +17067,23 @@ local script = G2L["385"];
 		return rayResult == nil
 	end
 	
-	-- 2. ЛОГИКА КНОПКИ (ВКЛ/ВЫКЛ)
+	-- 2. ЛОГИКА КНОПКИ
 	Button.MouseButton1Click:Connect(function()
 		enabled = not enabled
 		CircleFrame.Visible = enabled
 		Button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
 	
-	-- 3. ОСНОВНОЙ ЦИКЛ (60 FPS)
+	-- 3. ОСНОВНОЙ ЦИКЛ
 	RunService.RenderStepped:Connect(function()
 		if not enabled then return end
 	
-		-- Считываем актуальные значения каждый кадр
 		local currentRange = shootingRangeValue.Value
 		local mode = targetPartValue.Value
 		local fireMode = fireModeValue.Value
 		local fireRate = fireRateValue.Value
 		local center = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
 	
-		-- Обновляем визуал FOV
 		CircleFrame.Position = UDim2.new(0, center.X, 0, center.Y)
 		CircleFrame.Size = UDim2.new(0, currentRange * 2, 0, currentRange * 2)
 	
@@ -17084,7 +17093,6 @@ local script = G2L["385"];
 			if p ~= player and p.Character and p.Character:FindFirstChild("Humanoid") and p.Character.Humanoid.Health > 0 then
 				if p.Team ~= player.Team or p.Team == nil then
 	
-					-- Выбор частей тела для сканирования
 					local partsToScan = {}
 					if mode == "Head" then
 						local h = p.Character:FindFirstChild("Head")
@@ -17092,43 +17100,35 @@ local script = G2L["385"];
 					elseif mode == "Torso" then
 						local t = p.Character:FindFirstChild("HumanoidRootPart")
 						if t then table.insert(partsToScan, t) end
-					else -- All mode
+					else
 						for _, c in pairs(p.Character:GetChildren()) do
 							if c:IsA("BasePart") then table.insert(partsToScan, c) end
 						end
 					end
 	
-					-- Проверка каждой части тела
 					for _, part in pairs(partsToScan) do
 						local screenPos, onScreen = camera:WorldToViewportPoint(part.Position)
-	
 						if onScreen then
 							local distToCenter = (Vector2.new(screenPos.X, screenPos.Y) - center).Magnitude
 	
-							-- Если деталь в прицеле
 							if distToCenter <= currentRange then
-								-- Проверка на стены
+								-- Теперь функция isPartVisible определена и не вызовет ошибку
 								if isPartVisible(part, p.Character) then
 									targetLocked = true
-	
-									-- СТРЕЛЬБА
 									if not isFiring and cooldownValue.Value == false then
 										isFiring = true
 										cooldownValue.Value = true
 	
 										if fireMode == "Hold" then
-											-- Режим зажима (эмуляция удержания)
 											if mouse1press then 
 												mouse1press()
 												task.wait(fireRate) 
 												if mouse1release then mouse1release() end
 											end
 										else
-											-- Режим одиночных кликов
 											if mouse1click then mouse1click() end
 										end
 	
-										-- Сброс кулдауна через заданное время (скорострельность)
 										task.delay(fireRate, function() 
 											isFiring = false
 											cooldownValue.Value = false
@@ -17143,8 +17143,6 @@ local script = G2L["385"];
 			end
 			if targetLocked then break end
 		end
-	
-		-- Красный цвет круга при наведении
 		UIStroke.Color = targetLocked and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(255, 255, 255)
 	end)
 	
@@ -17780,7 +17778,7 @@ local script = G2L["406"];
 	TextBox.FocusLost:Connect(function()
 		local inputText = TextBox.Text
 	
-		-- Проверяем каждую букву и оставляем только цифры
+		-- Проверяем к��ждую букву и оставляем только цифры
 		local filteredText = ""
 		for i = 1, #inputText do
 			local char = string.sub(inputText, i, i)
