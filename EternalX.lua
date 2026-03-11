@@ -1367,8 +1367,8 @@ G2L["a5"]["BackgroundTransparency"] = 0.15;
 G2L["a6"] = Instance.new("Frame", G2L["a5"]);
 G2L["a6"]["BorderSizePixel"] = 0;
 G2L["a6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["a6"]["Size"] = UDim2.new(0.78176, -20, 0.92359, -20);
-G2L["a6"]["Position"] = UDim2.new(0.25, 0, 0.111, 0);
+G2L["a6"]["Size"] = UDim2.new(0.78176, -20, 0.99278, -20);
+G2L["a6"]["Position"] = UDim2.new(0.25, 0, 0.04182, 0);
 G2L["a6"]["Name"] = [[CommandFrame]];
 G2L["a6"]["BackgroundTransparency"] = 1;
 
@@ -16697,7 +16697,8 @@ local script = G2L["378"];
 				g.Name = part.Name
 				g.Size = part.Size
 				g.Anchored, g.CanCollide, g.CanTouch, g.CanQuery = true, false, false, false
-				g.Material, g.Color, g.Transparency = Enum.Material.ForceField, ghostColor, 0.5
+				-- ПРОЗРАЧНОСТЬ ИЗМЕНЕНА ТУТ (0.85 - почти невидимый)
+				g.Material, g.Color, g.Transparency = Enum.Material.ForceField, ghostColor, 0.85
 				g.Parent = workspace
 				local mesh = part:FindFirstChildOfClass("SpecialMesh") or part:FindFirstChildOfClass("MeshPart")
 				if mesh then mesh:Clone().Parent = g end
@@ -16706,7 +16707,7 @@ local script = G2L["378"];
 		end
 	end
 	
-	-- ГЛАВНЫЙ ЦИКЛ (ФИКС СТРАННОЙ ХОДЬБЫ)
+	-- ГЛАВНЫЙ ЦИКЛ
 	RunService.Heartbeat:Connect(function()
 		local char = player.Character
 		local root = char and char:FindFirstChild("HumanoidRootPart")
@@ -16714,24 +16715,21 @@ local script = G2L["378"];
 	
 		if isBacktrackOn and root and hum and hum.Health > 0 then
 			if hum.MoveDirection.Magnitude > 0 then
-				-- 1. Обновляем призрака (плавное следование)
+				-- 1. Обновляем призрака
 				if next(ghostParts) == nil then createGhost(char) end
 				for name, g in pairs(ghostParts) do
 					local orig = char:FindFirstChild(name)
 					if orig then g.CFrame = orig.CFrame end
 				end
 	
-				-- 2. МЯГКИЙ DESYNC (Без тряски)
-				-- Мы используем RenderStepped:Wait(), чтобы синхронизировать подмену с кадрами отрисовки
+				-- 2. МЯГКИЙ DESYNC
 				local oldVel = root.AssemblyLinearVelocity
+				root.AssemblyLinearVelocity = oldVel * 0.2 
 	
-				-- Вместо вычитания, мы имитируем "потерю пакета" на долю секунды
-				root.AssemblyLinearVelocity = oldVel * 0.1 -- Сервер видит 10% скорости
-	
-				RunService.RenderStepped:Wait() -- Ждем отрисовку следующего кадра
+				RunService.RenderStepped:Wait() 
 	
 				if root then
-					root.AssemblyLinearVelocity = oldVel -- Моментально возвращаем скорость
+					root.AssemblyLinearVelocity = oldVel 
 				end
 			end
 		else
@@ -16740,12 +16738,17 @@ local script = G2L["378"];
 	end)
 	
 	-- UI Sync
-	statusText:GetPropertyChangedSignal("Text"):Connect(function()
-		isBacktrackOn = (statusText.Text == "On")
-		button.BackgroundColor3 = isBacktrackOn and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 0, 0)
-		if not isBacktrackOn then clearGhost() end
+	if statusText then
+		statusText:GetPropertyChangedSignal("Text"):Connect(function()
+			isBacktrackOn = (statusText.Text == "On")
+			button.BackgroundColor3 = isBacktrackOn and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 0, 0)
+			if not isBacktrackOn then clearGhost() end
+		end)
+	end
+	
+	button.MouseButton1Click:Connect(function() 
+		statusText.Text = (statusText.Text == "On") and "Off" or "On" 
 	end)
-	button.MouseButton1Click:Connect(function() statusText.Text = (statusText.Text == "On") and "Off" or "On" end)
 	
 end;
 task.spawn(C_378);
@@ -16796,7 +16799,7 @@ local script = G2L["385"];
 	
 	-- НАСТРОЙКИ
 	local Button = script.Parent
-	local fovRadius = 150 
+	local fovRadius = 10
 	local enabled = false -- Состояние (вкл/выкл)
 	local cooldown = false
 	
