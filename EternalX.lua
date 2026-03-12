@@ -8169,9 +8169,9 @@ G2L["3b5"] = Instance.new("UICorner", G2L["3b3"]);
 G2L["3b5"]["CornerRadius"] = UDim.new(1, 0);
 
 
--- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider.Button.Value
+-- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider.Button.Enabled
 G2L["3b6"] = Instance.new("BoolValue", G2L["3b3"]);
-
+G2L["3b6"]["Name"] = [[Enabled]];
 
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider.Button.cooldown
@@ -9846,7 +9846,7 @@ G2L["46f"] = Instance.new("LocalScript", G2L["46e"]);
 
 -- StarterGui.Erestive.InformationText
 G2L["470"] = Instance.new("Frame", G2L["1"]);
-G2L["470"]["ZIndex"] = 999999992;
+G2L["470"]["ZIndex"] = 999999999;
 G2L["470"]["BorderSizePixel"] = 0;
 G2L["470"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["470"]["Size"] = UDim2.new(1, 0, 1, 0);
@@ -16063,7 +16063,15 @@ local script = G2L["3b4"];
 	local camera = workspace.CurrentCamera
 	local Button = script.Parent
 	
-	-- Внутренняя переменная для задержки (чтобы не стрелять слишком быстро)
+	-- НАСТРОЙКА КРУГА (FOV Circle)
+	local FOVCircle = Drawing.new("Circle")
+	FOVCircle.Visible = false
+	FOVCircle.Thickness = 1.5
+	FOVCircle.Color = Color3.fromRGB(0, 255, 255) -- Голубой
+	FOVCircle.Filled = false
+	FOVCircle.Transparency = 0.8
+	FOVCircle.NumSides = 64 -- Делает круг более гладким
+	
 	local isCoolingDown = false
 	
 	-- УНИВЕРСАЛЬНАЯ ФУНКЦИЯ КЛИКА
@@ -16082,58 +16090,58 @@ local script = G2L["3b4"];
 	-- ПРОВЕРКА ВИДИМОСТИ
 	local function canSee(target, char)
 		local rayParams = RaycastParams.new()
-		-- Исключаем себя и цель, чтобы луч не ударялся в них самих
 		rayParams.FilterDescendantsInstances = {player.Character, char}
 		rayParams.FilterType = Enum.RaycastFilterType.Exclude
 	
 		local origin = camera.CFrame.Position
 		local direction = target.Position - origin
 		local result = workspace:Raycast(origin, direction, rayParams)
-	
-		return result == nil -- Если луч ни во что не врезался — цель видна
+		return result == nil
 	end
 	
-	-- КНОПКА (Переключение состояния через Value)
+	-- КНОПКА
 	Button.MouseButton1Click:Connect(function()
-		Button.Value.Value = not Button.Value.Value
-		Button.BackgroundColor3 = Button.Value.Value and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(150, 0, 0)
+		Button.Enabled.Value = not Button.Enabled.Value
+		Button.BackgroundColor3 = Button.Enabled.Value and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(150, 0, 0)
 	end)
 	
-	-- ОСНОВНОЙ ЦИКЛ
+	-- ОБНОВЛЕНИЕ КРУГА И ТРИГГЕР
 	RunService.RenderStepped:Connect(function()
-		-- ИСПРАВЛЕНО: Раньше тут стояло условие, которое всегда выходило из функции
-		if not Button.Value.Value or isCoolingDown then return end
+		local radius = Button:FindFirstChild("shootingRange") and Button.shootingRange.Value or 100
+		local isEnabled = Button.Enabled.Value
+	
+		-- Обновляем параметры круга каждый кадр
+		FOVCircle.Visible = isEnabled
+		if isEnabled then
+			FOVCircle.Radius = radius
+			FOVCircle.Position = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
+		end
+	
+		if not isEnabled or isCoolingDown then return end
 	
 		local center = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
 	
 		for _, p in ipairs(Players:GetPlayers()) do
-			-- Проверка: не я, есть персонаж, живой, другая команда
 			if p ~= player and p.Character and p.Character:FindFirstChild("Humanoid") then
 				if p.Character.Humanoid.Health > 0 and (p.Team ~= player.Team or p.Team == nil) then
 	
-					-- Берем часть тела из настроек (например, "Head")
 					local targetPartName = Button:FindFirstChild("TargetPart") and Button.TargetPart.Value or "Head"
 					local part = p.Character:FindFirstChild(targetPartName)
 	
 					if part then
 						local pos, onScreen = camera:WorldToViewportPoint(part.Position)
-	
 						if onScreen then
 							local screenPos = Vector2.new(pos.X, pos.Y)
 							local dist = (screenPos - center).Magnitude
-							local radius = Button:FindFirstChild("shootingRange") and Button.shootingRange.Value or 100
 	
-							-- Если враг в радиусе FOV
 							if dist <= radius then
 								if canSee(part, p.Character) then
 									isCoolingDown = true
 									doFire()
-	
-									-- Задержка между выстрелами
 									local waitTime = Button:FindFirstChild("FireMode") and Button.FireMode.Value or 0.1
 									task.wait(waitTime)
 									isCoolingDown = false
-									break -- Выходим из цикла игроков после выстрела
+									break 
 								end
 							end
 						end
