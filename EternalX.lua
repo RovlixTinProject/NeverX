@@ -2475,7 +2475,6 @@ G2L["120"]["CornerRadius"] = UDim.new(0.25, 0);
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Speed.FOV.FOVConfig.FOVSet
 G2L["121"] = Instance.new("TextBox", G2L["11f"]);
-G2L["121"]["CursorPosition"] = -1;
 G2L["121"]["Name"] = [[FOVSet]];
 G2L["121"]["PlaceholderColor3"] = Color3.fromRGB(90, 169, 157);
 G2L["121"]["TextWrapped"] = true;
@@ -3907,11 +3906,13 @@ G2L["1c4"]["CornerRadius"] = UDim.new(1, 0);
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider.Button.MAX_SPEED
 G2L["1c5"] = Instance.new("NumberValue", G2L["1c2"]);
 G2L["1c5"]["Name"] = [[MAX_SPEED]];
+G2L["1c5"]["Value"] = 45;
 
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider.Button.BHOP_ACCEL
 G2L["1c6"] = Instance.new("NumberValue", G2L["1c2"]);
 G2L["1c6"]["Name"] = [[BHOP_ACCEL]];
+G2L["1c6"]["Value"] = 0.5;
 
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider.Button.STRAFE_POWER
@@ -4077,6 +4078,7 @@ G2L["1da"] = Instance.new("LocalScript", G2L["1d9"]);
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider2.Frame.TextBox
 G2L["1db"] = Instance.new("TextBox", G2L["1d5"]);
+G2L["1db"]["CursorPosition"] = -1;
 G2L["1db"]["BorderSizePixel"] = 0;
 G2L["1db"]["TextWrapped"] = true;
 G2L["1db"]["TextSize"] = 14;
@@ -4088,7 +4090,7 @@ G2L["1db"]["ClearTextOnFocus"] = false;
 G2L["1db"]["PlaceholderText"] = [[MAX_SPEED]];
 G2L["1db"]["Size"] = UDim2.new(0, 200, 0, 50);
 G2L["1db"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["1db"]["Text"] = [[120]];
+G2L["1db"]["Text"] = [[45]];
 G2L["1db"]["LayoutOrder"] = 1;
 G2L["1db"]["BackgroundTransparency"] = 1;
 
@@ -4100,6 +4102,7 @@ G2L["1dc"] = Instance.new("LocalScript", G2L["1db"]);
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider2.Frame.TextBox2
 G2L["1dd"] = Instance.new("TextBox", G2L["1d5"]);
+G2L["1dd"]["CursorPosition"] = -1;
 G2L["1dd"]["Name"] = [[TextBox2]];
 G2L["1dd"]["BorderSizePixel"] = 0;
 G2L["1dd"]["TextWrapped"] = true;
@@ -4112,7 +4115,7 @@ G2L["1dd"]["ClearTextOnFocus"] = false;
 G2L["1dd"]["PlaceholderText"] = [[BHOP_ACCEL]];
 G2L["1dd"]["Size"] = UDim2.new(0, 200, 0, 50);
 G2L["1dd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["1dd"]["Text"] = [[3.5]];
+G2L["1dd"]["Text"] = [[0.5]];
 G2L["1dd"]["LayoutOrder"] = 2;
 G2L["1dd"]["BackgroundTransparency"] = 1;
 
@@ -4166,7 +4169,6 @@ G2L["1e2"] = Instance.new("LocalScript", G2L["1e1"]);
 
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame2.Bhop.Slider2.Frame.TextBox3
 G2L["1e3"] = Instance.new("TextBox", G2L["1d5"]);
-G2L["1e3"]["CursorPosition"] = -1;
 G2L["1e3"]["Name"] = [[TextBox3]];
 G2L["1e3"]["BorderSizePixel"] = 0;
 G2L["1e3"]["TextWrapped"] = true;
@@ -10171,7 +10173,7 @@ G2L["499"]["AspectRatio"] = 1.556;
 G2L["49a"] = Instance.new("Frame", G2L["a3"]);
 G2L["49a"]["ZIndex"] = 2;
 G2L["49a"]["BorderSizePixel"] = 0;
-G2L["49a"]["BackgroundColor3"] = Color3.fromRGB(75, 75, 75);
+G2L["49a"]["BackgroundColor3"] = Color3.fromRGB(48, 48, 48);
 G2L["49a"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["49a"]["Position"] = UDim2.new(0, 0, -0.09992, 0);
 G2L["49a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -10233,7 +10235,7 @@ G2L["4a0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["4a0"]["BackgroundTransparency"] = 1;
 G2L["4a0"]["Size"] = UDim2.new(0.27822, 0, 0.91381, 0);
 G2L["4a0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["4a0"]["Text"] = [[Erestive • 4.4]];
+G2L["4a0"]["Text"] = [[Erestive • 4.4f]];
 G2L["4a0"]["Name"] = [[1A1]];
 G2L["4a0"]["Position"] = UDim2.new(0.45628, 0, 0, 0);
 
@@ -10285,7 +10287,7 @@ G2L["4a7"]["AspectRatio"] = 29.95238;
 -- StarterGui.Erestive.MainFrame.Frame
 G2L["4a8"] = Instance.new("Frame", G2L["a3"]);
 G2L["4a8"]["BorderSizePixel"] = 0;
-G2L["4a8"]["BackgroundColor3"] = Color3.fromRGB(75, 75, 75);
+G2L["4a8"]["BackgroundColor3"] = Color3.fromRGB(48, 48, 48);
 G2L["4a8"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["4a8"]["Position"] = UDim2.new(0, 0, -0.08161, 0);
 G2L["4a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -14056,53 +14058,52 @@ local script = G2L["1c3"];
 	local UserInputService = game:GetService("UserInputService")
 	
 	local player = Players.LocalPlayer
-	local camera = workspace.CurrentCamera
 	local button = script.Parent
 	
-	-- Ссылки на объекты настроек (убедись, что они созданы внутри кнопки)
-	local BHOP_ACCEL = button:WaitForChild("BHOP_ACCEL") -- NumberValue
-	local MAX_SPEED = button:WaitForChild("MAX_SPEED")   -- NumberValue
+	-- ИСПОЛЬЗУЕМ ЛОКАЛЬНУЮ ПЕРЕМЕННУЮ ВМЕСТО _G
+	local IsEnabled = false
 	
-	_G.BhopEnabled = false
-	local STRAFE_POWER = button:WaitForChild("STRAFE_POWER")   -- NumberValue
+	-- Функция для безопасного получения настроек
+	local function getSetting(name, default)
+		local obj = button:FindFirstChild(name)
+		return obj and obj.Value or default
+	end
 	
 	-- Логика кнопки
 	button.MouseButton1Click:Connect(function()
-		_G.BhopEnabled = not _G.BhopEnabled
-		button.Text = "BHOP + STRAFE: " .. (_G.BhopEnabled and "ON" or "OFF")
-		button.BackgroundColor3 = _G.BhopEnabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
+		IsEnabled = not IsEnabled
+		button.Text = "BHOP: " .. (IsEnabled and "ON" or "OFF")
+		button.BackgroundColor3 = IsEnabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
 	end)
 	
-	RunService.RenderStepped:Connect(function()
-		if not _G.BhopEnabled then return end
+	RunService.Heartbeat:Connect(function()
+		-- Если выключено — ВООБЩЕ ничего не считаем и не проверяем
+		if not IsEnabled then return end
 	
 		local char = player.Character
 		local hum = char and char:FindFirstChildOfClass("Humanoid")
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 	
 		if hum and root and hum.Health > 0 then
-			-- 1. АВТОПРЫЖОК
 			if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+				-- Прыжок
 				if hum.FloorMaterial ~= Enum.Material.Air then
 					hum.Jump = true
-				end
+				else
+					-- Физика только в воздухе
+					local camera = workspace.CurrentCamera
+					local moveDir = hum.MoveDirection
 	
-				-- 2. АГРЕССИВНЫЙ AUTO-STRAFE (в воздухе)
-				if hum.FloorMaterial == Enum.Material.Air then
-					local mouseDelta = UserInputService:GetMouseDelta().X
-					local currentVel = root.AssemblyLinearVelocity
+					if moveDir.Magnitude > 0 then
+						local accel = getSetting("BHOP_ACCEL", 1)
+						local maxS = getSetting("MAX_SPEED", 50)
 	
-					if mouseDelta > 0 then 
-						root.AssemblyLinearVelocity = currentVel + (camera.CFrame.RightVector * STRAFE_POWER.Value)
-					elseif mouseDelta < 0 then 
-						root.AssemblyLinearVelocity = currentVel + (camera.CFrame.RightVector * -STRAFE_POWER.Value)
-					end
+						-- Проверка текущей скорости, чтобы не превышать лимит
+						local currentVel = root.AssemblyLinearVelocity
+						local planVel = Vector2.new(currentVel.X, currentVel.Z)
 	
-					-- 3. МГНОВЕННЫЙ РАЗГОН (Берет значения из Value-объектов)
-					if hum.MoveDirection.Magnitude > 0 then
-						local speed = Vector2.new(root.AssemblyLinearVelocity.X, root.AssemblyLinearVelocity.Z).Magnitude
-						if speed < MAX_SPEED.Value then
-							root.AssemblyLinearVelocity = root.AssemblyLinearVelocity + (hum.MoveDirection * BHOP_ACCEL.Value)
+						if planVel.Magnitude < maxS then
+							root.ApplyImpulse(root, moveDir * accel * 10) -- Более мягкий метод разгона
 						end
 					end
 				end
