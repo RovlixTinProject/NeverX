@@ -1,3 +1,12 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
+
 -- Instances: 1292 | Scripts: 207 | Modules: 4 | Tags: 0
 local G2L = {};
 
@@ -16068,7 +16077,7 @@ local script = G2L["2be"];
 	
 	local ESP_Storage = {}
 	
-	-- Функция удаления ESP у конкретного игрока
+	-- Удаление ESP
 	local function RemoveESP(player)
 		if ESP_Storage[player] then
 			ESP_Storage[player]:Destroy()
@@ -16076,99 +16085,78 @@ local script = G2L["2be"];
 		end
 	end
 	
-	-- Функция создания бокса
+	-- Создание бокса (делаем один раз при спавне)
 	local function CreateBox(player)
-		-- Не создаем для себя или если уже есть
-		if player == LocalPlayer then return end
-		RemoveESP(player) -- Удаляем старый если был
+		if player == LocalPlayer or not status then return end
+		RemoveESP(player)
 	
-		local char = player.Character or player.CharacterAdded:Wait()
-		local hrp = char:WaitForChild("HumanoidRootPart", 10)
+		local char = player.Character
+		local hrp = char and char:FindFirstChild("HumanoidRootPart")
 		if not hrp then return end
 	
 		local bGui = Instance.new("BillboardGui")
-		bGui.Name = "CustomTeamESP"
+		bGui.Name = "OptimizedESP"
 		bGui.AlwaysOnTop = true
 		bGui.Size = UDim2.new(4.5, 0, 6, 0) 
 		bGui.Adornee = hrp
 		bGui.Parent = hrp
 	
 		local frame = Instance.new("Frame", bGui)
-		frame.Name = "MainFrame"
 		frame.Size = UDim2.new(1, 0, 1, 0)
 		frame.BackgroundTransparency = 1 
 	
 		local stroke = Instance.new("UIStroke", frame)
-		stroke.Thickness = 2
+		stroke.Thickness = 1.5 -- Тоньше обводка = меньше лагов
 		stroke.Color = player.TeamColor.Color
 		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	
-		local backStroke = Instance.new("UIStroke", frame)
-		backStroke.Thickness = 3.5
-		backStroke.Transparency = 0.5
-		backStroke.Color = Color3.new(0, 0, 0)
 	
 		ESP_Storage[player] = bGui
 	end
 	
-	-- Функция для подключения игрока (обработка ресетов)
+	-- ОПТИМИЗИРОВАННОЕ ОБНОВЛЕНИЕ (раз в 0.1 сек вместо каждого кадра)
+	task.spawn(function()
+		while true do
+			if status then
+				for player, gui in pairs(ESP_Storage) do
+					local char = player.Character
+					local hum = char and char:FindFirstChildOfClass("Humanoid")
+	
+					if char and hum then
+						-- Обновляем только если изменился цвет команды или здоровье
+						gui.Enabled = (hum.Health > 0)
+						local frame = gui:FindFirstChildOfClass("Frame")
+						local stroke = frame and frame:FindFirstChildOfClass("UIStroke")
+						if stroke then
+							stroke.Color = player.TeamColor.Color
+						end
+					else
+						RemoveESP(player)
+					end
+				end
+			end
+			task.wait(0.1) -- ЗАДЕРЖКА ОБНОВЛЕНИЯ (убирает лаги)
+		end
+	end)
+	
+	-- Слежка за персонажами
 	local function MonitorPlayer(player)
 		player.CharacterAdded:Connect(function()
-			if status then
-				task.wait(0.5) -- Небольшая пауза для прогрузки
-				CreateBox(player)
-			end
+			if status then task.wait(0.5) CreateBox(player) end
 		end)
-	
-		player.CharacterRemoving:Connect(function()
-			RemoveESP(player)
-		end)
+		player.CharacterRemoving:Connect(function() RemoveESP(player) end)
 	end
 	
-	-- Обновление
-	local function UpdateESP()
-		for player, gui in pairs(ESP_Storage) do
-			if player.Character and player.Character:FindFirstChild("Humanoid") then
-				local hum = player.Character.Humanoid
-				local frame = gui:FindFirstChild("MainFrame")
-				local stroke = frame and frame:FindFirstChildOfClass("UIStroke")
-	
-				if stroke then
-					stroke.Color = player.TeamColor.Color
-				end
-				gui.Enabled = (hum.Health > 0)
-			else
-				RemoveESP(player)
-			end
-		end
-	end
-	
-	local function ClearESP()
-		for p, _ in pairs(ESP_Storage) do RemoveESP(p) end
-	end
-	
-	-- Логика переключателя
 	ON_OFF:GetPropertyChangedSignal("Text"):Connect(function()
-		if ON_OFF.Text == "On" then
-			status = true
-			for _, p in pairs(Players:GetPlayers()) do
-				if p.Character then CreateBox(p) end
-			end
+		status = (ON_OFF.Text == "On")
+		if status then
+			for _, p in pairs(Players:GetPlayers()) do if p.Character then CreateBox(p) end end
 		else
-			status = false
 			ClearESP()
 		end
 	end)
 	
-	-- Инициализация всех игроков
-	for _, p in pairs(Players:GetPlayers()) do
-		MonitorPlayer(p)
-	end
+	for _, p in pairs(Players:GetPlayers()) do MonitorPlayer(p) end
 	Players.PlayerAdded:Connect(MonitorPlayer)
-	
-	RunService.RenderStepped:Connect(function()
-		if status then UpdateESP() end
-	end)
 	
 end;
 task.spawn(C_2be);
@@ -17992,7 +17980,7 @@ local script = G2L["403"];
 	
 				-- 2. DESYNC (Сетевой лаг)
 				local oldVel = root.AssemblyLinearVelocity
-				root.AssemblyLinearVelocity = oldVel * 0.15 -- Заме��ляем отправку позиции на сервер
+				root.AssemblyLinearVelocity = oldVel * 0.15 -- Замедляем отправку позиции на сервер
 	
 				RunService.RenderStepped:Wait() -- Ждем один кадр отрисовки
 	
