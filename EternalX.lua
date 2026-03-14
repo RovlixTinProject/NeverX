@@ -16059,99 +16059,116 @@ task.spawn(C_2bc);
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame6.Speed2.FOV.FOVConfig.SetFOV.Button.Wallhack
 local function C_2be()
 local script = G2L["2be"];
-	local debounce = true
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local LocalPlayer = Players.LocalPlayer
+	
 	local status = false
-	local active = true
 	local ON_OFF = script.Parent.Parent.Parent.Parent.Parent.Parent.ONOFF2.OnOrOff 
 	
-	local surfaceTemplate = script.Parent.surface 
+	local ESP_Storage = {}
 	
-	-- Функция для получения цвета в зависимости от HP
-	local function GetHealthColor(humanoid)
-		local healthPercent = humanoid.Health / humanoid.MaxHealth
-		-- Интерполяция от красного (0 HP) к зеленому (Full HP)
-		return Color3.new(1, 0, 0):Lerp(Color3.new(0, 1, 0), healthPercent)
+	-- Функция удаления ESP у конкретного игрока
+	local function RemoveESP(player)
+		if ESP_Storage[player] then
+			ESP_Storage[player]:Destroy()
+			ESP_Storage[player] = nil
+		end
 	end
 	
-	function CreateESP()
-		for _, player in pairs(game.Players:GetChildren()) do
-			if player.Character and player.Name ~= game.Players.LocalPlayer.Name then
-				local hum = player.Character:FindFirstChildOfClass("Humanoid")
-				if hum then
-					-- Вычисляем цвет один раз для всего персонажа
-					local hpColor = GetHealthColor(hum)
+	-- Функция создания бокса
+	local function CreateBox(player)
+		-- Не создаем для себя или если уже есть
+		if player == LocalPlayer then return end
+		RemoveESP(player) -- Удаляем старый если был
 	
-					for _, part in pairs(player.Character:GetChildren()) do
-						if part:IsA("BasePart") then
-							-- Список сторон для создания
-							local faces = {
-								Enum.NormalId.Front, Enum.NormalId.Back, 
-								Enum.NormalId.Left, Enum.NormalId.Right, 
-								Enum.NormalId.Top, Enum.NormalId.Bottom
-							}
+		local char = player.Character or player.CharacterAdded:Wait()
+		local hrp = char:WaitForChild("HumanoidRootPart", 10)
+		if not hrp then return end
 	
-							for _, face in pairs(faces) do
-								local gui = surfaceTemplate:Clone()
-								gui.Parent = part
-								gui.Face = face
+		local bGui = Instance.new("BillboardGui")
+		bGui.Name = "CustomTeamESP"
+		bGui.AlwaysOnTop = true
+		bGui.Size = UDim2.new(4.5, 0, 6, 0) 
+		bGui.Adornee = hrp
+		bGui.Parent = hrp
 	
-								-- Ищем внутри шаблона Frame или объект, который нужно покрасить
-								-- Если твой шаблон - это просто Frame внутри SurfaceGui:
-								local frame = gui:FindFirstChildOfClass("TextLabel")
-								if frame then
-									frame.BackgroundColor3 = hpColor
-								else
-									-- Если цвет должен быть у самого SurfaceGui (через CanvasGroup или т.п.)
-									gui.BackgroundColor3 = hpColor
-								end
-							end
-						end
-					end
+		local frame = Instance.new("Frame", bGui)
+		frame.Name = "MainFrame"
+		frame.Size = UDim2.new(1, 0, 1, 0)
+		frame.BackgroundTransparency = 1 
+	
+		local stroke = Instance.new("UIStroke", frame)
+		stroke.Thickness = 2
+		stroke.Color = player.TeamColor.Color
+		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	
+		local backStroke = Instance.new("UIStroke", frame)
+		backStroke.Thickness = 3.5
+		backStroke.Transparency = 0.5
+		backStroke.Color = Color3.new(0, 0, 0)
+	
+		ESP_Storage[player] = bGui
+	end
+	
+	-- Функция для подключения игрока (обработка ресетов)
+	local function MonitorPlayer(player)
+		player.CharacterAdded:Connect(function()
+			if status then
+				task.wait(0.5) -- Небольшая пауза для прогрузки
+				CreateBox(player)
+			end
+		end)
+	
+		player.CharacterRemoving:Connect(function()
+			RemoveESP(player)
+		end)
+	end
+	
+	-- Обновление
+	local function UpdateESP()
+		for player, gui in pairs(ESP_Storage) do
+			if player.Character and player.Character:FindFirstChild("Humanoid") then
+				local hum = player.Character.Humanoid
+				local frame = gui:FindFirstChild("MainFrame")
+				local stroke = frame and frame:FindFirstChildOfClass("UIStroke")
+	
+				if stroke then
+					stroke.Color = player.TeamColor.Color
 				end
+				gui.Enabled = (hum.Health > 0)
+			else
+				RemoveESP(player)
 			end
 		end
 	end
 	
-	function ClearESP()
-		for _, player in pairs(game.Players:GetChildren()) do
-			if player.Character then
-				for _, part in pairs(player.Character:GetChildren()) do
-					if part:IsA("BasePart") then
-						for _, gui in pairs(part:GetChildren()) do
-							-- Проверяем, что это именно наш ESP (чтобы не удалить лишнее)
-							if gui:IsA("SurfaceGui") and gui.Name == surfaceTemplate.Name then
-								gui:Destroy()
-							end
-						end
-					end
-				end
-			end
-		end
+	local function ClearESP()
+		for p, _ in pairs(ESP_Storage) do RemoveESP(p) end
 	end
 	
-	ON_OFF.Changed:Connect(function()
-		local currentText = ON_OFF.Text
-		if currentText == "On" and debounce and active then
-			debounce = false
+	-- Логика переключателя
+	ON_OFF:GetPropertyChangedSignal("Text"):Connect(function()
+		if ON_OFF.Text == "On" then
 			status = true
-			CreateESP()
-		elseif currentText == "Off" and debounce and active then
-			debounce = false
+			for _, p in pairs(Players:GetPlayers()) do
+				if p.Character then CreateBox(p) end
+			end
+		else
 			status = false
 			ClearESP()
 		end
-		debounce = true
 	end)
 	
-	while true do
-		task.wait(1.5) -- Используй task.wait, он стабильнее
-		if status == true then
-			ClearESP()
-			CreateESP()
-		else
-			ClearESP()
-		end
+	-- Инициализация всех игроков
+	for _, p in pairs(Players:GetPlayers()) do
+		MonitorPlayer(p)
 	end
+	Players.PlayerAdded:Connect(MonitorPlayer)
+	
+	RunService.RenderStepped:Connect(function()
+		if status then UpdateESP() end
+	end)
 	
 end;
 task.spawn(C_2be);
@@ -16618,6 +16635,7 @@ local script = G2L["326"];
 		local Stroke = Instance.new("UIStroke", Arrow)
 		Stroke.Thickness = 2
 		Stroke.Color = Color3.fromRGB(0, 0, 0)
+		Stroke.Name = "Outline" 
 	
 		Indicators[targetPlayer] = Arrow
 		return Arrow
@@ -16639,31 +16657,46 @@ local script = G2L["326"];
 			if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("Head") then
 				local head = v.Character.Head
 				local arrow = Indicators[v] or createArrow(v)
+				local stroke = arrow:FindFirstChild("Outline")
 	
 				local screenPos, onScreen = Camera:WorldToViewportPoint(head.Position)
 				local hum = v.Character:FindFirstChildOfClass("Humanoid")
 	
 				if hum and hum.Health > 0 then
 					arrow.Visible = true
-					arrow.BackgroundColor3 = isVisible(head) and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(255, 255, 255)
+	
+					-- ПРОВЕРКА НА ТИММЕЙТА (TeamColor для Counter Blox)
+					local isTeammate = (v.TeamColor == LocalPlayer.TeamColor)
+	
+					if isTeammate then
+						-- Настройки для своих: Маленький, голубой, прозрачный, без обводки
+						arrow.BackgroundColor3 = Color3.fromRGB(0, 188, 235)
+						arrow.Size = UDim2.new(0, 8, 0, 8) 
+						arrow.BackgroundTransparency = 0.5
+						if stroke then stroke.Enabled = false end 
+					else
+						-- Настройки для врагов: Обычный, красный/белый, не прозрачный, с обводкой
+						arrow.BackgroundColor3 = isVisible(head) and Color3.fromRGB(255, 76, 76) or Color3.fromRGB(255, 255, 255)
+						arrow.Size = UDim2.new(0, 14, 0, 14) 
+						arrow.BackgroundTransparency = 0
+						if stroke then stroke.Enabled = true end 
+					end
 	
 					if onScreen then
-						-- РОВНО НАД ГОЛОВОЙ
 						arrow.Position = UDim2.new(0, screenPos.X, 0, screenPos.Y - 40)
 					else
-						-- ИСПРАВЛЕННАЯ ЛОГИКА КРАЕВ (360 ГРАДУСОВ)
+						-- Логика краев экрана
 						local center = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
-	
-						-- Инвертируем позицию, если игрок сзади (Z < 0)
 						local x = screenPos.X - center.X
 						local y = screenPos.Y - center.Y
+	
 						if screenPos.Z < 0 then
 							x = -x
 							y = -y
 						end
 	
 						local angle = math.atan2(y, x)
-						local radius = math.min(center.X, center.Y) - 50 -- Отступ от края
+						local radius = math.min(center.X, center.Y) - 50
 	
 						arrow.Position = UDim2.new(0, center.X + math.cos(angle) * radius, 0, center.Y + math.sin(angle) * radius)
 					end
@@ -17959,7 +17992,7 @@ local script = G2L["403"];
 	
 				-- 2. DESYNC (Сетевой лаг)
 				local oldVel = root.AssemblyLinearVelocity
-				root.AssemblyLinearVelocity = oldVel * 0.15 -- Замедляем отправку позиции на сервер
+				root.AssemblyLinearVelocity = oldVel * 0.15 -- Заме��ляем отправку позиции на сервер
 	
 				RunService.RenderStepped:Wait() -- Ждем один кадр отрисовки
 	
