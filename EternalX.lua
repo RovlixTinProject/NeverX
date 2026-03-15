@@ -19292,66 +19292,66 @@ local script = G2L["467"];
 	local button = script.Parent
 	local enabled = false
 	
-	-- Функция проверки: смотрим ли мы на живого врага?
+	-- Функция проверки цели (улучшенный Raycast для CB:RO)
 	local function isEnemyInSights()
-		local center = camera.ViewportSize / 2
-		local ray = camera:ViewportPointToRay(center.X, center.Y)
+		local mousePos = UserInputService:GetMouseLocation()
+		local unitRay = camera:ViewportPointToRay(mousePos.X, mousePos.Y)
 	
 		local params = RaycastParams.new()
-		-- Игнорируем себя и камеру
-		params.FilterDescendantsInstances = {LocalPlayer.Character, camera}
-		params.FilterType = Enum.RaycastFilterType.Exclude
+		params.FilterType = Enum.RaycastFilterType.Include
 	
-		local result = workspace:Raycast(ray.Origin, ray.Direction * 1000, params)
+		-- Собираем только персонажей врагов для проверки луча
+		local targets = {}
+		for _, p in pairs(Players:GetPlayers()) do
+			if p ~= LocalPlayer and p.TeamColor ~= LocalPlayer.TeamColor and p.Character then
+				table.insert(targets, p.Character)
+			end
+		end
+		params.FilterDescendantsInstances = targets
+	
+		local result = workspace:Raycast(unitRay.Origin, unitRay.Direction * 5000, params)
 	
 		if result and result.Instance then
-			local char = result.Instance:FindFirstAncestorOfClass("Model")
-			local targetPlayer = Players:GetPlayerFromCharacter(char)
+			local model = result.Instance:FindFirstAncestorOfClass("Model")
+			local hum = model and model:FindFirstChildOfClass("Humanoid")
 	
-			-- ПРОВЕРКА: Это игрок и не я?
-			if targetPlayer and targetPlayer ~= LocalPlayer then
-				local hum = char:FindFirstChildOfClass("Humanoid")
-	
-				-- ПРОВЕРКА: Жив?
-				if hum and hum.Health > 0 then
-					-- ПРОВЕРКА КОМАНДЫ (по цвету - надежнее для CB)
-					if targetPlayer.TeamColor ~= LocalPlayer.TeamColor then
-						return true 
-					end
-				end
+			if hum and hum.Health > 0 then
+				return true
 			end
 		end
 		return false
 	end
 	
+	-- Логика кнопки
 	button.MouseButton1Click:Connect(function()
 		enabled = not enabled
 		button.Text = "SMART STOP: " .. (enabled and "ON" or "OFF")
 		button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
 	end)
 	
+	-- Основной цикл (используем Heartbeat для физики)
 	RunService.Heartbeat:Connect(function()
 		if not enabled then return end
 	
-		-- Всегда берем актуального персонажа (чтобы не ломалось после смерти)
 		local char = LocalPlayer.Character
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 		local hum = char and char:FindFirstChildOfClass("Humanoid")
 	
 		if not root or not hum then return end
 	
-		-- Проверяем нажатие кнопок мыши
-		local isClicking = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
+		-- Проверяем, зажата ли ЛКМ (MouseButton1)
+		local isShooting = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)
 	
-		if isClicking and isEnemyInSights() then
-			-- Если мы движемся - тормозим
-			if hum.MoveDirection.Magnitude > 0 then
-				-- Мгновенная остановка
+		if isShooting and isEnemyInSights() then
+			-- Если игрок пытается идти или еще имеет инерцию
+			if hum.MoveDirection.Magnitude > 0 or root.AssemblyLinearVelocity.Magnitude > 0.1 then
+	
+				-- СБРОС СКОРОСТИ
 				root.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
 	
-				-- Заморозка на 1 кадр для сброса разброса пули
+				-- ЖЕСТКАЯ ОСТАНОВКА (Anchor на долю секунды для точности)
 				root.Anchored = true
-				RunService.RenderStepped:Wait() -- Ждем ровно один кадр отрисовки
+				task.wait(0.03) -- Минимальная задержка для гашения разброса
 				root.Anchored = false
 			end
 		end
