@@ -18988,7 +18988,6 @@ local script = G2L["428"];
 	
 		Dot.Color = found and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
 	end)
-	
 end;
 task.spawn(C_428);
 -- StarterGui.Erestive.MainFrame.CommandFrame.Frame5.AutoFire.Slider2.Animations
