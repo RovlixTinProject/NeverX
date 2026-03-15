@@ -11535,21 +11535,21 @@ end
 G2L_MODULES[G2L["8"]] = {
 Closure = function()
     local script = G2L["8"];local SmoothShiftLock = {}
-SmoothShiftLock.__index = SmoothShiftLock;
+SmoothShiftLock.__index = SmoothShiftLock
 
-local Players = game:GetService("Players");
-local WorkspaceService = game:GetService("Workspace");
-local RunService = game:GetService("RunService");
-local UserInputService = game:GetService("UserInputService");
+local Players = game:GetService("Players")
+local WorkspaceService = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
 
-local UtilsFolder = script:WaitForChild("Utils");
-local Maid = require(UtilsFolder:WaitForChild("Maid"));
-local Signal = require(UtilsFolder:WaitForChild("Signal"));
-local Spring = require(UtilsFolder:WaitForChild("Spring"));
+local UtilsFolder = script:WaitForChild("Utils")
+local Maid = require(UtilsFolder:WaitForChild("Maid"))
+local Signal = require(UtilsFolder:WaitForChild("Signal"))
+local Spring = require(UtilsFolder:WaitForChild("Spring"))
 
-local LocalPlayer = Players.LocalPlayer;
-local ToggleEvent = script:WaitForChild("ToggleShiftLock");
-local EditConfig = script:WaitForChild("EditConfig");
+local LocalPlayer = Players.LocalPlayer
+local ToggleEvent = script:WaitForChild("ToggleShiftLock")
+local EditConfig = script:WaitForChild("EditConfig")
 
 -- НАСТРОЙКИ
 local config = {
@@ -11561,108 +11561,113 @@ local config = {
 	["CAMERA_TRANSITION_OUT_SPEED"] = 14,
 	["LOCKED_CAMERA_OFFSET"]        = Vector3.new(1.75, 0.25, 0),
 	["LOCKED_MOUSE_ICON"]           = "rbxasset://122523505593160",
-	["BIND_VALUE"]                  = script:WaitForChild("KeyCode"), -- Ссылка на StringValue
+	["BIND_VALUE"]                  = script:WaitForChild("KeyCode"),
 }
 
-local ENABLED = false;
-local maid = Maid.new();
+local ENABLED = false
+local currentSessionMaid = nil -- Maid для текущего персонажа
 
 function SmoothShiftLock:Init()
-	local _managerMaid = Maid.new();
-	SmoothShiftLock.ShiftLockToggled = Signal.new();
-	if LocalPlayer.Character then self:CharacterAdded() end;
-	_managerMaid:GiveTask(LocalPlayer.CharacterAdded:Connect(function() self:CharacterAdded() end));
-end;
+	SmoothShiftLock.ShiftLockToggled = Signal.new()
 
-function SmoothShiftLock:CharacterAdded()
-	local self = setmetatable({}, SmoothShiftLock);
-	self.Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait();
-	self.RootPart = self.Character:WaitForChild("HumanoidRootPart");
-	self.Humanoid = self.Character:WaitForChild("Humanoid");
-	self.Head = self.Character:WaitForChild("Head");
-	self.Camera = WorkspaceService.CurrentCamera;
-	self._connectionsMaid = Maid.new();
-	self.camOffsetSpring = Spring.new(Vector3.new(0, 0, 0));
-	self.camOffsetSpring.Damper = config.TRANSITION_SPRING_DAMPER;
+	local function onCharacter(char)
+		if currentSessionMaid then currentSessionMaid:DoCleaning() end
+		currentSessionMaid = Maid.new()
+		self:SetupCharacter(char, currentSessionMaid)
+	end
 
-	-- ИСПРАВЛЕННАЯ ПРОВЕРКА НАЖАТИЯ (Без pairs)
-	self._connectionsMaid:GiveTask(UserInputService.InputBegan:Connect(function(input, gpe)
-		if gpe or not config.MANUALLY_TOGGLEABLE then return end;
+	if LocalPlayer.Character then onCharacter(LocalPlayer.Character) end
+	LocalPlayer.CharacterAdded:Connect(onCharacter)
+end
 
+function SmoothShiftLock:SetupCharacter(char, maid)
+	local hum = char:WaitForChild("Humanoid")
+	local root = char:WaitForChild("HumanoidRootPart")
+	local head = char:WaitForChild("Head")
+	local camera = WorkspaceService.CurrentCamera
+
+	local camOffsetSpring = Spring.new(Vector3.new(0, 0, 0))
+	camOffsetSpring.Damper = config.TRANSITION_SPRING_DAMPER
+
+	-- Сброс состояния при спавне
+	ENABLED = false
+	self:SetMouseState(false)
+	self:SetMouseIcon(false)
+
+	-- ВВОД
+	maid:GiveTask(UserInputService.InputBegan:Connect(function(input, gpe)
+		if gpe or not config.MANUALLY_TOGGLEABLE then return end
 		local keyName = config.BIND_VALUE.Value
 		local success, currentBind = pcall(function() return Enum.KeyCode[keyName] end)
 
-		if success and input.KeyCode == currentBind then
-			if self.Humanoid and self.Humanoid.Health > 0 then
-				self:ToggleShiftLock(not ENABLED);
-			end;
-		end;
-	end));
+		if success and input.KeyCode == currentBind and hum.Health > 0 then
+			self:ToggleShiftLock(not ENABLED, hum, root, camera, camOffsetSpring, maid)
+		end
+	end))
 
-	self._connectionsMaid:GiveTask(RunService.RenderStepped:Connect(function()
-		if self.Head.LocalTransparencyModifier > 0.6 then return end;
-		local distance = (self.Head.Position - self.Camera.CoordinateFrame.p).magnitude;
-		if (distance > 1) then	
-			self.Camera.CFrame = (self.Camera.CFrame * CFrame.new(self.camOffsetSpring.Position)); 
-			if (ENABLED) and (UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter) then
-				self:SetMouseState(ENABLED);
-			end;
-		end;
-	end));
+	-- ОБНОВЛЕНИЕ КАМЕРЫ
+	maid:GiveTask(RunService.RenderStepped:Connect(function()
+		if not char:IsDescendantOf(workspace) or hum.Health <= 0 then return end
 
-	self._connectionsMaid:GiveTask(ToggleEvent.Event:Connect(function(toggle)
-		if self.Humanoid and self.Humanoid.Health > 0 then self:ToggleShiftLock(toggle) end;
-	end));
+		local distance = (head.Position - camera.CoordinateFrame.p).magnitude
+		if distance > 1 then
+			camera.CFrame = camera.CFrame * CFrame.new(camOffsetSpring.Position)
+			if ENABLED and UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
+				self:SetMouseState(true)
+			end
+		end
+	end))
 
-	self._connectionsMaid:GiveTask(EditConfig.Event:Connect(function(k, v) if config[k] ~= nil then config[k] = v end end));
-	self._connectionsMaid:GiveTask(self.Humanoid.Died:Connect(function() self:CharacterDiedOrRemoved() end));
-	return self;
-end;
+	-- ИВЕНТЫ
+	maid:GiveTask(ToggleEvent.Event:Connect(function(t)
+		if hum.Health > 0 then self:ToggleShiftLock(t, hum, root, camera, camOffsetSpring, maid) end
+	end))
 
-function SmoothShiftLock:CharacterDiedOrRemoved()
-	self:ToggleShiftLock(false);
-	if self._connectionsMaid then self._connectionsMaid:Destroy() end;
-	maid:DoCleaning();
-end;
+	maid:GiveTask(hum.Died:Connect(function()
+		self:ToggleShiftLock(false, hum, root, camera, camOffsetSpring, maid)
+		maid:DoCleaning()
+	end))
+end
 
 function SmoothShiftLock:SetMouseState(enable)
-	UserInputService.MouseBehavior = (enable and Enum.MouseBehavior.LockCenter) or (Enum.MouseBehavior.Default);
-end;
+	UserInputService.MouseBehavior = enable and Enum.MouseBehavior.LockCenter or Enum.MouseBehavior.Default
+end
 
 function SmoothShiftLock:SetMouseIcon(enable)
-	UserInputService.MouseIcon = (enable and config.LOCKED_MOUSE_ICON) or "";
-end;
+	UserInputService.MouseIcon = enable and config.LOCKED_MOUSE_ICON or ""
+end
 
-function SmoothShiftLock:TransitionLockOffset(enable)
-	self.camOffsetSpring.Speed = enable and config.CAMERA_TRANSITION_IN_SPEED or config.CAMERA_TRANSITION_OUT_SPEED;
-	self.camOffsetSpring.Target = enable and config.LOCKED_CAMERA_OFFSET or Vector3.new(0, 0, 0);
-end;
+function SmoothShiftLock:ToggleShiftLock(enable, hum, root, camera, spring, maid)
+	ENABLED = enable
+	self:SetMouseState(ENABLED)
+	self:SetMouseIcon(ENABLED)
 
-function SmoothShiftLock:ToggleShiftLock(enable)
-	ENABLED = enable;
-	self:SetMouseState(ENABLED);
-	self:SetMouseIcon(ENABLED);
-	self:TransitionLockOffset(ENABLED);
+	-- Пружина
+	spring.Speed = ENABLED and config.CAMERA_TRANSITION_IN_SPEED or config.CAMERA_TRANSITION_OUT_SPEED
+	spring.Target = ENABLED and config.LOCKED_CAMERA_OFFSET or Vector3.new(0, 0, 0)
 
-	if (ENABLED) then
-		maid:GiveTask(RunService.RenderStepped:Connect(function(delta)
-			if self.Humanoid and self.RootPart then self.Humanoid.AutoRotate = not ENABLED end;
-			if ENABLED and not self.Humanoid.Sit then
-				local _, y, _ = self.Camera.CFrame:ToOrientation();
+	-- Вращение персонажа (отдельный таск внутри Maid)
+	if ENABLED then
+		maid.RotationTask = RunService.RenderStepped:Connect(function(dt)
+			if hum and root and not hum.Sit then
+				hum.AutoRotate = false
+				local _, y, _ = camera.CFrame:ToOrientation()
 				if config.CHARACTER_SMOOTH_ROTATION then
-					self.RootPart.CFrame = self.RootPart.CFrame:Lerp(CFrame.new(self.RootPart.Position) * CFrame.Angles(0, y, 0), delta * 5 * config.CHARACTER_ROTATION_SPEED);
+					root.CFrame = root.CFrame:Lerp(CFrame.new(root.Position) * CFrame.Angles(0, y, 0), dt * 5 * config.CHARACTER_ROTATION_SPEED)
 				else
-					self.RootPart.CFrame = CFrame.new(self.RootPart.Position) * CFrame.Angles(0, y, 0);
-				end;
-			end;
-		end));
+					root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, y, 0)
+				end
+			end
+		end)
 	else
-		maid:DoCleaning();
-	end;
-	SmoothShiftLock.ShiftLockToggled:Fire(ENABLED);
-end;
+		if hum then hum.AutoRotate = true end
+		maid.RotationTask = nil
+	end
 
-return SmoothShiftLock;
+	SmoothShiftLock.ShiftLockToggled:Fire(ENABLED)
+end
+
+return SmoothShiftLock
 
 end;
 };
@@ -12001,21 +12006,21 @@ end;
 G2L_MODULES[G2L["13"]] = {
 Closure = function()
     local script = G2L["13"];local SmoothShiftLock = {}
-SmoothShiftLock.__index = SmoothShiftLock;
+SmoothShiftLock.__index = SmoothShiftLock
 
-local Players = game:GetService("Players");
-local WorkspaceService = game:GetService("Workspace");
-local RunService = game:GetService("RunService");
-local UserInputService = game:GetService("UserInputService");
+local Players = game:GetService("Players")
+local WorkspaceService = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
 
-local UtilsFolder = script:WaitForChild("Utils");
-local Maid = require(UtilsFolder:WaitForChild("Maid"));
-local Signal = require(UtilsFolder:WaitForChild("Signal"));
-local Spring = require(UtilsFolder:WaitForChild("Spring"));
+local UtilsFolder = script:WaitForChild("Utils")
+local Maid = require(UtilsFolder:WaitForChild("Maid"))
+local Signal = require(UtilsFolder:WaitForChild("Signal"))
+local Spring = require(UtilsFolder:WaitForChild("Spring"))
 
-local LocalPlayer = Players.LocalPlayer;
-local ToggleEvent = script:WaitForChild("ToggleShiftLock");
-local EditConfig = script:WaitForChild("EditConfig");
+local LocalPlayer = Players.LocalPlayer
+local ToggleEvent = script:WaitForChild("ToggleShiftLock")
+local EditConfig = script:WaitForChild("EditConfig")
 
 -- НАСТРОЙКИ
 local config = {
@@ -12027,108 +12032,113 @@ local config = {
 	["CAMERA_TRANSITION_OUT_SPEED"] = 14,
 	["LOCKED_CAMERA_OFFSET"]        = Vector3.new(-1.75, 0.25, 0),
 	["LOCKED_MOUSE_ICON"]           = "rbxasset://122523505593160",
-	["BIND_VALUE"]                  = script:WaitForChild("KeyCode"), -- Ссылка на StringValue
+	["BIND_VALUE"]                  = script:WaitForChild("KeyCode"),
 }
 
-local ENABLED = false;
-local maid = Maid.new();
+local ENABLED = false
+local currentSessionMaid = nil -- Maid для текущего персонажа
 
 function SmoothShiftLock:Init()
-	local _managerMaid = Maid.new();
-	SmoothShiftLock.ShiftLockToggled = Signal.new();
-	if LocalPlayer.Character then self:CharacterAdded() end;
-	_managerMaid:GiveTask(LocalPlayer.CharacterAdded:Connect(function() self:CharacterAdded() end));
-end;
+	SmoothShiftLock.ShiftLockToggled = Signal.new()
 
-function SmoothShiftLock:CharacterAdded()
-	local self = setmetatable({}, SmoothShiftLock);
-	self.Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait();
-	self.RootPart = self.Character:WaitForChild("HumanoidRootPart");
-	self.Humanoid = self.Character:WaitForChild("Humanoid");
-	self.Head = self.Character:WaitForChild("Head");
-	self.Camera = WorkspaceService.CurrentCamera;
-	self._connectionsMaid = Maid.new();
-	self.camOffsetSpring = Spring.new(Vector3.new(0, 0, 0));
-	self.camOffsetSpring.Damper = config.TRANSITION_SPRING_DAMPER;
+	local function onCharacter(char)
+		if currentSessionMaid then currentSessionMaid:DoCleaning() end
+		currentSessionMaid = Maid.new()
+		self:SetupCharacter(char, currentSessionMaid)
+	end
 
-	-- ИСПРАВЛЕННАЯ ПРОВЕРКА НАЖАТИЯ (Без pairs)
-	self._connectionsMaid:GiveTask(UserInputService.InputBegan:Connect(function(input, gpe)
-		if gpe or not config.MANUALLY_TOGGLEABLE then return end;
+	if LocalPlayer.Character then onCharacter(LocalPlayer.Character) end
+	LocalPlayer.CharacterAdded:Connect(onCharacter)
+end
 
+function SmoothShiftLock:SetupCharacter(char, maid)
+	local hum = char:WaitForChild("Humanoid")
+	local root = char:WaitForChild("HumanoidRootPart")
+	local head = char:WaitForChild("Head")
+	local camera = WorkspaceService.CurrentCamera
+
+	local camOffsetSpring = Spring.new(Vector3.new(0, 0, 0))
+	camOffsetSpring.Damper = config.TRANSITION_SPRING_DAMPER
+
+	-- Сброс состояния при спавне
+	ENABLED = false
+	self:SetMouseState(false)
+	self:SetMouseIcon(false)
+
+	-- ВВОД
+	maid:GiveTask(UserInputService.InputBegan:Connect(function(input, gpe)
+		if gpe or not config.MANUALLY_TOGGLEABLE then return end
 		local keyName = config.BIND_VALUE.Value
 		local success, currentBind = pcall(function() return Enum.KeyCode[keyName] end)
 
-		if success and input.KeyCode == currentBind then
-			if self.Humanoid and self.Humanoid.Health > 0 then
-				self:ToggleShiftLock(not ENABLED);
-			end;
-		end;
-	end));
+		if success and input.KeyCode == currentBind and hum.Health > 0 then
+			self:ToggleShiftLock(not ENABLED, hum, root, camera, camOffsetSpring, maid)
+		end
+	end))
 
-	self._connectionsMaid:GiveTask(RunService.RenderStepped:Connect(function()
-		if self.Head.LocalTransparencyModifier > 0.6 then return end;
-		local distance = (self.Head.Position - self.Camera.CoordinateFrame.p).magnitude;
-		if (distance > 1) then	
-			self.Camera.CFrame = (self.Camera.CFrame * CFrame.new(self.camOffsetSpring.Position)); 
-			if (ENABLED) and (UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter) then
-				self:SetMouseState(ENABLED);
-			end;
-		end;
-	end));
+	-- ОБНОВЛЕНИЕ КАМЕРЫ
+	maid:GiveTask(RunService.RenderStepped:Connect(function()
+		if not char:IsDescendantOf(workspace) or hum.Health <= 0 then return end
 
-	self._connectionsMaid:GiveTask(ToggleEvent.Event:Connect(function(toggle)
-		if self.Humanoid and self.Humanoid.Health > 0 then self:ToggleShiftLock(toggle) end;
-	end));
+		local distance = (head.Position - camera.CoordinateFrame.p).magnitude
+		if distance > 1 then
+			camera.CFrame = camera.CFrame * CFrame.new(camOffsetSpring.Position)
+			if ENABLED and UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
+				self:SetMouseState(true)
+			end
+		end
+	end))
 
-	self._connectionsMaid:GiveTask(EditConfig.Event:Connect(function(k, v) if config[k] ~= nil then config[k] = v end end));
-	self._connectionsMaid:GiveTask(self.Humanoid.Died:Connect(function() self:CharacterDiedOrRemoved() end));
-	return self;
-end;
+	-- ИВЕНТЫ
+	maid:GiveTask(ToggleEvent.Event:Connect(function(t)
+		if hum.Health > 0 then self:ToggleShiftLock(t, hum, root, camera, camOffsetSpring, maid) end
+	end))
 
-function SmoothShiftLock:CharacterDiedOrRemoved()
-	self:ToggleShiftLock(false);
-	if self._connectionsMaid then self._connectionsMaid:Destroy() end;
-	maid:DoCleaning();
-end;
+	maid:GiveTask(hum.Died:Connect(function()
+		self:ToggleShiftLock(false, hum, root, camera, camOffsetSpring, maid)
+		maid:DoCleaning()
+	end))
+end
 
 function SmoothShiftLock:SetMouseState(enable)
-	UserInputService.MouseBehavior = (enable and Enum.MouseBehavior.LockCenter) or (Enum.MouseBehavior.Default);
-end;
+	UserInputService.MouseBehavior = enable and Enum.MouseBehavior.LockCenter or Enum.MouseBehavior.Default
+end
 
 function SmoothShiftLock:SetMouseIcon(enable)
-	UserInputService.MouseIcon = (enable and config.LOCKED_MOUSE_ICON) or "";
-end;
+	UserInputService.MouseIcon = enable and config.LOCKED_MOUSE_ICON or ""
+end
 
-function SmoothShiftLock:TransitionLockOffset(enable)
-	self.camOffsetSpring.Speed = enable and config.CAMERA_TRANSITION_IN_SPEED or config.CAMERA_TRANSITION_OUT_SPEED;
-	self.camOffsetSpring.Target = enable and config.LOCKED_CAMERA_OFFSET or Vector3.new(0, 0, 0);
-end;
+function SmoothShiftLock:ToggleShiftLock(enable, hum, root, camera, spring, maid)
+	ENABLED = enable
+	self:SetMouseState(ENABLED)
+	self:SetMouseIcon(ENABLED)
 
-function SmoothShiftLock:ToggleShiftLock(enable)
-	ENABLED = enable;
-	self:SetMouseState(ENABLED);
-	self:SetMouseIcon(ENABLED);
-	self:TransitionLockOffset(ENABLED);
+	-- Пружина
+	spring.Speed = ENABLED and config.CAMERA_TRANSITION_IN_SPEED or config.CAMERA_TRANSITION_OUT_SPEED
+	spring.Target = ENABLED and config.LOCKED_CAMERA_OFFSET or Vector3.new(0, 0, 0)
 
-	if (ENABLED) then
-		maid:GiveTask(RunService.RenderStepped:Connect(function(delta)
-			if self.Humanoid and self.RootPart then self.Humanoid.AutoRotate = not ENABLED end;
-			if ENABLED and not self.Humanoid.Sit then
-				local _, y, _ = self.Camera.CFrame:ToOrientation();
+	-- Вращение персонажа (отдельный таск внутри Maid)
+	if ENABLED then
+		maid.RotationTask = RunService.RenderStepped:Connect(function(dt)
+			if hum and root and not hum.Sit then
+				hum.AutoRotate = false
+				local _, y, _ = camera.CFrame:ToOrientation()
 				if config.CHARACTER_SMOOTH_ROTATION then
-					self.RootPart.CFrame = self.RootPart.CFrame:Lerp(CFrame.new(self.RootPart.Position) * CFrame.Angles(0, y, 0), delta * 5 * config.CHARACTER_ROTATION_SPEED);
+					root.CFrame = root.CFrame:Lerp(CFrame.new(root.Position) * CFrame.Angles(0, y, 0), dt * 5 * config.CHARACTER_ROTATION_SPEED)
 				else
-					self.RootPart.CFrame = CFrame.new(self.RootPart.Position) * CFrame.Angles(0, y, 0);
-				end;
-			end;
-		end));
+					root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, y, 0)
+				end
+			end
+		end)
 	else
-		maid:DoCleaning();
-	end;
-	SmoothShiftLock.ShiftLockToggled:Fire(ENABLED);
-end;
+		if hum then hum.AutoRotate = true end
+		maid.RotationTask = nil
+	end
 
-return SmoothShiftLock;
+	SmoothShiftLock.ShiftLockToggled:Fire(ENABLED)
+end
+
+return SmoothShiftLock
 
 end;
 };
@@ -15436,11 +15446,11 @@ local script = G2L["1f0"];
 		local BHOP_ACCEL = sliderButton:FindFirstChild("BHOP_ACCEL")
 		local STRAFE_POWER = sliderButton:FindFirstChild("STRAFE_POWER")
 	
-		if textbox1 then textbox1.Text = "32" end
+		if textbox1 then textbox1.Text = "27" end
 		if textbox2 then textbox2.Text = "1.5" end
 		if textbox3 then textbox3.Text = "0.5" end
 	
-		if MAX_SPEED then MAX_SPEED.Value = tonumber("32") end
+		if MAX_SPEED then MAX_SPEED.Value = tonumber("27") end
 		if BHOP_ACCEL then BHOP_ACCEL.Value = tonumber("1.5") end
 		if STRAFE_POWER then STRAFE_POWER.Value = tonumber("0.5") end
 	end)
@@ -15460,11 +15470,11 @@ local script = G2L["1f2"];
 		local BHOP_ACCEL = sliderButton:FindFirstChild("BHOP_ACCEL")
 		local STRAFE_POWER = sliderButton:FindFirstChild("STRAFE_POWER")
 	
-		if textbox1 then textbox1.Text = "60" end
+		if textbox1 then textbox1.Text = "42" end
 		if textbox2 then textbox2.Text = "15" end
 		if textbox3 then textbox3.Text = "5" end
 	
-		if MAX_SPEED then MAX_SPEED.Value = tonumber("60") end
+		if MAX_SPEED then MAX_SPEED.Value = tonumber("42") end
 		if BHOP_ACCEL then BHOP_ACCEL.Value = tonumber("15") end
 		if STRAFE_POWER then STRAFE_POWER.Value = tonumber("5") end
 	end)
@@ -17504,6 +17514,7 @@ local script = G2L["34a"];
 	local ScreenGui = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
 	ScreenGui.Name = "ArrowESP_Gui"
 	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 	
 	local function isVisible(targetPart)
 		local raycastParams = RaycastParams.new()
