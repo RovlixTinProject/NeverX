@@ -19400,32 +19400,35 @@ task.spawn(C_46f);
 local function C_474()
 local script = G2L["474"];
 	local Players = game:GetService("Players")
-	local TweenService = game:GetService("TweenService")
 	local RunService = game:GetService("RunService")
 	local LocalPlayer = Players.LocalPlayer
 	
-	local button = script.Parent
-	local enabled = false
+	-- НАСТРОЙКИ
+	local DISTANCE_BEHIND = 3
+	local SMOOTHNESS = 0.15
+	local Enabled = false
 	
-	-- НАСТРОЙКИ TWEEN
-	local TP_SPEED = 0.2 -- Время полета до цели (0.1 - 0.3 оптимально для CB)
-	local TP_OFFSET = 4  -- Дистанция за спиной
-	local MAX_DIST = 500 -- Максимальный радиус поиска (в студах)
+	-- УКАЖИ СВОЮ КНОПКУ ТУТ
+	local MyButton = script.Parent -- Замени на путь к своей кнопке
 	
-	-- Функция поиска ближайшего врага
-	local function getClosestEnemy()
+	-- Функция поиска врага
+	local function getEnemy()
 		local closest = nil
-		local shortestDistance = MAX_DIST
+		local shortestDist = math.huge
+		local myChar = LocalPlayer.Character
+		local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+	
+		if not myRoot then return nil end
 	
 		for _, p in pairs(Players:GetPlayers()) do
-			if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+			if p ~= LocalPlayer and p.TeamColor ~= LocalPlayer.TeamColor and p.Character then
+				local root = p.Character:FindFirstChild("HumanoidRootPart")
 				local hum = p.Character:FindFirstChildOfClass("Humanoid")
-				-- Проверка: Жив? Враг?
-				if hum and hum.Health > 0 and p.TeamColor ~= LocalPlayer.TeamColor then
-					local dist = (p.Character.HumanoidRootPart.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-					if dist < shortestDistance then
-						shortestDistance = dist
-						closest = p
+				if root and hum and hum.Health > 0 then
+					local dist = (root.Position - myRoot.Position).Magnitude
+					if dist < shortestDist then
+						shortestDist = dist
+						closest = root
 					end
 				end
 			end
@@ -19434,40 +19437,34 @@ local script = G2L["474"];
 	end
 	
 	-- Логика кнопки
-	button.MouseButton1Click:Connect(function()
-		enabled = not enabled
-		button.Text = "SMOOTH TP: " .. (enabled and "ON" or "OFF")
-		button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
+	MyButton.MouseButton1Click:Connect(function()
+		Enabled = not Enabled
+		-- Опционально: меняем текст/цвет твоей кнопки для индикации
+		MyButton.Text = Enabled and "ВКЛ" or "ВЫКЛ"
+		MyButton.BackgroundColor3 = Enabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
 	
-	-- Основной цикл
-	task.spawn(function()
-		while true do
-			if enabled then
-				local target = getClosestEnemy()
-				local myChar = LocalPlayer.Character
-				local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+	-- Основной цикл перемещения
+	RunService.Stepped:Connect(function()
+		if not Enabled then return end
 	
-				if target and target.Character and myRoot then
-					local targetRoot = target.Character:FindFirstChild("HumanoidRootPart")
+		local char = LocalPlayer.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
 	
-					if targetRoot then
-						-- Позиция за спиной
-						local behindPos = targetRoot.CFrame * CFrame.new(0, 0, TP_OFFSET)
-	
-						-- Создаем плавное перемещение
-						local tweenInfo = TweenInfo.new(TP_SPEED, Enum.EasingStyle.Linear)
-						local tween = TweenService:Create(myRoot, tweenInfo, {
-							CFrame = CFrame.lookAt(behindPos.p, targetRoot.Position)
-						})
-	
-						tween:Play()
-						-- Ждем завершения полета или смерти цели
-						tween.Completed:Wait()
-					end
-				end
+		if root then
+			-- NoClip (проход сквозь стены)
+			for _, part in pairs(char:GetDescendants()) do
+				if part:IsA("BasePart") then part.CanCollide = false end
 			end
-			task.wait(0.05) -- Пауза перед поиском следующей цели
+	
+			local targetRoot = getEnemy()
+			if targetRoot then
+				local goalPos = targetRoot.CFrame * CFrame.new(0, 0, DISTANCE_BEHIND)
+				local lookAtTarget = CFrame.lookAt(goalPos.Position, targetRoot.Position)
+	
+				root.CFrame = root.CFrame:Lerp(lookAtTarget, SMOOTHNESS)
+				root.AssemblyLinearVelocity = Vector3.new(0, 0, 0) -- Обнуляем скорость для античита
+			end
 		end
 	end)
 	
