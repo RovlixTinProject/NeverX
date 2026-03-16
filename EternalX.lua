@@ -16973,11 +16973,11 @@ local script = G2L["309"];
 	local MyButton = script.Parent
 	local LINE_THICKNESS = 2.5
 	local LINE_COLOR = Color3.new(1, 1, 1)
-	local MAX_DISTANCE = 1500 -- Оптимизация: не рисовать дальше этого расстояния
+	local MAX_DISTANCE = 1500 
 	
 	local Enabled = false
 	local Skeletons = {}
-	local CharacterCache = {} -- Кэш для частей тела
+	local CharacterCache = {} 
 	
 	-- Функция создания линии
 	local function createLine()
@@ -16989,11 +16989,14 @@ local script = G2L["309"];
 		return line
 	end
 	
-	-- Кэширование персонажа (чтобы не искать детали каждый кадр)
-	local function getCharacterParts(char)
-		if CharacterCache[char] then return CharacterCache[char] end
+	-- Кэширование персонажа (улучшено)
+	local function getCharacterParts(p)
+		local char = p.Character
+		if not char then return nil end
+		if CharacterCache[p] and CharacterCache[p].Char == char then return CharacterCache[p] end
 	
 		local parts = {
+			Char = char,
 			Head = char:FindFirstChild("Head"),
 			Torso = char:FindFirstChild("Torso") or char:FindFirstChild("UpperTorso"),
 			LArm = char:FindFirstChild("Left Arm") or char:FindFirstChild("LeftUpperArm"),
@@ -17003,8 +17006,8 @@ local script = G2L["309"];
 			Hum = char:FindFirstChildOfClass("Humanoid")
 		}
 	
-		if parts.Head and parts.Torso then
-			CharacterCache[char] = parts
+		if parts.Head and parts.Torso and parts.Hum then
+			CharacterCache[p] = parts
 			return parts
 		end
 		return nil
@@ -17034,10 +17037,13 @@ local script = G2L["309"];
 		end
 	end
 	
-	-- Логика кнопки
+	-- ЛОГИКА КНОПКИ (ИСПРАВЛЕНО)
 	local function updateState()
 		local text = MyButton.Text:upper()
 		Enabled = (text:find("ON") or text:find("ВКЛ"))
+	
+		MyButton.BackgroundColor3 = Enabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
+	
 		if not Enabled then
 			for _, skel in pairs(Skeletons) do
 				for _, line in pairs(skel) do line.Visible = false end
@@ -17045,10 +17051,19 @@ local script = G2L["309"];
 		end
 	end
 	
+	-- Обработка нажатия
+	MyButton.MouseButton1Click:Connect(function()
+		if MyButton.Text:find("OFF") or MyButton.Text:find("ВЫКЛ") then
+			MyButton.Text = "ON"
+		else
+			MyButton.Text = "OFF"
+		end
+	end)
+	
 	MyButton:GetPropertyChangedSignal("Text"):Connect(updateState)
 	updateState()
 	
-	-- ОСНОВНОЙ ЦИКЛ ОПТИМИЗИРОВАН
+	-- ОСНОВНОЙ ЦИКЛ
 	RunService.RenderStepped:Connect(function()
 		if not Enabled then return end
 	
@@ -17056,21 +17071,20 @@ local script = G2L["309"];
 	
 		for _, p in pairs(Players:GetPlayers()) do
 			if p == LocalPlayer then continue end
-			local char = p.Character
-			if not char then continue end
 	
-			-- 1. Проверка дистанции (Оптимизация)
-			local root = char:FindFirstChild("HumanoidRootPart")
-			if not root or (root.Position - myPos).Magnitude > MAX_DISTANCE then 
-				if Skeletons[p] then
-					for _, line in pairs(Skeletons[p]) do line.Visible = false end
-				end
-				continue 
-			end
-	
-			local parts = getCharacterParts(char)
+			local parts = getCharacterParts(p)
 			if parts and parts.Hum.Health > 0 then
-				-- 2. Проверка на экране
+	
+				-- Проверка дистанции
+				local dist = (parts.Head.Position - myPos).Magnitude
+				if dist > MAX_DISTANCE then
+					if Skeletons[p] then
+						for _, line in pairs(Skeletons[p]) do line.Visible = false end
+					end
+					continue
+				end
+	
+				-- Проверка на экране
 				local _, onScreen = Camera:WorldToViewportPoint(parts.Head.Position)
 				if not onScreen then
 					if Skeletons[p] then
@@ -17082,7 +17096,7 @@ local script = G2L["309"];
 				local skel = getSkel(p)
 				local cf = parts.Torso.CFrame
 	
-				-- Точки (используем кэшированные CFrame)
+				-- Точки
 				local pHead = parts.Head.Position
 				local pNeck = (cf * CFrame.new(0, 1, 0)).Position
 				local pWaist = (cf * CFrame.new(0, -1, 0)).Position
@@ -17113,13 +17127,12 @@ local script = G2L["309"];
 		end
 	end)
 	
-	-- Очистка кэша при смерти/удалении
 	Players.PlayerRemoving:Connect(function(p)
 		if Skeletons[p] then
 			for _, line in pairs(Skeletons[p]) do line:Remove() end
 			Skeletons[p] = nil
 		end
-		if p.Character then CharacterCache[p.Character] = nil end
+		CharacterCache[p] = nil
 	end)
 	
 end;
@@ -18909,44 +18922,45 @@ local script = G2L["42f"];
 	local isEnabled = false
 	local isKeyDown = false
 	local CROUCH_KEY = Enum.KeyCode.LeftControl
-	local DISTANCE = 500 -- Увеличили дистанцию для надежности
+	local DISTANCE = 500 
 	
-	-- ОПТИМИЗАЦИЯ: Создаем параметры один раз вне цикла
+	-- ОПТИМИЗАЦИЯ: Параметры создаем один раз
 	local params = RaycastParams.new()
-	params.FilterType = Enum.RaycastFilterType.Include -- Ищем только цели из списка
+	params.FilterType = Enum.RaycastFilterType.Exclude -- Игнорируем только список ниже
 	
-	-- Функция обновления списка врагов (чтобы Raycast работал мгновенно)
-	local function getEnemyCharacters()
-		local targets = {}
-		for _, p in pairs(Players:GetPlayers()) do
-			-- Проверка команды по цвету (надежнее для CB)
-			if p ~= player and p.TeamColor ~= player.TeamColor and p.Character then
-				local hum = p.Character:FindFirstChildOfClass("Humanoid")
-				if hum and hum.Health > 0 then
-					table.insert(targets, p.Character)
-				end
-			end
-		end
-		return targets
-	end
-	
-	-- Быстрая проверка прицела
+	-- Функция проверки видимости врага
 	local function isEnemyInSight()
+		local char = player.Character
+		if not char then return false end
+	
+		-- Обновляем список игнорирования (себя и камеру)
+		params.FilterDescendantsInstances = {char, camera}
+	
 		local center = camera.ViewportSize / 2
 		local ray = camera:ViewportPointToRay(center.X, center.Y)
 	
-		-- Обновляем цели только если они есть в мире
-		params.FilterDescendantsInstances = getEnemyCharacters()
-	
-		-- Если врагов нет на карте, даже не пускаем луч
-		if #params.FilterDescendantsInstances == 0 then return false end
-	
+		-- Пускаем луч (он попадет в ПЕРВЫЙ объект на пути: стену или игрока)
 		local result = workspace:Raycast(ray.Origin, ray.Direction * DISTANCE, params)
 	
-		-- Если луч во что-то попал, значит это враг из белого списка
-		return result ~= nil
+		if result and result.Instance then
+			-- Проверяем, принадлежит ли объект модели игрока
+			local model = result.Instance:FindFirstAncestorOfClass("Model")
+			if model then
+				local targetPlayer = Players:GetPlayerFromCharacter(model)
+	
+				-- Если это игрок, он не мы и он в другой команде
+				if targetPlayer and targetPlayer ~= player then
+					local hum = model:FindFirstChildOfClass("Humanoid")
+					if hum and hum.Health > 0 and (targetPlayer.TeamColor ~= player.TeamColor) then
+						return true
+					end
+				end
+			end
+		end
+		return false
 	end
 	
+	-- Логика кнопки
 	button.MouseButton1Click:Connect(function()
 		isEnabled = not isEnabled
 		button.Text = "AUTO-CROUCH: " .. (isEnabled and "ON" or "OFF")
@@ -18958,7 +18972,7 @@ local script = G2L["42f"];
 		end
 	end)
 	
-	-- Используем Heartbeat для физических действий (приседание)
+	-- Основной цикл
 	RunService.Heartbeat:Connect(function()
 		if not isEnabled then return end
 	
