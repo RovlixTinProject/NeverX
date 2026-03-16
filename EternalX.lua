@@ -16970,14 +16970,16 @@ local script = G2L["309"];
 	local LocalPlayer = Players.LocalPlayer
 	
 	-- НАСТРОЙКИ
-	local MyButton = script.Parent -- Твоя кнопка
-	local LINE_THICKNESS = 2.5     -- Жирные линии
-	local LINE_COLOR = Color3.new(1, 1, 1) -- Белый
+	local MyButton = script.Parent
+	local LINE_THICKNESS = 2.5
+	local LINE_COLOR = Color3.new(1, 1, 1)
+	local MAX_DISTANCE = 1500 -- Оптимизация: не рисовать дальше этого расстояния
 	
 	local Enabled = false
 	local Skeletons = {}
+	local CharacterCache = {} -- Кэш для частей тела
 	
-	-- Функция создания линии (Drawing)
+	-- Функция создания линии
 	local function createLine()
 		local line = Drawing.new("Line")
 		line.Thickness = LINE_THICKNESS
@@ -16987,18 +16989,33 @@ local script = G2L["309"];
 		return line
 	end
 	
-	-- Полная структура ломаного скелета
+	-- Кэширование персонажа (чтобы не искать детали каждый кадр)
+	local function getCharacterParts(char)
+		if CharacterCache[char] then return CharacterCache[char] end
+	
+		local parts = {
+			Head = char:FindFirstChild("Head"),
+			Torso = char:FindFirstChild("Torso") or char:FindFirstChild("UpperTorso"),
+			LArm = char:FindFirstChild("Left Arm") or char:FindFirstChild("LeftUpperArm"),
+			RArm = char:FindFirstChild("Right Arm") or char:FindFirstChild("RightUpperArm"),
+			LLeg = char:FindFirstChild("Left Leg") or char:FindFirstChild("LeftUpperLeg"),
+			RLeg = char:FindFirstChild("Right Leg") or char:FindFirstChild("RightUpperLeg"),
+			Hum = char:FindFirstChildOfClass("Humanoid")
+		}
+	
+		if parts.Head and parts.Torso then
+			CharacterCache[char] = parts
+			return parts
+		end
+		return nil
+	end
+	
 	local function getSkel(p)
 		if not Skeletons[p] then
 			Skeletons[p] = {
-				Neck = createLine(),
-				ShoulderLine = createLine(),
-				ArmL = createLine(),
-				ArmR = createLine(),
-				Spine = createLine(),
-				HipLine = createLine(),
-				LegL = createLine(),
-				LegR = createLine()
+				Neck = createLine(), ShoulderLine = createLine(), Spine = createLine(),
+				HipLine = createLine(), ArmL = createLine(), ArmR = createLine(),
+				LegL = createLine(), LegR = createLine()
 			}
 		end
 		return Skeletons[p]
@@ -17017,78 +17034,77 @@ local script = G2L["309"];
 		end
 	end
 	
-	-- ЛОГИКА КНОПКИ (Слежка за текстом и цветом)
+	-- Логика кнопки
 	local function updateState()
 		local text = MyButton.Text:upper()
-		if text:find("ON") or text:find("ВКЛ") then
-			Enabled = true
-			MyButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Зеленый при вкл
-		else
-			Enabled = false
-			MyButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Красный при выкл
-			-- Скрываем линии мгновенно
+		Enabled = (text:find("ON") or text:find("ВКЛ"))
+		if not Enabled then
 			for _, skel in pairs(Skeletons) do
 				for _, line in pairs(skel) do line.Visible = false end
 			end
 		end
 	end
 	
-	-- Если текст меняет другой скрипт или ты сам кликаешь
 	MyButton:GetPropertyChangedSignal("Text"):Connect(updateState)
-	MyButton.MouseButton1Click:Connect(function()
-		if MyButton.Text:find("OFF") or MyButton.Text:find("ВЫКЛ") then
-			MyButton.Text = "ON"
-		else
-			MyButton.Text = "OFF"
-		end
-	end)
-	
-	-- Инициализация при старте
 	updateState()
 	
-	-- ОСНОВНОЙ ЦИКЛ РЕНДЕРА
+	-- ОСНОВНОЙ ЦИКЛ ОПТИМИЗИРОВАН
 	RunService.RenderStepped:Connect(function()
 		if not Enabled then return end
+	
+		local myPos = Camera.CFrame.Position
 	
 		for _, p in pairs(Players:GetPlayers()) do
 			if p == LocalPlayer then continue end
 			local char = p.Character
+			if not char then continue end
 	
-			-- Поиск частей (R6 для Counter Blox)
-			local head = char and char:FindFirstChild("Head")
-			local torso = char and (char:FindFirstChild("Torso") or char:FindFirstChild("UpperTorso"))
-			local lArm = char and (char:FindFirstChild("Left Arm") or char:FindFirstChild("LeftUpperArm"))
-			local rArm = char and (char:FindFirstChild("Right Arm") or char:FindFirstChild("RightUpperArm"))
-			local lLeg = char and (char:FindFirstChild("Left Leg") or char:FindFirstChild("LeftUpperLeg"))
-			local rLeg = char and (char:FindFirstChild("Right Leg") or char:FindFirstChild("RightUpperLeg"))
-			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			-- 1. Проверка дистанции (Оптимизация)
+			local root = char:FindFirstChild("HumanoidRootPart")
+			if not root or (root.Position - myPos).Magnitude > MAX_DISTANCE then 
+				if Skeletons[p] then
+					for _, line in pairs(Skeletons[p]) do line.Visible = false end
+				end
+				continue 
+			end
 	
-			if head and torso and lArm and rArm and lLeg and rLeg and hum and hum.Health > 0 then
+			local parts = getCharacterParts(char)
+			if parts and parts.Hum.Health > 0 then
+				-- 2. Проверка на экране
+				local _, onScreen = Camera:WorldToViewportPoint(parts.Head.Position)
+				if not onScreen then
+					if Skeletons[p] then
+						for _, line in pairs(Skeletons[p]) do line.Visible = false end
+					end
+					continue
+				end
+	
 				local skel = getSkel(p)
-				local cf = torso.CFrame
+				local cf = parts.Torso.CFrame
 	
-				-- Точки суставов (как на твоем фото)
-				local pHead = head.Position
+				-- Точки (используем кэшированные CFrame)
+				local pHead = parts.Head.Position
 				local pNeck = (cf * CFrame.new(0, 1, 0)).Position
 				local pWaist = (cf * CFrame.new(0, -1, 0)).Position
-				local pLShoulder = (cf * CFrame.new(-1, 1, 0)).Position
-				local pRShoulder = (cf * CFrame.new(1, 1, 0)).Position
-				local pLHip = (cf * CFrame.new(-0.5, -1, 0)).Position
-				local pRHip = (cf * CFrame.new(0.5, -1, 0)).Position
-				local pLHand = (lArm.CFrame * CFrame.new(0, -1, 0)).Position
-				local pRHand = (rArm.CFrame * CFrame.new(0, -1, 0)).Position
-				local pLFoot = (lLeg.CFrame * CFrame.new(0, -1, 0)).Position
-				local pRFoot = (rLeg.CFrame * CFrame.new(0, -1, 0)).Position
+				local pLSh = (cf * CFrame.new(-1, 1, 0)).Position
+				local pRSh = (cf * CFrame.new(1, 1, 0)).Position
+				local pLHi = (cf * CFrame.new(-0.5, -1, 0)).Position
+				local pRHi = (cf * CFrame.new(0.5, -1, 0)).Position
 	
-				-- Отрисовка ломаных линий
+				local pLHa = (parts.LArm.CFrame * CFrame.new(0, -1, 0)).Position
+				local pRHa = (parts.RArm.CFrame * CFrame.new(0, -1, 0)).Position
+				local pLFo = (parts.LLeg.CFrame * CFrame.new(0, -1, 0)).Position
+				local pRFo = (parts.RLeg.CFrame * CFrame.new(0, -1, 0)).Position
+	
+				-- Рендер
 				updateLine(skel.Neck, pHead, pNeck)
-				updateLine(skel.ShoulderLine, pLShoulder, pRShoulder)
+				updateLine(skel.ShoulderLine, pLSh, pRSh)
 				updateLine(skel.Spine, pNeck, pWaist)
-				updateLine(skel.HipLine, pLHip, pRHip)
-				updateLine(skel.ArmL, pLShoulder, pLHand)
-				updateLine(skel.ArmR, pRShoulder, pRHand)
-				updateLine(skel.LegL, pLHip, pLFoot)
-				updateLine(skel.LegR, pRHip, pRFoot)
+				updateLine(skel.HipLine, pLHi, pRHi)
+				updateLine(skel.ArmL, pLSh, pLHa)
+				updateLine(skel.ArmR, pRSh, pRHa)
+				updateLine(skel.LegL, pLHi, pLFo)
+				updateLine(skel.LegR, pRHi, pRFo)
 			else
 				if Skeletons[p] then
 					for _, line in pairs(Skeletons[p]) do line.Visible = false end
@@ -17097,12 +17113,13 @@ local script = G2L["309"];
 		end
 	end)
 	
-	-- Удаление при выходе
+	-- Очистка кэша при смерти/удалении
 	Players.PlayerRemoving:Connect(function(p)
 		if Skeletons[p] then
 			for _, line in pairs(Skeletons[p]) do line:Remove() end
 			Skeletons[p] = nil
 		end
+		if p.Character then CharacterCache[p.Character] = nil end
 	end)
 	
 end;
@@ -18891,32 +18908,43 @@ local script = G2L["42f"];
 	
 	local isEnabled = false
 	local isKeyDown = false
-	
 	local CROUCH_KEY = Enum.KeyCode.LeftControl
-	local DISTANCE = 350
+	local DISTANCE = 500 -- Увеличили дистанцию для надежности
 	
+	-- ОПТИМИЗАЦИЯ: Создаем параметры один раз вне цикла
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Include -- Ищем только цели из списка
+	
+	-- Функция обновления списка врагов (чтобы Raycast работал мгновенно)
+	local function getEnemyCharacters()
+		local targets = {}
+		for _, p in pairs(Players:GetPlayers()) do
+			-- Проверка команды по цвету (надежнее для CB)
+			if p ~= player and p.TeamColor ~= player.TeamColor and p.Character then
+				local hum = p.Character:FindFirstChildOfClass("Humanoid")
+				if hum and hum.Health > 0 then
+					table.insert(targets, p.Character)
+				end
+			end
+		end
+		return targets
+	end
+	
+	-- Быстрая проверка прицела
 	local function isEnemyInSight()
 		local center = camera.ViewportSize / 2
 		local ray = camera:ViewportPointToRay(center.X, center.Y)
 	
-		local params = RaycastParams.new()
-		params.FilterDescendantsInstances = {player.Character}
-		params.FilterType = Enum.RaycastFilterType.Exclude
+		-- Обновляем цели только если они есть в мире
+		params.FilterDescendantsInstances = getEnemyCharacters()
+	
+		-- Если врагов нет на карте, даже не пускаем луч
+		if #params.FilterDescendantsInstances == 0 then return false end
 	
 		local result = workspace:Raycast(ray.Origin, ray.Direction * DISTANCE, params)
 	
-		if result and result.Instance then
-			local model = result.Instance:FindFirstAncestorOfClass("Model")
-			local targetPlayer = Players:GetPlayerFromCharacter(model)
-	
-			if targetPlayer and targetPlayer ~= player then
-				local hum = model:FindFirstChildOfClass("Humanoid")
-				if hum and hum.Health > 0 and (targetPlayer.Team ~= player.Team or player.Team == nil) then
-					return true
-				end
-			end
-		end
-		return false
+		-- Если луч во что-то попал, значит это враг из белого списка
+		return result ~= nil
 	end
 	
 	button.MouseButton1Click:Connect(function()
@@ -18930,20 +18958,19 @@ local script = G2L["42f"];
 		end
 	end)
 	
-	RunService.RenderStepped:Connect(function()
+	-- Используем Heartbeat для физических действий (приседание)
+	RunService.Heartbeat:Connect(function()
 		if not isEnabled then return end
 	
 		if isEnemyInSight() then
-			-- Посылаем сигнал "Нажато" постоянно, пока враг в прицеле
-			VIM:SendKeyEvent(true, CROUCH_KEY, false, nil)
-			isKeyDown = true
-			-- Для визуального теста:
-			-- print("ЗАЖИМАЮ CTRL") 
+			if not isKeyDown then
+				VIM:SendKeyEvent(true, CROUCH_KEY, false, nil)
+				isKeyDown = true
+			end
 		else
 			if isKeyDown then
 				VIM:SendKeyEvent(false, CROUCH_KEY, false, nil)
 				isKeyDown = false
-				-- print("ОТПУСТИЛ CTRL")
 			end
 		end
 	end)
