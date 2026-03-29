@@ -5094,173 +5094,173 @@ G2L["24f"]["Position"] = UDim2.new(1.18151, 0, 0.82079, 0);
 G2L["24f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 
 
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.LocalScript
+G2L["250"] = Instance.new("LocalScript", G2L["24f"]);
+
+
+
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.UICorner
-G2L["250"] = Instance.new("UICorner", G2L["24f"]);
-G2L["250"]["CornerRadius"] = UDim.new(0, 4);
+G2L["251"] = Instance.new("UICorner", G2L["24f"]);
+G2L["251"]["CornerRadius"] = UDim.new(0, 4);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.UIGradient
-G2L["251"] = Instance.new("UIGradient", G2L["24f"]);
-G2L["251"]["Rotation"] = -90;
-G2L["251"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
+G2L["252"] = Instance.new("UIGradient", G2L["24f"]);
+G2L["252"]["Rotation"] = -90;
+G2L["252"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.UIGridLayout
-G2L["252"] = Instance.new("UIGridLayout", G2L["24f"]);
-G2L["252"]["CellSize"] = UDim2.new(0, 145, 0, 40);
-G2L["252"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-G2L["252"]["CellPadding"] = UDim2.new(0, 9, 0, 20);
+G2L["253"] = Instance.new("UIGridLayout", G2L["24f"]);
+G2L["253"]["CellSize"] = UDim2.new(0, 145, 0, 40);
+G2L["253"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["253"]["CellPadding"] = UDim2.new(0, 9, 0, 20);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["253"] = Instance.new("TextButton", G2L["24f"]);
-G2L["253"]["TextWrapped"] = true;
-G2L["253"]["BorderSizePixel"] = 0;
-G2L["253"]["TextSize"] = 14;
-G2L["253"]["TextScaled"] = true;
-G2L["253"]["TextColor3"] = Color3.fromRGB(255, 51, 51);
-G2L["253"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["253"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["253"]["BackgroundTransparency"] = 1;
-G2L["253"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["253"]["LayoutOrder"] = 2;
-G2L["253"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["253"]["Text"] = [[Sound1]];
+G2L["254"] = Instance.new("TextButton", G2L["24f"]);
+G2L["254"]["TextWrapped"] = true;
+G2L["254"]["BorderSizePixel"] = 0;
+G2L["254"]["TextSize"] = 14;
+G2L["254"]["TextScaled"] = true;
+G2L["254"]["TextColor3"] = Color3.fromRGB(255, 51, 51);
+G2L["254"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["254"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["254"]["BackgroundTransparency"] = 1;
+G2L["254"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["254"]["LayoutOrder"] = 2;
+G2L["254"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["254"]["Text"] = [[Sound1]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["254"] = Instance.new("LocalScript", G2L["253"]);
-
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["255"] = Instance.new("TextButton", G2L["24f"]);
-G2L["255"]["TextWrapped"] = true;
-G2L["255"]["BorderSizePixel"] = 0;
-G2L["255"]["TextSize"] = 14;
-G2L["255"]["TextScaled"] = true;
-G2L["255"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["255"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["255"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["255"]["BackgroundTransparency"] = 1;
-G2L["255"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["255"]["LayoutOrder"] = 2;
-G2L["255"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["255"]["Text"] = [[Sound2]];
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["256"] = Instance.new("LocalScript", G2L["255"]);
+G2L["255"] = Instance.new("LocalScript", G2L["254"]);
 
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["257"] = Instance.new("TextButton", G2L["24f"]);
-G2L["257"]["TextWrapped"] = true;
-G2L["257"]["BorderSizePixel"] = 0;
-G2L["257"]["TextSize"] = 14;
-G2L["257"]["TextScaled"] = true;
-G2L["257"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["257"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["257"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["257"]["BackgroundTransparency"] = 1;
-G2L["257"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["257"]["LayoutOrder"] = 2;
-G2L["257"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["257"]["Text"] = [[Sound3]];
+G2L["256"] = Instance.new("TextButton", G2L["24f"]);
+G2L["256"]["TextWrapped"] = true;
+G2L["256"]["BorderSizePixel"] = 0;
+G2L["256"]["TextSize"] = 14;
+G2L["256"]["TextScaled"] = true;
+G2L["256"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["256"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["256"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["256"]["BackgroundTransparency"] = 1;
+G2L["256"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["256"]["LayoutOrder"] = 2;
+G2L["256"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["256"]["Text"] = [[Sound2]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["258"] = Instance.new("LocalScript", G2L["257"]);
+G2L["257"] = Instance.new("LocalScript", G2L["256"]);
 
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["259"] = Instance.new("TextButton", G2L["24f"]);
-G2L["259"]["TextWrapped"] = true;
-G2L["259"]["BorderSizePixel"] = 0;
-G2L["259"]["TextSize"] = 14;
-G2L["259"]["TextScaled"] = true;
-G2L["259"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["259"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["259"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["259"]["BackgroundTransparency"] = 1;
-G2L["259"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["259"]["LayoutOrder"] = 2;
-G2L["259"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["259"]["Text"] = [[Sound4]];
+G2L["258"] = Instance.new("TextButton", G2L["24f"]);
+G2L["258"]["TextWrapped"] = true;
+G2L["258"]["BorderSizePixel"] = 0;
+G2L["258"]["TextSize"] = 14;
+G2L["258"]["TextScaled"] = true;
+G2L["258"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["258"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["258"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["258"]["BackgroundTransparency"] = 1;
+G2L["258"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["258"]["LayoutOrder"] = 2;
+G2L["258"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["258"]["Text"] = [[Sound3]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["25a"] = Instance.new("LocalScript", G2L["259"]);
+G2L["259"] = Instance.new("LocalScript", G2L["258"]);
 
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["25b"] = Instance.new("TextButton", G2L["24f"]);
-G2L["25b"]["TextWrapped"] = true;
-G2L["25b"]["BorderSizePixel"] = 0;
-G2L["25b"]["TextSize"] = 14;
-G2L["25b"]["TextScaled"] = true;
-G2L["25b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25b"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["25b"]["BackgroundTransparency"] = 1;
-G2L["25b"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["25b"]["LayoutOrder"] = 2;
-G2L["25b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["25b"]["Text"] = [[Sound5]];
+G2L["25a"] = Instance.new("TextButton", G2L["24f"]);
+G2L["25a"]["TextWrapped"] = true;
+G2L["25a"]["BorderSizePixel"] = 0;
+G2L["25a"]["TextSize"] = 14;
+G2L["25a"]["TextScaled"] = true;
+G2L["25a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25a"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["25a"]["BackgroundTransparency"] = 1;
+G2L["25a"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["25a"]["LayoutOrder"] = 2;
+G2L["25a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["25a"]["Text"] = [[Sound4]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["25c"] = Instance.new("LocalScript", G2L["25b"]);
+G2L["25b"] = Instance.new("LocalScript", G2L["25a"]);
 
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["25d"] = Instance.new("TextButton", G2L["24f"]);
-G2L["25d"]["TextWrapped"] = true;
-G2L["25d"]["BorderSizePixel"] = 0;
-G2L["25d"]["TextSize"] = 14;
-G2L["25d"]["TextScaled"] = true;
-G2L["25d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25d"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["25d"]["BackgroundTransparency"] = 1;
-G2L["25d"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["25d"]["LayoutOrder"] = 2;
-G2L["25d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["25d"]["Text"] = [[Sound6]];
+G2L["25c"] = Instance.new("TextButton", G2L["24f"]);
+G2L["25c"]["TextWrapped"] = true;
+G2L["25c"]["BorderSizePixel"] = 0;
+G2L["25c"]["TextSize"] = 14;
+G2L["25c"]["TextScaled"] = true;
+G2L["25c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25c"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["25c"]["BackgroundTransparency"] = 1;
+G2L["25c"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["25c"]["LayoutOrder"] = 2;
+G2L["25c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["25c"]["Text"] = [[Sound5]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["25e"] = Instance.new("LocalScript", G2L["25d"]);
+G2L["25d"] = Instance.new("LocalScript", G2L["25c"]);
 
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
-G2L["25f"] = Instance.new("TextButton", G2L["24f"]);
-G2L["25f"]["TextWrapped"] = true;
-G2L["25f"]["BorderSizePixel"] = 0;
-G2L["25f"]["TextSize"] = 14;
-G2L["25f"]["TextScaled"] = true;
-G2L["25f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["25f"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["25f"]["BackgroundTransparency"] = 1;
-G2L["25f"]["Size"] = UDim2.new(0, 200, 0, 50);
-G2L["25f"]["LayoutOrder"] = 2;
-G2L["25f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["25f"]["Text"] = [[Sound7]];
+G2L["25e"] = Instance.new("TextButton", G2L["24f"]);
+G2L["25e"]["TextWrapped"] = true;
+G2L["25e"]["BorderSizePixel"] = 0;
+G2L["25e"]["TextSize"] = 14;
+G2L["25e"]["TextScaled"] = true;
+G2L["25e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25e"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["25e"]["BackgroundTransparency"] = 1;
+G2L["25e"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["25e"]["LayoutOrder"] = 2;
+G2L["25e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["25e"]["Text"] = [[Sound6]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-G2L["260"] = Instance.new("LocalScript", G2L["25f"]);
+G2L["25f"] = Instance.new("LocalScript", G2L["25e"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.LocalScript
-G2L["261"] = Instance.new("LocalScript", G2L["24f"]);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton
+G2L["260"] = Instance.new("TextButton", G2L["24f"]);
+G2L["260"]["TextWrapped"] = true;
+G2L["260"]["BorderSizePixel"] = 0;
+G2L["260"]["TextSize"] = 14;
+G2L["260"]["TextScaled"] = true;
+G2L["260"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["260"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["260"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["260"]["BackgroundTransparency"] = 1;
+G2L["260"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["260"]["LayoutOrder"] = 2;
+G2L["260"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["260"]["Text"] = [[Sound7]];
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+G2L["261"] = Instance.new("LocalScript", G2L["260"]);
 
 
 
@@ -15321,86 +15321,9 @@ local script = G2L["24c"];
 	end)
 end;
 task.spawn(C_24c);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_254()
-local script = G2L["254"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound1.SoundId
-		
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_254);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_256()
-local script = G2L["256"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound2.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_256);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_258()
-local script = G2L["258"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound3.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_258);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_25a()
-local script = G2L["25a"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound4.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_25a);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_25c()
-local script = G2L["25c"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound5.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_25c);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_25e()
-local script = G2L["25e"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound6.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_25e);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
-local function C_260()
-local script = G2L["260"];
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound7.SoundId
-	
-		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
-	end)
-	
-end;
-task.spawn(C_260);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.LocalScript
-local function C_261()
-local script = G2L["261"];
+local function C_250()
+local script = G2L["250"];
 	local buttons = {} 
 	
 	-- Назначаем кнопки и привязываем события
@@ -15419,6 +15342,83 @@ local script = G2L["261"];
 			end)
 		end
 	end
+	
+end;
+task.spawn(C_250);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_255()
+local script = G2L["255"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound1.SoundId
+		
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_255);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_257()
+local script = G2L["257"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound2.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_257);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_259()
+local script = G2L["259"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound3.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_259);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_25b()
+local script = G2L["25b"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound4.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_25b);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_25d()
+local script = G2L["25d"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound5.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_25d);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_25f()
+local script = G2L["25f"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound6.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
+	
+end;
+task.spawn(C_25f);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx9531z2.Slider2.Frame.TextButton.LocalScript
+local function C_261()
+local script = G2L["261"];
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound.SoundId = script.Parent.Parent.Parent.Parent.Slider.Button.SoundsID.Sound7.SoundId
+	
+		script.Parent.Parent.Parent.Parent.Slider.Button.Sound:Play()
+	end)
 	
 end;
 task.spawn(C_261);
@@ -16864,7 +16864,7 @@ task.spawn(C_36b);
 local function C_36d()
 local script = G2L["36d"];
 	script.Parent.MouseButton1Click:Connect(function()
-		local textBox = script.Parent.Parent:FindFirstChild("TextBox2")
+		local textBox = script.Parent.Parent:FindFirstChild("TextBox3")
 		-- Используем безопасный поиск родительских элементов
 		local mainFrame = script.Parent.Parent.Parent.Parent
 		local sliderFrame = mainFrame:FindFirstChild("Slider")
