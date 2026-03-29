@@ -4819,16 +4819,16 @@ G2L["22d"] = Instance.new("LocalScript", G2L["22c"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx917842.Slider.Button.UICorner
-G2L["22e"] = Instance.new("UICorner", G2L["22c"]);
-G2L["22e"]["CornerRadius"] = UDim.new(1, 0);
-
-
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx917842.Slider.Button.LocalScriptold
-G2L["22f"] = Instance.new("LocalScript", G2L["22c"]);
-G2L["22f"]["Enabled"] = false;
-G2L["22f"]["Name"] = [[LocalScriptold]];
-G2L["22f"]["Disabled"] = true;
+G2L["22e"] = Instance.new("LocalScript", G2L["22c"]);
+G2L["22e"]["Enabled"] = false;
+G2L["22e"]["Name"] = [[LocalScriptold]];
+G2L["22e"]["Disabled"] = true;
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx917842.Slider.Button.UICorner
+G2L["22f"] = Instance.new("UICorner", G2L["22c"]);
+G2L["22f"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.xxx917842.OnOrOff
@@ -9083,32 +9083,32 @@ G2L["425"]["Text"] = [[ ]];
 G2L["425"]["Name"] = [[Button]];
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.server
-G2L["426"] = Instance.new("LocalScript", G2L["425"]);
-G2L["426"]["Name"] = [[server]];
-
-
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.UICorner
-G2L["427"] = Instance.new("UICorner", G2L["425"]);
-G2L["427"]["CornerRadius"] = UDim.new(1, 0);
+G2L["426"] = Instance.new("UICorner", G2L["425"]);
+G2L["426"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.SpeedCam
-G2L["428"] = Instance.new("NumberValue", G2L["425"]);
-G2L["428"]["Name"] = [[SpeedCam]];
-G2L["428"]["Value"] = 0.15;
+G2L["427"] = Instance.new("NumberValue", G2L["425"]);
+G2L["427"]["Name"] = [[SpeedCam]];
+G2L["427"]["Value"] = 0.15;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.AimFOV
-G2L["429"] = Instance.new("NumberValue", G2L["425"]);
-G2L["429"]["Name"] = [[AimFOV]];
-G2L["429"]["Value"] = 150;
+G2L["428"] = Instance.new("NumberValue", G2L["425"]);
+G2L["428"]["Name"] = [[AimFOV]];
+G2L["428"]["Value"] = 150;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.TargetPart
-G2L["42a"] = Instance.new("StringValue", G2L["425"]);
-G2L["42a"]["Name"] = [[TargetPart]];
-G2L["42a"]["Value"] = [[Head]];
+G2L["429"] = Instance.new("StringValue", G2L["425"]);
+G2L["429"]["Name"] = [[TargetPart]];
+G2L["429"]["Value"] = [[Head]];
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.server
+G2L["42a"] = Instance.new("LocalScript", G2L["425"]);
+G2L["42a"]["Name"] = [[server]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.OnOrOff
@@ -9321,7 +9321,7 @@ G2L["440"]["BackgroundTransparency"] = 1;
 G2L["440"]["Size"] = UDim2.new(0, 200, 0, 50);
 G2L["440"]["LayoutOrder"] = 99;
 G2L["440"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["440"]["Text"] = [[Target: Head]];
+G2L["440"]["Text"] = [[Priority: Head]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider2.Frame.TextButton.LocalScript
@@ -17841,8 +17841,8 @@ local script = G2L["41f"];
 end;
 task.spawn(C_41f);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider.Button.server
-local function C_426()
-local script = G2L["426"];
+local function C_42a()
+local script = G2L["42a"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local UserInputService = game:GetService("UserInputService")
@@ -17930,7 +17930,7 @@ local script = G2L["426"];
 	end)
 	
 end;
-task.spawn(C_426);
+task.spawn(C_42a);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame5.xxx321532.Slider2.Button.LocalScript
 local function C_433()
 local script = G2L["433"];
