@@ -3243,24 +3243,24 @@ G2L["182"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 G2L["182"]["CellPadding"] = UDim2.new(0, 15, 0, 25);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY
 G2L["183"] = Instance.new("Frame", G2L["180"]);
 G2L["183"]["BorderSizePixel"] = 0;
 G2L["183"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["183"]["Size"] = UDim2.new(0, 333, 0, 100);
 G2L["183"]["Position"] = UDim2.new(0, 0, 0.30916, 0);
 G2L["183"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["183"]["Name"] = [[DT]];
+G2L["183"]["Name"] = [[FLY]];
 G2L["183"]["LayoutOrder"] = 2;
 G2L["183"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.UIListLayout
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.UIListLayout
 G2L["184"] = Instance.new("UIListLayout", G2L["183"]);
 G2L["184"]["Padding"] = UDim.new(0, 10);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV
 G2L["185"] = Instance.new("Frame", G2L["183"]);
 G2L["185"]["BorderSizePixel"] = 0;
 G2L["185"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
@@ -3270,7 +3270,7 @@ G2L["185"]["Name"] = [[FOV]];
 G2L["185"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.WhiteBar
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.WhiteBar
 G2L["186"] = Instance.new("Frame", G2L["185"]);
 G2L["186"]["BorderSizePixel"] = 0;
 G2L["186"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -3280,24 +3280,24 @@ G2L["186"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
 G2L["186"]["Name"] = [[WhiteBar]];
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.WhiteBar.UIGradient
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.WhiteBar.UIGradient
 G2L["187"] = Instance.new("UIGradient", G2L["186"]);
 G2L["187"]["Rotation"] = 90;
 G2L["187"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 1),NumberSequenceKeypoint.new(0.200, 0),NumberSequenceKeypoint.new(0.800, 0),NumberSequenceKeypoint.new(1.000, 1)};
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.UICorner
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.UICorner
 G2L["188"] = Instance.new("UICorner", G2L["185"]);
 G2L["188"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.UIGradient
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.UIGradient
 G2L["189"] = Instance.new("UIGradient", G2L["185"]);
 G2L["189"]["Rotation"] = -90;
 G2L["189"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.TextButton
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.TextButton
 G2L["18a"] = Instance.new("TextButton", G2L["185"]);
 G2L["18a"]["TextWrapped"] = true;
 G2L["18a"]["BorderSizePixel"] = 0;
@@ -3313,12 +3313,12 @@ G2L["18a"]["Text"] = [[-]];
 G2L["18a"]["Position"] = UDim2.new(0.44874, 0, 0.14243, 0);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.TextButton.LocalScript
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.TextButton.LocalScript
 G2L["18b"] = Instance.new("LocalScript", G2L["18a"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.TextButton.NameText
 G2L["18c"] = Instance.new("TextLabel", G2L["18a"]);
 G2L["18c"]["TextWrapped"] = true;
 G2L["18c"]["BorderSizePixel"] = 0;
@@ -3331,10 +3331,11 @@ G2L["18c"]["BackgroundTransparency"] = 1;
 G2L["18c"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["18c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["18c"]["Text"] = [[FLY]];
+G2L["18c"]["Name"] = [[NameText]];
 G2L["18c"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.TextButton.TextLabel
 G2L["18d"] = Instance.new("TextLabel", G2L["18a"]);
 G2L["18d"]["TextWrapped"] = true;
 G2L["18d"]["BorderSizePixel"] = 0;
@@ -3425,7 +3426,7 @@ G2L["196"] = Instance.new("LocalScript", G2L["195"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.AP.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.AP.FOV.TextButton.NameText
 G2L["197"] = Instance.new("TextLabel", G2L["195"]);
 G2L["197"]["TextWrapped"] = true;
 G2L["197"]["BorderSizePixel"] = 0;
@@ -3438,6 +3439,7 @@ G2L["197"]["BackgroundTransparency"] = 1;
 G2L["197"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["197"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["197"]["Text"] = [[AUTO-PEEK]];
+G2L["197"]["Name"] = [[NameText]];
 G2L["197"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -3532,7 +3534,7 @@ G2L["1a1"] = Instance.new("LocalScript", G2L["1a0"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.ThirdPerson.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.ThirdPerson.FOV.TextButton.NameText
 G2L["1a2"] = Instance.new("TextLabel", G2L["1a0"]);
 G2L["1a2"]["TextWrapped"] = true;
 G2L["1a2"]["BorderSizePixel"] = 0;
@@ -3545,6 +3547,7 @@ G2L["1a2"]["BackgroundTransparency"] = 1;
 G2L["1a2"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1a2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1a2"]["Text"] = [[Third Person]];
+G2L["1a2"]["Name"] = [[NameText]];
 G2L["1a2"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -3639,7 +3642,7 @@ G2L["1ac"] = Instance.new("LocalScript", G2L["1ab"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.CameraLeft.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.CameraLeft.FOV.TextButton.NameText
 G2L["1ad"] = Instance.new("TextLabel", G2L["1ab"]);
 G2L["1ad"]["TextWrapped"] = true;
 G2L["1ad"]["BorderSizePixel"] = 0;
@@ -3652,6 +3655,7 @@ G2L["1ad"]["BackgroundTransparency"] = 1;
 G2L["1ad"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1ad"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1ad"]["Text"] = [[CameraLeft]];
+G2L["1ad"]["Name"] = [[NameText]];
 G2L["1ad"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -3746,7 +3750,7 @@ G2L["1b7"] = Instance.new("LocalScript", G2L["1b6"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.CameraRight.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.CameraRight.FOV.TextButton.NameText
 G2L["1b8"] = Instance.new("TextLabel", G2L["1b6"]);
 G2L["1b8"]["TextWrapped"] = true;
 G2L["1b8"]["BorderSizePixel"] = 0;
@@ -3759,6 +3763,7 @@ G2L["1b8"]["BackgroundTransparency"] = 1;
 G2L["1b8"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1b8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1b8"]["Text"] = [[CameraRight]];
+G2L["1b8"]["Name"] = [[NameText]];
 G2L["1b8"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -3853,7 +3858,7 @@ G2L["1c2"] = Instance.new("LocalScript", G2L["1c1"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.zxzx.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.zxzx.FOV.TextButton.NameText
 G2L["1c3"] = Instance.new("TextLabel", G2L["1c1"]);
 G2L["1c3"]["TextWrapped"] = true;
 G2L["1c3"]["BorderSizePixel"] = 0;
@@ -3866,6 +3871,7 @@ G2L["1c3"]["BackgroundTransparency"] = 1;
 G2L["1c3"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1c3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1c3"]["Text"] = [[Backstab]];
+G2L["1c3"]["Name"] = [[NameText]];
 G2L["1c3"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -3960,7 +3966,7 @@ G2L["1cd"] = Instance.new("LocalScript", G2L["1cc"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.zxzx++.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.zxzx++.FOV.TextButton.NameText
 G2L["1ce"] = Instance.new("TextLabel", G2L["1cc"]);
 G2L["1ce"]["TextWrapped"] = true;
 G2L["1ce"]["BorderSizePixel"] = 0;
@@ -3973,6 +3979,7 @@ G2L["1ce"]["BackgroundTransparency"] = 1;
 G2L["1ce"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1ce"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1ce"]["Text"] = [[Backstab++]];
+G2L["1ce"]["Name"] = [[NameText]];
 G2L["1ce"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -4067,7 +4074,7 @@ G2L["1d8"] = Instance.new("LocalScript", G2L["1d7"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.MoveUnlocker.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.MoveUnlocker.FOV.TextButton.NameText
 G2L["1d9"] = Instance.new("TextLabel", G2L["1d7"]);
 G2L["1d9"]["TextWrapped"] = true;
 G2L["1d9"]["BorderSizePixel"] = 0;
@@ -4080,6 +4087,7 @@ G2L["1d9"]["BackgroundTransparency"] = 1;
 G2L["1d9"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1d9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1d9"]["Text"] = [[MoveUnlocker]];
+G2L["1d9"]["Name"] = [[NameText]];
 G2L["1d9"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -4174,7 +4182,7 @@ G2L["1e3"] = Instance.new("LocalScript", G2L["1e2"]);
 
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.antizxzx.FOV.TextButton.TextLabel
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.antizxzx.FOV.TextButton.NameText
 G2L["1e4"] = Instance.new("TextLabel", G2L["1e2"]);
 G2L["1e4"]["TextWrapped"] = true;
 G2L["1e4"]["BorderSizePixel"] = 0;
@@ -4187,6 +4195,7 @@ G2L["1e4"]["BackgroundTransparency"] = 1;
 G2L["1e4"]["Size"] = UDim2.new(1, 0, 0.49763, 0);
 G2L["1e4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1e4"]["Text"] = [[Anti-Backstab]];
+G2L["1e4"]["Name"] = [[NameText]];
 G2L["1e4"]["Position"] = UDim2.new(0, 0, -0.185, 0);
 
 
@@ -12555,93 +12564,102 @@ G2L["593"]["Visible"] = false;
 G2L["593"]["ZIndex"] = 999999992;
 G2L["593"]["BorderSizePixel"] = 0;
 G2L["593"]["BackgroundColor3"] = Color3.fromRGB(3, 5, 10);
-G2L["593"]["Size"] = UDim2.new(0, 195, 0, 244);
-G2L["593"]["Position"] = UDim2.new(0.68855, 0, 0.0831, 0);
+G2L["593"]["Size"] = UDim2.new(0, 305, 0, 180);
+G2L["593"]["Position"] = UDim2.new(0.68855, 0, 0.159, 0);
 G2L["593"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["593"]["Name"] = [[bindsActive]];
 G2L["593"]["BackgroundTransparency"] = 0.3;
 
 
--- StarterGui.Erestive.bindsActive.UIDrag
+-- StarterGui.Erestive.bindsActive.AutoSize
 G2L["594"] = Instance.new("LocalScript", G2L["593"]);
-G2L["594"]["Name"] = [[UIDrag]];
+G2L["594"]["Name"] = [[AutoSize]];
 
 
 -- StarterGui.Erestive.bindsActive.UICorner
 G2L["595"] = Instance.new("UICorner", G2L["593"]);
+G2L["595"]["CornerRadius"] = UDim.new(0, 2);
 
+
+-- StarterGui.Erestive.bindsActive.UIListLayout
+G2L["596"] = Instance.new("UIListLayout", G2L["593"]);
+G2L["596"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel
-G2L["596"] = Instance.new("ImageLabel", G2L["593"]);
-G2L["596"]["ZIndex"] = -888;
-G2L["596"]["BorderSizePixel"] = 0;
-G2L["596"]["ScaleType"] = Enum.ScaleType.Crop;
-G2L["596"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["596"]["Image"] = [[rbxassetid://129962492327343]];
-G2L["596"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["596"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["596"]["BackgroundTransparency"] = 1;
-
-
--- StarterGui.Erestive.bindsActive.ImageLabel.UIListLayout
-G2L["597"] = Instance.new("UIListLayout", G2L["596"]);
-
-
-
--- StarterGui.Erestive.bindsActive.ImageLabel.UIPadding
-G2L["598"] = Instance.new("UIPadding", G2L["596"]);
-G2L["598"]["PaddingTop"] = UDim.new(0, 5);
+G2L["597"] = Instance.new("ImageLabel", G2L["593"]);
+G2L["597"]["ZIndex"] = -888;
+G2L["597"]["BorderSizePixel"] = 0;
+G2L["597"]["ScaleType"] = Enum.ScaleType.Crop;
+G2L["597"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["597"]["Image"] = [[rbxassetid://129962492327343]];
+G2L["597"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["597"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["597"]["BackgroundTransparency"] = 1;
+G2L["597"]["LayoutOrder"] = 2;
+G2L["597"]["Position"] = UDim2.new(0, 0, 0.17003, 0);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.UICorner
-G2L["599"] = Instance.new("UICorner", G2L["596"]);
+G2L["598"] = Instance.new("UICorner", G2L["597"]);
+G2L["598"]["CornerRadius"] = UDim.new(0, 2);
+
+
+-- StarterGui.Erestive.bindsActive.ImageLabel.UIPadding
+G2L["599"] = Instance.new("UIPadding", G2L["597"]);
+G2L["599"]["PaddingTop"] = UDim.new(0, 5);
+
+
+-- StarterGui.Erestive.bindsActive.ImageLabel.UIListLayout
+G2L["59a"] = Instance.new("UIListLayout", G2L["597"]);
 
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame
-G2L["59a"] = Instance.new("ScrollingFrame", G2L["596"]);
-G2L["59a"]["Active"] = true;
-G2L["59a"]["BorderSizePixel"] = 0;
-G2L["59a"]["BackgroundColor3"] = Color3.fromRGB(9, 9, 13);
-G2L["59a"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-G2L["59a"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["59a"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["59a"]["Position"] = UDim2.new(0, 0, 1.13158, 0);
-G2L["59a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["59a"]["ScrollBarThickness"] = 0;
-G2L["59a"]["BackgroundTransparency"] = 1;
+G2L["59b"] = Instance.new("Frame", G2L["597"]);
+G2L["59b"]["BorderSizePixel"] = 0;
+G2L["59b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["59b"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["59b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59b"]["Name"] = [[ScrollingFrame]];
+G2L["59b"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.UICorner
-G2L["59b"] = Instance.new("UICorner", G2L["59a"]);
-G2L["59b"]["CornerRadius"] = UDim.new(0, 12);
+G2L["59c"] = Instance.new("UICorner", G2L["59b"]);
+G2L["59c"]["CornerRadius"] = UDim.new(0, 12);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.UIListLayout
-G2L["59c"] = Instance.new("UIListLayout", G2L["59a"]);
-G2L["59c"]["Padding"] = UDim.new(0, 5);
+G2L["59d"] = Instance.new("UIListLayout", G2L["59b"]);
+G2L["59d"]["Padding"] = UDim.new(0, 5);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.Bind
-G2L["59d"] = Instance.new("TextLabel", G2L["59a"]);
-G2L["59d"]["TextWrapped"] = true;
-G2L["59d"]["BorderSizePixel"] = 0;
-G2L["59d"]["TextSize"] = 14;
-G2L["59d"]["TextScaled"] = true;
-G2L["59d"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["59d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["59d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["59d"]["BackgroundTransparency"] = 1;
-G2L["59d"]["Size"] = UDim2.new(1, 0, 0, 50);
-G2L["59d"]["Visible"] = false;
-G2L["59d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["59d"]["Text"] = [[{Name} - {KEY}]];
-G2L["59d"]["Name"] = [[Bind]];
+G2L["59e"] = Instance.new("TextLabel", G2L["59b"]);
+G2L["59e"]["TextWrapped"] = true;
+G2L["59e"]["BorderSizePixel"] = 0;
+G2L["59e"]["TextSize"] = 14;
+G2L["59e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["59e"]["TextScaled"] = true;
+G2L["59e"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Zekton.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["59e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["59e"]["BackgroundTransparency"] = 1;
+G2L["59e"]["Size"] = UDim2.new(1, 0, -0.1331, 50);
+G2L["59e"]["Visible"] = false;
+G2L["59e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59e"]["Text"] = [[Test-f]];
+G2L["59e"]["Name"] = [[Bind]];
 
 
--- StarterGui.Erestive.bindsActive.UIListLayout
-G2L["59e"] = Instance.new("UIListLayout", G2L["593"]);
+-- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.Bind.UIPadding
+G2L["59f"] = Instance.new("UIPadding", G2L["59e"]);
+G2L["59f"]["PaddingLeft"] = UDim.new(0, 5);
+
+
+-- StarterGui.Erestive.bindsActive.UIDragDetector
+G2L["5a0"] = Instance.new("UIDragDetector", G2L["593"]);
 
 
 
@@ -15627,7 +15645,7 @@ local script = G2L["17c"];
 	end)
 end;
 task.spawn(C_17c);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.DT.FOV.TextButton.LocalScript
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame4.FLY.FOV.TextButton.LocalScript
 local function C_18b()
 local script = G2L["18b"];
 	local UIS = game:GetService("UserInputService")
@@ -15657,7 +15675,27 @@ local script = G2L["18b"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
+	
 	
 	UIS.InputBegan:Connect(function(input, processed)
 		if processed and not isBinding then return end
@@ -15684,8 +15722,6 @@ local script = G2L["18b"];
 		end
 	
 		if triggered then
-			-- ИСПОЛЬЗУЕМ CommandFrame ДЛЯ ПУТИ (так надежнее)
-			-- Проверь: кнопка должна лежать внутри CommandFrame -> Frame5 -> xxx111 -> Slider -> Button
 			local DT_Button = CommandFrame:FindFirstChild("Frame1"):FindFirstChild("fly"):FindFirstChild("Slider"):FindFirstChild("Button")
 	
 			if DT_Button then
@@ -15695,9 +15731,7 @@ local script = G2L["18b"];
 				else
 					DT_Button.Text = "ON"
 				end
-				--print("Бинд сработал! DT теперь: " .. DT_Button.Text)
 			else
-				--warn("Кнопка xxx111 не найдена внутри CommandFrame!")
 			end
 		end
 	end)
@@ -15734,6 +15768,25 @@ local script = G2L["196"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -15828,6 +15881,25 @@ local script = G2L["1a1"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -15905,6 +15977,25 @@ local script = G2L["1ac"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -15969,6 +16060,25 @@ local script = G2L["1b7"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -16035,6 +16145,25 @@ local script = G2L["1c2"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -16110,6 +16239,25 @@ local script = G2L["1cd"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -16185,6 +16333,25 @@ local script = G2L["1d8"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -16260,6 +16427,25 @@ local script = G2L["1e3"];
 	button.MouseButton1Click:Connect(function()
 		isBinding = true
 		button.Text = "..."
+		task.wait(1)
+		local scrollingFrame = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.bindsActive.ImageLabel.ScrollingFrame
+		local bindTemplate = scrollingFrame:FindFirstChild("Bind")
+	
+		if bindTemplate then
+			local oldBind = scrollingFrame:FindFirstChild(script.Parent.NameText.Text)
+			if oldBind then oldBind:Destroy() end
+	
+			local a = bindTemplate:Clone()
+			a.Name = script.Parent.NameText.Text
+			a.Text = script.Parent.NameText.Text .. " - " .. button.Text
+			a.Visible = true
+			a.Parent = scrollingFrame
+			if currentBind == Enum.KeyCode.Escape then
+				a.Visible = false
+			else
+				a.Visible = true
+			end
+		end
 	end)
 	
 	UIS.InputBegan:Connect(function(input, processed)
@@ -20796,43 +20982,40 @@ local script = G2L["585"];
 	
 end;
 task.spawn(C_585);
--- StarterGui.Erestive.bindsActive.UIDrag
+-- StarterGui.Erestive.bindsActive.AutoSize
 local function C_594()
 local script = G2L["594"];
-	local UIS = game:GetService('UserInputService')
-	local frame = script.Parent
-	local dragToggle = nil
-	local dragSpeed = 0.25
-	local dragStart = nil
-	local startPos = nil
+	local TweenService = game:GetService("TweenService")
+	local menu = script.Parent -- Твой bindsActive (фон)
 	
-	local function updateInput(input)
-		local delta = input.Position - dragStart
-		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	-- Укажи точный путь до списка, который реально заполняется биндами:
+	local scrollingFrame = menu:WaitForChild("ImageLabel"):WaitForChild("ScrollingFrame")
+	local layout = scrollingFrame:WaitForChild("UIListLayout")
+	
+	local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+	
+	local function updateSize()
+		-- Берем высоту всех биндов из внутреннего списка
+		local contentHeight = layout.AbsoluteContentSize.Y
+	
+		-- Если внутри пусто (высота 0), можно скрыть меню или оставить минимальный размер
+		local targetHeight = contentHeight > 0 and (contentHeight + 20) or 20
+	
+		-- Анимируем главный фон
+		local targetSize = UDim2.new(menu.Size.X.Scale, menu.Size.X.Offset, 0, targetHeight)
+		TweenService:Create(menu, tweenInfo, {Size = targetSize}):Play()
+	
+		-- Растягиваем ImageLabel, чтобы он не обрезал контент
+		local imageLabel = menu:FindFirstChild("ImageLabel")
+		if imageLabel then
+			imageLabel.Size = UDim2.new(1, 0, 1, 0)
+		end
 	end
 	
-	frame.InputBegan:Connect(function(input)
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = true
-			dragStart = input.Position
-			startPos = frame.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragToggle = false
-				end
-			end)
-		end
-	end)
+	-- Следим за внутренним списком
+	layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateSize)
+	updateSize()
 	
-	UIS.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			if dragToggle then
-				updateInput(input)
-			end
-		end
-	end)
 end;
 task.spawn(C_594);
 
