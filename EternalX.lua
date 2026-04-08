@@ -8333,7 +8333,7 @@ G2L["3ca"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["3ca"]["BackgroundTransparency"] = 1;
 G2L["3ca"]["Size"] = UDim2.new(0.47753, 0, 0.5158, 0);
 G2L["3ca"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-G2L["3ca"]["Text"] = [[TriggerBot Old]];
+G2L["3ca"]["Text"] = [[TriggerBot]];
 G2L["3ca"]["Name"] = [[OnOrOff]];
 G2L["3ca"]["Position"] = UDim2.new(0.07602, 0, 0.2225, 0);
 
@@ -11694,13 +11694,13 @@ G2L["53e"]["MaxTextSize"] = 28;
 
 -- StarterGui.Erestive.xxx921742g.Frame.Frame.1A1.gl
 G2L["53f"] = Instance.new("UIGradient", G2L["53b"]);
+G2L["53f"]["Enabled"] = false;
 G2L["53f"]["Name"] = [[gl]];
 G2L["53f"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.311, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.313, Color3.fromRGB(149, 110, 12)),ColorSequenceKeypoint.new(0.369, Color3.fromRGB(189, 137, 15)),ColorSequenceKeypoint.new(0.476, Color3.fromRGB(133, 94, 11)),ColorSequenceKeypoint.new(0.540, Color3.fromRGB(187, 135, 15)),ColorSequenceKeypoint.new(0.616, Color3.fromRGB(149, 110, 12)),ColorSequenceKeypoint.new(0.621, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
 -- StarterGui.Erestive.xxx921742g.Frame.Frame.1A1.df
 G2L["540"] = Instance.new("UIGradient", G2L["53b"]);
-G2L["540"]["Enabled"] = false;
 G2L["540"]["Name"] = [[df]];
 G2L["540"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.311, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(0.332, Color3.fromRGB(149, 149, 149)),ColorSequenceKeypoint.new(0.604, Color3.fromRGB(149, 149, 149)),ColorSequenceKeypoint.new(0.621, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
@@ -12494,99 +12494,154 @@ G2L["58d"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
 G2L["58d"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
--- StarterGui.Erestive.bindsActive
-G2L["58e"] = Instance.new("Frame", G2L["1"]);
+-- StarterGui.Erestive.IPP.AP
+G2L["58e"] = Instance.new("Frame", G2L["581"]);
 G2L["58e"]["Visible"] = false;
-G2L["58e"]["ZIndex"] = 999999992;
+G2L["58e"]["ZIndex"] = 999999999;
 G2L["58e"]["BorderSizePixel"] = 0;
-G2L["58e"]["BackgroundColor3"] = Color3.fromRGB(3, 5, 10);
-G2L["58e"]["Size"] = UDim2.new(0, 195, 0, 244);
-G2L["58e"]["Position"] = UDim2.new(0.68855, 0, 0.0831, 0);
+G2L["58e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["58e"]["Size"] = UDim2.new(0, 57, 0, 28);
+G2L["58e"]["Position"] = UDim2.new(0, 0, 0.44909, 0);
 G2L["58e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["58e"]["Name"] = [[bindsActive]];
-G2L["58e"]["BackgroundTransparency"] = 0.3;
+G2L["58e"]["Name"] = [[AP]];
+G2L["58e"]["LayoutOrder"] = 1;
+G2L["58e"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.Erestive.IPP.AP.TextLabel
+G2L["58f"] = Instance.new("TextLabel", G2L["58e"]);
+G2L["58f"]["TextWrapped"] = true;
+G2L["58f"]["TextStrokeTransparency"] = 0.58;
+G2L["58f"]["ZIndex"] = 999999999;
+G2L["58f"]["BorderSizePixel"] = 0;
+G2L["58f"]["TextSize"] = 14;
+G2L["58f"]["TextScaled"] = true;
+G2L["58f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["58f"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["58f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["58f"]["BackgroundTransparency"] = 1;
+G2L["58f"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["58f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["58f"]["Text"] = [[PEEK]];
+G2L["58f"]["Position"] = UDim2.new(0.38492, 0, 0, 0);
+
+
+-- StarterGui.Erestive.IPP.AP.TextLabel.UIPadding
+G2L["590"] = Instance.new("UIPadding", G2L["58f"]);
+G2L["590"]["PaddingTop"] = UDim.new(0, 2);
+G2L["590"]["PaddingBottom"] = UDim.new(0, 2);
+
+
+-- StarterGui.Erestive.IPP.AP.TextLabel.Frame
+G2L["591"] = Instance.new("Frame", G2L["58f"]);
+G2L["591"]["ZIndex"] = 999999999;
+G2L["591"]["BorderSizePixel"] = 0;
+G2L["591"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["591"]["Size"] = UDim2.new(1, 0, -0.08333, 0);
+G2L["591"]["Position"] = UDim2.new(0, 0, 1.08333, 0);
+G2L["591"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+
+
+-- StarterGui.Erestive.IPP.AP.UIListLayout
+G2L["592"] = Instance.new("UIListLayout", G2L["58e"]);
+G2L["592"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
+G2L["592"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+G2L["592"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.Erestive.bindsActive
+G2L["593"] = Instance.new("Frame", G2L["1"]);
+G2L["593"]["Visible"] = false;
+G2L["593"]["ZIndex"] = 999999992;
+G2L["593"]["BorderSizePixel"] = 0;
+G2L["593"]["BackgroundColor3"] = Color3.fromRGB(3, 5, 10);
+G2L["593"]["Size"] = UDim2.new(0, 195, 0, 244);
+G2L["593"]["Position"] = UDim2.new(0.68855, 0, 0.0831, 0);
+G2L["593"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["593"]["Name"] = [[bindsActive]];
+G2L["593"]["BackgroundTransparency"] = 0.3;
 
 
 -- StarterGui.Erestive.bindsActive.UIDrag
-G2L["58f"] = Instance.new("LocalScript", G2L["58e"]);
-G2L["58f"]["Name"] = [[UIDrag]];
+G2L["594"] = Instance.new("LocalScript", G2L["593"]);
+G2L["594"]["Name"] = [[UIDrag]];
 
 
 -- StarterGui.Erestive.bindsActive.UICorner
-G2L["590"] = Instance.new("UICorner", G2L["58e"]);
+G2L["595"] = Instance.new("UICorner", G2L["593"]);
 
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel
-G2L["591"] = Instance.new("ImageLabel", G2L["58e"]);
-G2L["591"]["ZIndex"] = -888;
-G2L["591"]["BorderSizePixel"] = 0;
-G2L["591"]["ScaleType"] = Enum.ScaleType.Crop;
-G2L["591"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["591"]["Image"] = [[rbxassetid://129962492327343]];
-G2L["591"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["591"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["591"]["BackgroundTransparency"] = 1;
+G2L["596"] = Instance.new("ImageLabel", G2L["593"]);
+G2L["596"]["ZIndex"] = -888;
+G2L["596"]["BorderSizePixel"] = 0;
+G2L["596"]["ScaleType"] = Enum.ScaleType.Crop;
+G2L["596"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["596"]["Image"] = [[rbxassetid://129962492327343]];
+G2L["596"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["596"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["596"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.UIListLayout
-G2L["592"] = Instance.new("UIListLayout", G2L["591"]);
+G2L["597"] = Instance.new("UIListLayout", G2L["596"]);
 
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.UIPadding
-G2L["593"] = Instance.new("UIPadding", G2L["591"]);
-G2L["593"]["PaddingTop"] = UDim.new(0, 5);
+G2L["598"] = Instance.new("UIPadding", G2L["596"]);
+G2L["598"]["PaddingTop"] = UDim.new(0, 5);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.UICorner
-G2L["594"] = Instance.new("UICorner", G2L["591"]);
+G2L["599"] = Instance.new("UICorner", G2L["596"]);
 
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame
-G2L["595"] = Instance.new("ScrollingFrame", G2L["591"]);
-G2L["595"]["Active"] = true;
-G2L["595"]["BorderSizePixel"] = 0;
-G2L["595"]["BackgroundColor3"] = Color3.fromRGB(9, 9, 13);
-G2L["595"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-G2L["595"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["595"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["595"]["Position"] = UDim2.new(0, 0, 1.13158, 0);
-G2L["595"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["595"]["ScrollBarThickness"] = 0;
-G2L["595"]["BackgroundTransparency"] = 1;
+G2L["59a"] = Instance.new("ScrollingFrame", G2L["596"]);
+G2L["59a"]["Active"] = true;
+G2L["59a"]["BorderSizePixel"] = 0;
+G2L["59a"]["BackgroundColor3"] = Color3.fromRGB(9, 9, 13);
+G2L["59a"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+G2L["59a"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["59a"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59a"]["Position"] = UDim2.new(0, 0, 1.13158, 0);
+G2L["59a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59a"]["ScrollBarThickness"] = 0;
+G2L["59a"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.UICorner
-G2L["596"] = Instance.new("UICorner", G2L["595"]);
-G2L["596"]["CornerRadius"] = UDim.new(0, 12);
+G2L["59b"] = Instance.new("UICorner", G2L["59a"]);
+G2L["59b"]["CornerRadius"] = UDim.new(0, 12);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.UIListLayout
-G2L["597"] = Instance.new("UIListLayout", G2L["595"]);
-G2L["597"]["Padding"] = UDim.new(0, 5);
+G2L["59c"] = Instance.new("UIListLayout", G2L["59a"]);
+G2L["59c"]["Padding"] = UDim.new(0, 5);
 
 
 -- StarterGui.Erestive.bindsActive.ImageLabel.ScrollingFrame.Bind
-G2L["598"] = Instance.new("TextLabel", G2L["595"]);
-G2L["598"]["TextWrapped"] = true;
-G2L["598"]["BorderSizePixel"] = 0;
-G2L["598"]["TextSize"] = 14;
-G2L["598"]["TextScaled"] = true;
-G2L["598"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["598"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["598"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["598"]["BackgroundTransparency"] = 1;
-G2L["598"]["Size"] = UDim2.new(1, 0, 0, 50);
-G2L["598"]["Visible"] = false;
-G2L["598"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["598"]["Text"] = [[{Name} - {KEY}]];
-G2L["598"]["Name"] = [[Bind]];
+G2L["59d"] = Instance.new("TextLabel", G2L["59a"]);
+G2L["59d"]["TextWrapped"] = true;
+G2L["59d"]["BorderSizePixel"] = 0;
+G2L["59d"]["TextSize"] = 14;
+G2L["59d"]["TextScaled"] = true;
+G2L["59d"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["59d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["59d"]["BackgroundTransparency"] = 1;
+G2L["59d"]["Size"] = UDim2.new(1, 0, 0, 50);
+G2L["59d"]["Visible"] = false;
+G2L["59d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["59d"]["Text"] = [[{Name} - {KEY}]];
+G2L["59d"]["Name"] = [[Bind]];
 
 
 -- StarterGui.Erestive.bindsActive.UIListLayout
-G2L["599"] = Instance.new("UIListLayout", G2L["58e"]);
+G2L["59e"] = Instance.new("UIListLayout", G2L["593"]);
 
 
 
@@ -14469,9 +14524,7 @@ local script = G2L["b8"];
 			button.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
 			button.Text = "OFF"
 			lastPeekTime = tick() 
-	
-			local infoText = player.PlayerGui:FindFirstChild("InformationText", true)
-			if infoText and infoText:FindFirstChild("AP") then infoText.AP.Visible = false end
+			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.AP.Visible = false
 		end
 	end
 	
@@ -14482,8 +14535,7 @@ local script = G2L["b8"];
 		if visualPart then visualPart:Destroy() end
 		button.Text = "OFF"
 		button.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-		local infoText = player.PlayerGui:FindFirstChild("InformationText", true)
-		if infoText and infoText:FindFirstChild("AP") then infoText.AP.Visible = false end
+		script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.AP.Visible = false
 	end
 	
 	-- Функция переключения состояния
@@ -14499,8 +14551,7 @@ local script = G2L["b8"];
 			isPeeking = true
 			createVisualPoint(returnPoint.Position)
 			button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-			local infoText = player.PlayerGui:FindFirstChild("InformationText", true)
-			if infoText and infoText:FindFirstChild("AP") then infoText.AP.Visible = true end
+			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.AP.Visible = true
 		elseif forceState == false and isPeeking then
 			cancelPeek()
 		end
@@ -14508,7 +14559,7 @@ local script = G2L["b8"];
 	
 	-- 3. Проверка дистанции (ИСПРАВЛЕНО)
 	local START_RED_DIST = 10 -- Начнет краснеть раньше для наглядности
-	local infoText = player.PlayerGui:FindFirstChild("InformationText", true)
+	local infoText = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP
 	local apLabel = infoText and infoText:FindFirstChild("AP"):FindFirstChild("TextLabel")
 	local apLabel2 = infoText and infoText:FindFirstChild("AP"):FindFirstChild("TextLabel"):FindFirstChild("Frame")
 	
@@ -14542,7 +14593,7 @@ local script = G2L["b8"];
 	
 			-- Применяем цвет к тексту (AP)
 			if not apLabel then -- Если потеряли ссылку, ищем заново
-				infoText = player.PlayerGui:FindFirstChild("InformationText", true)
+			local infoText = script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP
 				apLabel = infoText and infoText:FindFirstChild("AP"):FindFirstChild("TextLabel")
 			end
 	
@@ -17533,19 +17584,16 @@ local script = G2L["2cc"];
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 		local hum = char and char:FindFirstChild("Humanoid")
 	
-		-- Используем локальную переменную для проверки
 		if ReverseWalkEnabled and root and hum and hum.Health > 0 then
-			if hum.MoveDirection.Magnitude > 0 then
-				hum.AutoRotate = false
-				local camLook = camera.CFrame.LookVector
-				-- Поворачиваем только по горизонтали, чтобы не наклоняться в землю
-				local targetCF = CFrame.lookAt(root.Position, root.Position - Vector3.new(camLook.X, 0, camLook.Z))
-				root.CFrame = targetCF
-			else
-				hum.AutoRotate = true
-			end
+			-- Отключаем авто-поворот всегда, пока включен Reverse
+			hum.AutoRotate = false
+			
+			local camLook = camera.CFrame.LookVector
+			-- Направляем RootPart строго ОТ камеры (минус перед camLook)
+			local targetCF = CFrame.lookAt(root.Position, root.Position - Vector3.new(camLook.X, 0, camLook.Z))
+			root.CFrame = targetCF
 		else
-			-- Возвращаем вращение, если функция выключена
+			-- Возвращаем управление вращением, если Reverse выключен
 			if hum then
 				hum.AutoRotate = true
 			end
@@ -20384,6 +20432,7 @@ local script = G2L["4bb"];
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
 	
+	-- Эти переменные должны обновляться
 	local character = player.Character or player.CharacterAdded:Wait()
 	local root = character:WaitForChild("HumanoidRootPart")
 	local hum = character:WaitForChild("Humanoid")
@@ -20393,8 +20442,10 @@ local script = G2L["4bb"];
 	local lastY = 0 
 	local button = script.Parent 
 	
-	-- Функция переключения состояний
 	function updateStates(isFlying)
+		-- Проверяем, живы ли мы еще
+		if not hum or not root then return end
+	
 		if isFlying then
 			hum.PlatformStand = true
 			lastY = root.Position.Y 
@@ -20407,31 +20458,33 @@ local script = G2L["4bb"];
 		end
 	end
 	
-	-- Переключатель при клике
 	function toggleFly()
 		flying = not flying
 		button.Text = flying and "ON" or "OFF"
+		-- Твоя цепочка Parent (убедись, что она верна)
 		script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.FLY.Visible = flying
 		button.TextColor3 = flying and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end
 	
-	-- СЛЕДИМ ЗА ИЗМЕНЕНИЕМ ТЕКСТА
 	button:GetPropertyChangedSignal("Text"):Connect(function()
 		if button.Text == "ON" then
 			flying = true
-			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.FLY.Visible = true
 			updateStates(true)
 		elseif button.Text == "OFF" then
 			flying = false
 			updateStates(false)
-			script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.FLY.Visible = false
 		end
 	end)
 	
 	button.MouseButton1Click:Connect(toggleFly)
 	
 	RunService.RenderStepped:Connect(function()
-		if flying and character and root and hum then
+		-- ОБНОВЛЯЕМ ссылки на актуальные в каждом кадре
+		character = player.Character
+		root = character and character:FindFirstChild("HumanoidRootPart")
+		hum = character and character:FindFirstChild("Humanoid")
+	
+		if flying and root and hum and hum.Health > 0 then
 			local direction = Vector3.new(0, 0, 0)
 	
 			if UIS:IsKeyDown(Enum.KeyCode.W) then direction = direction + camera.CFrame.LookVector end
@@ -20439,12 +20492,8 @@ local script = G2L["4bb"];
 			if UIS:IsKeyDown(Enum.KeyCode.D) then direction = direction + camera.CFrame.RightVector end
 			if UIS:IsKeyDown(Enum.KeyCode.A) then direction = direction - camera.CFrame.RightVector end
 	
-			if UIS:IsKeyDown(Enum.KeyCode.Space) then 
-				direction = direction + Vector3.new(0, 1, 0) 
-			end
-			if UIS:IsKeyDown(Enum.KeyCode.LeftShift) then 
-				direction = direction - Vector3.new(0, 1, 0) 
-			end
+			if UIS:IsKeyDown(Enum.KeyCode.Space) then direction = direction + Vector3.new(0, 1, 0) end
+			if UIS:IsKeyDown(Enum.KeyCode.LeftShift) then direction = direction - Vector3.new(0, 1, 0) end
 	
 			if direction.Magnitude > 0 then
 				root.CFrame = root.CFrame + (direction.Unit * speed)
@@ -20452,22 +20501,19 @@ local script = G2L["4bb"];
 			else
 				root.CFrame = CFrame.new(root.Position.X, lastY, root.Position.Z) * root.CFrame.Rotation
 			end
-			
+	
 			hum:ChangeState(Enum.HumanoidStateType.Landed) 
 			hum:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false) 
 			hum:SetStateEnabled(Enum.HumanoidStateType.Freefall, false) 
 	
-			root.Velocity = Vector3.zero
+			root.Velocity = Vector3.new(0, 0.1, 0) -- Крошечный импульс против гравитации
 			root.RotVelocity = Vector3.zero
 		end
 	end)
 	
 	player.CharacterAdded:Connect(function(newChar)
-		character = newChar
-		root = newChar:WaitForChild("HumanoidRootPart")
-		hum = newChar:WaitForChild("Humanoid")
-		button.Text = "OFF" -- Это само вызовет выключение через событие выше
-		script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.IPP.FLY.Visible = false
+		-- При респавне просто сбрасываем текст, остальное сделает GetPropertyChangedSignal
+		button.Text = "OFF"
 	end)
 	
 end;
@@ -20751,8 +20797,8 @@ local script = G2L["585"];
 end;
 task.spawn(C_585);
 -- StarterGui.Erestive.bindsActive.UIDrag
-local function C_58f()
-local script = G2L["58f"];
+local function C_594()
+local script = G2L["594"];
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent
 	local dragToggle = nil
@@ -20788,6 +20834,6 @@ local script = G2L["58f"];
 		end
 	end)
 end;
-task.spawn(C_58f);
+task.spawn(C_594);
 
 return G2L["1"], require;
