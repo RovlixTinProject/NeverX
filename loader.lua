@@ -1270,97 +1270,25 @@ task.spawn(C_8);
 -- StarterGui.ErestiveLoader.xxx921742g.CommandFrame.Frame2.LoadErestive.Button.load
 local function C_12()
 local script = XLX["12"];
-	local button = script.Parent
-	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
-	
-	button.MouseButton1Click:Connect(function()
-		if not statusLabel then return end -- Защита от ошибок
-	
-		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
-		statusLabel.Text = "Loading..."
-	
-		-- Используем pcall, чтобы поймать ошибку выполнения
-		local success, err = pcall(function()
-			local source = game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/legacy.lua')
-			loadstring(source)()
-		end)
-	
-		if success then
-			statusLabel.Text = "Loaded!"
-			task.wait(2)
-			statusLabel.Text = textold
-		else
-			statusLabel.Text = "Failed to load"
-			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
-			task.wait(2)
-			statusLabel.Text = textold
-		end
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/legacy.lua'))()
 	end)
-	
 end;
 task.spawn(C_12);
 -- StarterGui.ErestiveLoader.xxx921742g.CommandFrame.Frame1.LoadPenestereLS.Button.load
 local function C_25()
 local script = XLX["25"];
-	local button = script.Parent
-	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
-	
-	button.MouseButton1Click:Connect(function()
-		if not statusLabel then return end -- Защита от ошибок
-	
-		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
-		statusLabel.Text = "Loading..."
-	
-		-- Используем pcall, чтобы поймать ошибку выполнения
-		local success, err = pcall(function()
-			local source = game:HttpGet('https://raw.githubusercontent.com')
-			loadstring(source)()
-		end)
-	
-		if success then
-			statusLabel.Text = "Loaded!"
-			task.wait(2)
-			statusLabel.Text = textold
-		else
-			statusLabel.Text = "Failed to load"
-			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
-			task.wait(2)
-			statusLabel.Text = textold
-		end
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com'))()
 	end)
-	
 end;
 task.spawn(C_25);
 -- StarterGui.ErestiveLoader.xxx921742g.CommandFrame.Frame1.LoadErestive.Button.load
 local function C_37()
 local script = XLX["37"];
-	local button = script.Parent
-	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
-	
-	button.MouseButton1Click:Connect(function()
-		if not statusLabel then return end -- Защита от ошибок
-	
-		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
-		statusLabel.Text = "Loading..."
-	
-		-- Используем pcall, чтобы поймать ошибку выполнения
-		local success, err = pcall(function()
-			local source = game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua')
-			loadstring(source)()
-		end)
-	
-		if success then
-			statusLabel.Text = "Loaded!"
-			task.wait(2)
-			statusLabel.Text = textold
-		else
-			statusLabel.Text = "Failed to load"
-			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
-			task.wait(2)
-			statusLabel.Text = textold
-		end
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua'))()
 	end)
-	
 end;
 task.spawn(C_37);
 -- StarterGui.ErestiveLoader.xxx921742g.CommandFrame.Frame1.plays
