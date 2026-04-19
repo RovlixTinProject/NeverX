@@ -1267,22 +1267,29 @@ task.spawn(C_8);
 local function C_12()
 local script = XLX["12"];
 	local button = script.Parent
-	local statusText = script.Parent.Parent.Text
-	local textold = script.Parent.Parent.Text.Text
+	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
+	
 	button.MouseButton1Click:Connect(function()
-		statusText.Text = "Loading..."
+		if not statusLabel then return end -- Защита от ошибок
+	
+		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
+		statusLabel.Text = "Loading..."
+	
+		-- Используем pcall, чтобы поймать ошибку выполнения
 		local success, err = pcall(function()
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/legacy.lua'))()
+			local source = game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/legacy.lua')
+			loadstring(source)()
 		end)
+	
 		if success then
-			statusText.Text = "Loaded!"
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Loaded!"
+			task.wait(2)
+			statusLabel.Text = textold
 		else
-			statusText.Text = "Failed to load"
-			warn("Error: " .. tostring(err))
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Failed to load"
+			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
+			task.wait(2)
+			statusLabel.Text = textold
 		end
 	end)
 	
@@ -1292,22 +1299,29 @@ task.spawn(C_12);
 local function C_25()
 local script = XLX["25"];
 	local button = script.Parent
-	local statusText = script.Parent.Parent.Text
-	local textold = script.Parent.Parent.Text.Text
+	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
+	
 	button.MouseButton1Click:Connect(function()
-		statusText.Text = "Loading..."
+		if not statusLabel then return end -- Защита от ошибок
+	
+		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
+		statusLabel.Text = "Loading..."
+	
+		-- Используем pcall, чтобы поймать ошибку выполнения
 		local success, err = pcall(function()
-			loadstring(game:HttpGet('https://raw.githubusercontent.com'))()
+			local source = game:HttpGet('https://raw.githubusercontent.com')
+			loadstring(source)()
 		end)
+	
 		if success then
-			statusText.Text = "Loaded!"
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Loaded!"
+			task.wait(2)
+			statusLabel.Text = textold
 		else
-			statusText.Text = "Failed to load"
-			warn("Error: " .. tostring(err))
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Failed to load"
+			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
+			task.wait(2)
+			statusLabel.Text = textold
 		end
 	end)
 	
@@ -1317,22 +1331,29 @@ task.spawn(C_25);
 local function C_37()
 local script = XLX["37"];
 	local button = script.Parent
-	local statusText = script.Parent.Parent.Text
-	local textold = script.Parent.Parent.Text.Text
+	local statusLabel = script.Parent.Parent:FindFirstChild("Text") -- Ссылка на текстовый объект
+	
 	button.MouseButton1Click:Connect(function()
-		statusText.Text = "Loading..."
+		if not statusLabel then return end -- Защита от ошибок
+	
+		local textold = statusLabel.Text -- Сохраняем текст именно в момент клика
+		statusLabel.Text = "Loading..."
+	
+		-- Используем pcall, чтобы поймать ошибку выполнения
 		local success, err = pcall(function()
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua'))()
+			local source = game:HttpGet('https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/EternalX.lua')
+			loadstring(source)()
 		end)
+	
 		if success then
-			statusText.Text = "Loaded!"
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Loaded!"
+			task.wait(2)
+			statusLabel.Text = textold
 		else
-			statusText.Text = "Failed to load"
-			warn("Error: " .. tostring(err))
-			wait(2)
-			statusText.Text = textold
+			statusLabel.Text = "Failed to load"
+			warn("Erestive Debug: " .. tostring(err)) -- Выведет причину в консоль F9
+			task.wait(2)
+			statusLabel.Text = textold
 		end
 	end)
 	
