@@ -1897,6 +1897,154 @@ XLX["d7"]["Name"] = [[Hp]];
 XLX["d7"]["Position"] = UDim2.new(0.37, 0, 0.44286, 0);
 
 
+-- StarterGui.ErestiveBD.xxx5tab
+XLX["d8"] = Instance.new("Frame", XLX["1"]);
+XLX["d8"]["ZIndex"] = 999999991;
+XLX["d8"]["BorderSizePixel"] = 0;
+XLX["d8"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
+XLX["d8"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+XLX["d8"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
+XLX["d8"]["Position"] = UDim2.new(0.71198, 0, 0.33394, 0);
+XLX["d8"]["Name"] = [[xxx5tab]];
+XLX["d8"]["BackgroundTransparency"] = 0.06;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame
+XLX["d9"] = Instance.new("ScrollingFrame", XLX["d8"]);
+XLX["d9"]["Active"] = true;
+XLX["d9"]["BorderSizePixel"] = 0;
+XLX["d9"]["ScrollBarImageTransparency"] = 1;
+XLX["d9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["d9"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
+XLX["d9"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d9"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
+XLX["d9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d9"]["ScrollBarThickness"] = 0;
+XLX["d9"]["LayoutOrder"] = 2;
+XLX["d9"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.UIListLayout
+XLX["da"] = Instance.new("UIListLayout", XLX["d9"]);
+XLX["da"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG
+XLX["db"] = Instance.new("TextButton", XLX["d9"]);
+XLX["db"]["TextWrapped"] = true;
+XLX["db"]["TextSize"] = 14;
+XLX["db"]["TextScaled"] = true;
+XLX["db"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["db"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["db"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["db"]["ZIndex"] = 2;
+XLX["db"]["BackgroundTransparency"] = 1;
+XLX["db"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["db"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["db"]["Text"] = [[Save CFG]];
+XLX["db"]["Name"] = [[SaveCFG]];
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG.LocalScript
+XLX["dc"] = Instance.new("LocalScript", XLX["db"]);
+
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG
+XLX["dd"] = Instance.new("TextButton", XLX["d9"]);
+XLX["dd"]["TextWrapped"] = true;
+XLX["dd"]["TextSize"] = 14;
+XLX["dd"]["TextScaled"] = true;
+XLX["dd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["dd"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["dd"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["dd"]["ZIndex"] = 2;
+XLX["dd"]["BackgroundTransparency"] = 1;
+XLX["dd"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["dd"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["dd"]["Text"] = [[Load CFG]];
+XLX["dd"]["Name"] = [[LoadCFG]];
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG.LocalScript
+XLX["de"] = Instance.new("LocalScript", XLX["dd"]);
+
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.NameCFG
+XLX["df"] = Instance.new("TextBox", XLX["d9"]);
+XLX["df"]["Name"] = [[NameCFG]];
+XLX["df"]["BorderSizePixel"] = 0;
+XLX["df"]["TextWrapped"] = true;
+XLX["df"]["TextSize"] = 14;
+XLX["df"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["df"]["TextScaled"] = true;
+XLX["df"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["df"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["df"]["PlaceholderText"] = [[Name CFG]];
+XLX["df"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["df"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["df"]["Text"] = [[]];
+XLX["df"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LocalScript
+XLX["e0"] = Instance.new("LocalScript", XLX["d9"]);
+
+
+
+-- StarterGui.ErestiveBD.xxx5tab.UICorner
+XLX["e1"] = Instance.new("UICorner", XLX["d8"]);
+XLX["e1"]["CornerRadius"] = UDim.new(0, 5);
+
+
+-- StarterGui.ErestiveBD.xxx5tab.UIStroke
+XLX["e2"] = Instance.new("UIStroke", XLX["d8"]);
+XLX["e2"]["Enabled"] = false;
+XLX["e2"]["Transparency"] = 0.8;
+XLX["e2"]["Thickness"] = 1.5;
+XLX["e2"]["Color"] = Color3.fromRGB(27, 27, 27);
+
+
+-- StarterGui.ErestiveBD.xxx5tab.1A1
+XLX["e3"] = Instance.new("TextLabel", XLX["d8"]);
+XLX["e3"]["TextWrapped"] = true;
+XLX["e3"]["ZIndex"] = 999999991;
+XLX["e3"]["BorderSizePixel"] = 0;
+XLX["e3"]["TextSize"] = 28;
+XLX["e3"]["TextTransparency"] = 0.16;
+XLX["e3"]["TextScaled"] = true;
+XLX["e3"]["BackgroundColor3"] = Color3.fromRGB(88, 101, 218);
+XLX["e3"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+XLX["e3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e3"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
+XLX["e3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["e3"]["Text"] = [[Config (BETA)]];
+XLX["e3"]["LayoutOrder"] = 1;
+XLX["e3"]["Name"] = [[1A1]];
+XLX["e3"]["Position"] = UDim2.new(-0, 0, 0, 0);
+
+
+-- StarterGui.ErestiveBD.xxx5tab.1A1.UITextSizeConstraint
+XLX["e4"] = Instance.new("UITextSizeConstraint", XLX["e3"]);
+XLX["e4"]["MaxTextSize"] = 28;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.1A1.UIDrag
+XLX["e5"] = Instance.new("LocalScript", XLX["e3"]);
+XLX["e5"]["Name"] = [[UIDrag]];
+
+
+-- StarterGui.ErestiveBD.xxx5tab.UIListLayout
+XLX["e6"] = Instance.new("UIListLayout", XLX["d8"]);
+XLX["e6"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.ErestiveBD.xxx5tab.UIAspectRatioConstraint
+XLX["e7"] = Instance.new("UIAspectRatioConstraint", XLX["d8"]);
+XLX["e7"]["AspectRatio"] = 0.48142;
+
+
 -- Require XLX wrapper
 local XLX_REQUIRE = require;
 local XLX_MODULES = {};
@@ -2862,7 +3010,7 @@ local script = XLX["2"];
 	local mainFrame2 = script.Parent:WaitForChild("xxx2tab")
 	local mainFrame3 = script.Parent:WaitForChild("xxx3tab")
 	local mainFrame4 = script.Parent:WaitForChild("xxx4tab")
-	
+	local mainFrame5 = script.Parent:WaitForChild("xxx5tab")
 	UserInputService.InputBegan:Connect(function(input, processed)
 		if processed then return end
 	
@@ -2871,6 +3019,7 @@ local script = XLX["2"];
 			mainFrame2.Visible = not mainFrame2.Visible
 			mainFrame3.Visible = not mainFrame3.Visible
 			mainFrame4.Visible = not mainFrame4.Visible
+			mainFrame5.Visible = not mainFrame5.Visible
 		end
 	end)
 	
@@ -3378,7 +3527,7 @@ local script = XLX["7f"];
 	
 	button.MouseButton1Click:Connect(function()
 		enabled = not enabled
-		button.Text = enabled and "Aim Assist: ON" or "Aim Assist: OFF"
+		button.Text = enabled and "AimAssist: ON" or "AimAssist: OFF"
 		button.TextColor3 = enabled and Color3.fromRGB(0, 255, 127) or Color3.fromRGB(255, 60, 60)
 		fovCircle.Visible = enabled
 	end)
@@ -3458,7 +3607,6 @@ local script = XLX["82"];
 	
 		end
 	end)
-	
 end;
 task.spawn(C_82);
 -- StarterGui.ErestiveBD.xxx1tab.ScrollingFrame.TargetHUD.serverold
@@ -4790,5 +4938,384 @@ local script = XLX["ca"];
 	end)
 end;
 task.spawn(C_ca);
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG.LocalScript
+local function C_dc()
+local script = XLX["dc"];
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local Camera = workspace.CurrentCamera
+	local LocalPlayer = Players.LocalPlayer
+	local Button = script.Parent
+	
+	local ESP_Enabled = false
+	local Indicators = {}
+	local lastCheck = 0
+	
+	-- Создаем ScreenGui
+	local ScreenGui = Instance.new("ScreenGui")
+	ScreenGui.Name = "ArrowESP_Gui"
+	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+	
+	local rayParams = RaycastParams.new()
+	rayParams.FilterType = Enum.RaycastFilterType.Exclude
+	
+	local function createArrow(p)
+		local Arrow = Instance.new("Frame")
+		Arrow.Size = UDim2.new(0, 10, 0, 10)
+		Arrow.AnchorPoint = Vector2.new(0.5, 0.5)
+		Arrow.BackgroundColor3 = Color3.new(1,1,1)
+		Arrow.BorderSizePixel = 0
+		Arrow.Parent = ScreenGui
+	
+		local Corner = Instance.new("UICorner", Arrow)
+		Corner.CornerRadius = UDim.new(1, 0)
+	
+		local s = Instance.new("UIStroke", Arrow)
+		s.Thickness = 1.2
+		s.Color = Color3.new(0,0,0)
+	
+		local data = {Arrow = Arrow, Stroke = s}
+		Indicators[p] = data
+		return data
+	end
+	
+	-- Очистка при выходе игрока
+	Players.PlayerRemoving:Connect(function(p)
+		if Indicators[p] then
+			Indicators[p].Arrow:Destroy()
+			Indicators[p] = nil
+		end
+	end)
+	
+	Button.MouseButton1Click:Connect(function()
+		ESP_Enabled = not ESP_Enabled
+		Button.Text = "ArrowESP: " .. (ESP_Enabled and "ON" or "OFF")
+		Button.BackgroundColor3 = ESP_Enabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
+	
+		if not ESP_Enabled then
+			for _, d in pairs(Indicators) do d.Arrow.Visible = false end
+		end
+	end)
+	
+	RunService.RenderStepped:Connect(function()
+		if not ESP_Enabled then return end
+	
+		local now = os.clock()
+		local wallCheckTick = (now - lastCheck > 0.1)
+		if wallCheckTick then lastCheck = now end
+	
+		local center = Camera.ViewportSize / 2
+	
+		for _, v in pairs(Players:GetPlayers()) do
+			if v == LocalPlayer then continue end
+	
+			local char = v.Character
+			local head = char and char:FindFirstChild("Head")
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			local data = Indicators[v] or createArrow(v)
+			local arrow = data.Arrow
+	
+			if head and hum and hum.Health > 0 then
+				local screenPos, onScreen = Camera:WorldToViewportPoint(head.Position)
+				arrow.Visible = true
+	
+				-- Проверка команды (Team Check)
+				local isTeammate = (v.Team == LocalPlayer.Team and v.Team ~= nil)
+	
+				if isTeammate then
+					arrow.Size = UDim2.new(0, 6, 0, 6)
+					arrow.BackgroundColor3 = Color3.new(0, 0.6, 1)
+					arrow.BackgroundTransparency = 0.5
+					data.Stroke.Enabled = false
+				else
+					arrow.Size = UDim2.new(0, 10, 0, 10)
+					arrow.BackgroundTransparency = 0
+					data.Stroke.Enabled = true
+	
+					-- Проверка стен (Raycast) только для врагов
+					if wallCheckTick then
+						rayParams.FilterDescendantsInstances = {LocalPlayer.Character, char}
+						local ray = workspace:Raycast(Camera.CFrame.Position, (head.Position - Camera.CFrame.Position), rayParams)
+						arrow.BackgroundColor3 = ray and Color3.new(1, 1, 1) or Color3.new(1, 0, 0)
+					end
+				end
+	
+				if onScreen then
+					-- Если игрок на экране, рисуем точку над головой
+					arrow.Position = UDim2.new(0, screenPos.X, 0, screenPos.Y - 30)
+				else
+					-- Если игрок ЗА экраном, рисуем стрелку по краям
+					local x, y = screenPos.X - center.X, screenPos.Y - center.Y
+					if screenPos.Z < 0 then x, y = -x, -y end
+	
+					local angle = math.atan2(y, x)
+					local radius = math.min(center.X, center.Y) - 50
+					arrow.Position = UDim2.new(0, center.X + math.cos(angle) * radius, 0, center.Y + math.sin(angle) * radius)
+				end
+			else
+				arrow.Visible = false
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_dc);
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG.LocalScript
+local function C_de()
+local script = XLX["de"];
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local Camera = workspace.CurrentCamera
+	local LocalPlayer = Players.LocalPlayer
+	local Button = script.Parent
+	
+	local ESP_Enabled = false
+	local Indicators = {}
+	local lastCheck = 0
+	
+	-- Создаем ScreenGui
+	local ScreenGui = Instance.new("ScreenGui")
+	ScreenGui.Name = "ArrowESP_Gui"
+	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+	
+	local rayParams = RaycastParams.new()
+	rayParams.FilterType = Enum.RaycastFilterType.Exclude
+	
+	local function createArrow(p)
+		local Arrow = Instance.new("Frame")
+		Arrow.Size = UDim2.new(0, 10, 0, 10)
+		Arrow.AnchorPoint = Vector2.new(0.5, 0.5)
+		Arrow.BackgroundColor3 = Color3.new(1,1,1)
+		Arrow.BorderSizePixel = 0
+		Arrow.Parent = ScreenGui
+	
+		local Corner = Instance.new("UICorner", Arrow)
+		Corner.CornerRadius = UDim.new(1, 0)
+	
+		local s = Instance.new("UIStroke", Arrow)
+		s.Thickness = 1.2
+		s.Color = Color3.new(0,0,0)
+	
+		local data = {Arrow = Arrow, Stroke = s}
+		Indicators[p] = data
+		return data
+	end
+	
+	-- Очистка при выходе игрока
+	Players.PlayerRemoving:Connect(function(p)
+		if Indicators[p] then
+			Indicators[p].Arrow:Destroy()
+			Indicators[p] = nil
+		end
+	end)
+	
+	Button.MouseButton1Click:Connect(function()
+		ESP_Enabled = not ESP_Enabled
+		Button.Text = "ArrowESP: " .. (ESP_Enabled and "ON" or "OFF")
+		Button.BackgroundColor3 = ESP_Enabled and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(200, 0, 0)
+	
+		if not ESP_Enabled then
+			for _, d in pairs(Indicators) do d.Arrow.Visible = false end
+		end
+	end)
+	
+	RunService.RenderStepped:Connect(function()
+		if not ESP_Enabled then return end
+	
+		local now = os.clock()
+		local wallCheckTick = (now - lastCheck > 0.1)
+		if wallCheckTick then lastCheck = now end
+	
+		local center = Camera.ViewportSize / 2
+	
+		for _, v in pairs(Players:GetPlayers()) do
+			if v == LocalPlayer then continue end
+	
+			local char = v.Character
+			local head = char and char:FindFirstChild("Head")
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			local data = Indicators[v] or createArrow(v)
+			local arrow = data.Arrow
+	
+			if head and hum and hum.Health > 0 then
+				local screenPos, onScreen = Camera:WorldToViewportPoint(head.Position)
+				arrow.Visible = true
+	
+				-- Проверка команды (Team Check)
+				local isTeammate = (v.Team == LocalPlayer.Team and v.Team ~= nil)
+	
+				if isTeammate then
+					arrow.Size = UDim2.new(0, 6, 0, 6)
+					arrow.BackgroundColor3 = Color3.new(0, 0.6, 1)
+					arrow.BackgroundTransparency = 0.5
+					data.Stroke.Enabled = false
+				else
+					arrow.Size = UDim2.new(0, 10, 0, 10)
+					arrow.BackgroundTransparency = 0
+					data.Stroke.Enabled = true
+	
+					-- Проверка стен (Raycast) только для врагов
+					if wallCheckTick then
+						rayParams.FilterDescendantsInstances = {LocalPlayer.Character, char}
+						local ray = workspace:Raycast(Camera.CFrame.Position, (head.Position - Camera.CFrame.Position), rayParams)
+						arrow.BackgroundColor3 = ray and Color3.new(1, 1, 1) or Color3.new(1, 0, 0)
+					end
+				end
+	
+				if onScreen then
+					-- Если игрок на экране, рисуем точку над головой
+					arrow.Position = UDim2.new(0, screenPos.X, 0, screenPos.Y - 30)
+				else
+					-- Если игрок ЗА экраном, рисуем стрелку по краям
+					local x, y = screenPos.X - center.X, screenPos.Y - center.Y
+					if screenPos.Z < 0 then x, y = -x, -y end
+	
+					local angle = math.atan2(y, x)
+					local radius = math.min(center.X, center.Y) - 50
+					arrow.Position = UDim2.new(0, center.X + math.cos(angle) * radius, 0, center.Y + math.sin(angle) * radius)
+				end
+			else
+				arrow.Visible = false
+			end
+		end
+	end)
+	
+end;
+task.spawn(C_de);
+-- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LocalScript
+local function C_e0()
+local script = XLX["e0"];
+	local HttpService = game:GetService("HttpService")
+	local folder = "Erestive_Configs"
+	local file = folder .. "/BDV_autosave.json"
+	
+	-- 1. Создаем папку в файлах экзекутора
+	if not isfolder(folder) then makefolder(folder) end
+	
+	_G.Settings = {} -- Глобальная таблица для твоих читов
+	local UpdateGui = Instance.new("BindableEvent") -- Сигнал для обновления текста
+	
+	-- Функция сохранения
+	local function save()
+		local data = {}
+		for name, value in pairs(_G.Settings) do
+			data[name] = value
+		end
+		writefile(file, HttpService:JSONEncode(data))
+	end
+	
+	-- Функция загрузки
+	local function load()
+		if isfile(file) then
+			local status, data = pcall(function() return HttpService:JSONDecode(readfile(file)) end)
+			if status then 
+				_G.Settings = data 
+				UpdateGui:Fire() -- Команда кнопкам: "Обновитесь!"
+			end
+		end
+	end
+	
+	-- 2. ГЛАВНЫЙ ЦИКЛ: Автоматическая настройка всех кнопок
+	-- Он ищет все кнопки во всем твоем GUI
+	local screenGui = script:FindFirstAncestorOfClass("ScreenGui")
+	
+	for _, btn in pairs(screenGui:GetDescendants()) do
+		-- Берем только кнопки функций (игнорируем кнопки Save/Load/Name)
+		if btn:IsA("TextButton") and not btn.Name:find("CFG") and btn.Name ~= "OnOrOff" then
+			local name = btn.Name -- Автоматически берем название объекта кнопки
+	
+			local function refresh()
+				local on = _G.Settings[name] or false
+				btn.Text = name .. ": " .. (on and "ON" or "OFF")
+				btn.BackgroundColor3 = on and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(35, 35, 35)
+			end
+	
+			-- Клик по кнопке
+			btn.MouseButton1Click:Connect(function()
+				_G.Settings[name] = not (_G.Settings[name] or false)
+				refresh()
+				save() -- Автосохранение после каждого клика
+			end)
+	
+			UpdateGui.Event:Connect(refresh)
+			refresh()
+		end
+	end
+	
+	-- 3. Привязка кнопок Save/Load (по твоей иерархии)
+	local frame = script.Parent
+	local saveBtn = frame:WaitForChild("SaveCFG")
+	local loadBtn = frame:WaitForChild("LoadCFG")
+	local nameInput = frame:WaitForChild("NameCFG")
+	
+	saveBtn.MouseButton1Click:Connect(function()
+		local customName = nameInput.Text ~= "" and nameInput.Text or "autosave"
+		writefile(folder .. "/" .. customName .. ".json", HttpService:JSONEncode(_G.Settings))
+		saveBtn.Text = "Saved!"
+		task.wait(1)
+		saveBtn.Text = "SaveCFG"
+	end)
+	
+	loadBtn.MouseButton1Click:Connect(function()
+		local customName = nameInput.Text ~= "" and nameInput.Text or "autosave"
+		local path = folder .. "/" .. customName .. ".json"
+		if isfile(path) then
+			_G.Settings = HttpService:JSONDecode(readfile(path))
+			UpdateGui:Fire()
+			loadBtn.Text = "Loaded!"
+		else
+			loadBtn.Text = "Error!"
+		end
+		task.wait(1)
+		loadBtn.Text = "LoadCFG"
+	end)
+	
+	load() -- Автозагрузка при старте
+	
+end;
+task.spawn(C_e0);
+-- StarterGui.ErestiveBD.xxx5tab.1A1.UIDrag
+local function C_e5()
+local script = XLX["e5"];
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	script.Parent.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+end;
+task.spawn(C_e5);
 
 return XLX["1"], require;
