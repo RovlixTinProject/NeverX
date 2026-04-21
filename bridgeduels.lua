@@ -1329,7 +1329,7 @@ XLX["9a"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.R
 XLX["9a"]["BackgroundTransparency"] = 1;
 XLX["9a"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
 XLX["9a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["9a"]["Text"] = [[TeamCheck]];
+XLX["9a"]["Text"] = [[Team Check]];
 XLX["9a"]["Name"] = [[TeamCheck]];
 
 
@@ -1343,113 +1343,113 @@ XLX["9c"] = Instance.new("BoolValue", XLX["9a"]);
 
 
 
+-- StarterGui.ErestiveBD.xxx3tab.ScrollingFrame.FriendCheck
+XLX["9d"] = Instance.new("TextButton", XLX["8e"]);
+XLX["9d"]["TextWrapped"] = true;
+XLX["9d"]["BorderSizePixel"] = 0;
+XLX["9d"]["TextSize"] = 14;
+XLX["9d"]["TextScaled"] = true;
+XLX["9d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["9d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["9d"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["9d"]["BackgroundTransparency"] = 1;
+XLX["9d"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["9d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["9d"]["Text"] = [[Friend Check]];
+XLX["9d"]["Name"] = [[FriendCheck]];
+
+
+-- StarterGui.ErestiveBD.xxx3tab.ScrollingFrame.FriendCheck.LocalScript
+XLX["9e"] = Instance.new("LocalScript", XLX["9d"]);
+
+
+
+-- StarterGui.ErestiveBD.xxx3tab.ScrollingFrame.FriendCheck.Value
+XLX["9f"] = Instance.new("BoolValue", XLX["9d"]);
+
+
+
 -- StarterGui.ErestiveBD.xxx3tab.UICorner
-XLX["9d"] = Instance.new("UICorner", XLX["8d"]);
-XLX["9d"]["CornerRadius"] = UDim.new(0, 5);
+XLX["a0"] = Instance.new("UICorner", XLX["8d"]);
+XLX["a0"]["CornerRadius"] = UDim.new(0, 5);
 
 
 -- StarterGui.ErestiveBD.xxx3tab.UIStroke
-XLX["9e"] = Instance.new("UIStroke", XLX["8d"]);
-XLX["9e"]["Enabled"] = false;
-XLX["9e"]["Transparency"] = 0.8;
-XLX["9e"]["Thickness"] = 1.5;
-XLX["9e"]["Color"] = Color3.fromRGB(27, 27, 27);
+XLX["a1"] = Instance.new("UIStroke", XLX["8d"]);
+XLX["a1"]["Enabled"] = false;
+XLX["a1"]["Transparency"] = 0.8;
+XLX["a1"]["Thickness"] = 1.5;
+XLX["a1"]["Color"] = Color3.fromRGB(27, 27, 27);
 
 
 -- StarterGui.ErestiveBD.xxx3tab.1A1
-XLX["9f"] = Instance.new("TextLabel", XLX["8d"]);
-XLX["9f"]["TextWrapped"] = true;
-XLX["9f"]["ZIndex"] = 999999991;
-XLX["9f"]["BorderSizePixel"] = 0;
-XLX["9f"]["TextSize"] = 28;
-XLX["9f"]["TextTransparency"] = 0.16;
-XLX["9f"]["TextScaled"] = true;
-XLX["9f"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
-XLX["9f"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-XLX["9f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["9f"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
-XLX["9f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["9f"]["Text"] = [[Misc]];
-XLX["9f"]["LayoutOrder"] = 1;
-XLX["9f"]["Name"] = [[1A1]];
-XLX["9f"]["Position"] = UDim2.new(-0, 0, 0, 0);
+XLX["a2"] = Instance.new("TextLabel", XLX["8d"]);
+XLX["a2"]["TextWrapped"] = true;
+XLX["a2"]["ZIndex"] = 999999991;
+XLX["a2"]["BorderSizePixel"] = 0;
+XLX["a2"]["TextSize"] = 28;
+XLX["a2"]["TextTransparency"] = 0.16;
+XLX["a2"]["TextScaled"] = true;
+XLX["a2"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
+XLX["a2"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+XLX["a2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["a2"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
+XLX["a2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["a2"]["Text"] = [[Misc]];
+XLX["a2"]["LayoutOrder"] = 1;
+XLX["a2"]["Name"] = [[1A1]];
+XLX["a2"]["Position"] = UDim2.new(-0, 0, 0, 0);
 
 
 -- StarterGui.ErestiveBD.xxx3tab.1A1.UITextSizeConstraint
-XLX["a0"] = Instance.new("UITextSizeConstraint", XLX["9f"]);
-XLX["a0"]["MaxTextSize"] = 28;
+XLX["a3"] = Instance.new("UITextSizeConstraint", XLX["a2"]);
+XLX["a3"]["MaxTextSize"] = 28;
 
 
 -- StarterGui.ErestiveBD.xxx3tab.1A1.UIDrag
-XLX["a1"] = Instance.new("LocalScript", XLX["9f"]);
-XLX["a1"]["Name"] = [[UIDrag]];
+XLX["a4"] = Instance.new("LocalScript", XLX["a2"]);
+XLX["a4"]["Name"] = [[UIDrag]];
 
 
 -- StarterGui.ErestiveBD.xxx3tab.UIListLayout
-XLX["a2"] = Instance.new("UIListLayout", XLX["8d"]);
-XLX["a2"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["a5"] = Instance.new("UIListLayout", XLX["8d"]);
+XLX["a5"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx3tab.UIAspectRatioConstraint
-XLX["a3"] = Instance.new("UIAspectRatioConstraint", XLX["8d"]);
-XLX["a3"]["AspectRatio"] = 0.48142;
+XLX["a6"] = Instance.new("UIAspectRatioConstraint", XLX["8d"]);
+XLX["a6"]["AspectRatio"] = 0.48142;
 
 
 -- StarterGui.ErestiveBD.xxx2tab
-XLX["a4"] = Instance.new("Frame", XLX["1"]);
-XLX["a4"]["ZIndex"] = 999999991;
-XLX["a4"]["BorderSizePixel"] = 0;
-XLX["a4"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
-XLX["a4"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-XLX["a4"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
-XLX["a4"]["Position"] = UDim2.new(0.25839, 0, 0.33394, 0);
-XLX["a4"]["Name"] = [[xxx2tab]];
-XLX["a4"]["BackgroundTransparency"] = 0.06;
+XLX["a7"] = Instance.new("Frame", XLX["1"]);
+XLX["a7"]["ZIndex"] = 999999991;
+XLX["a7"]["BorderSizePixel"] = 0;
+XLX["a7"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
+XLX["a7"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+XLX["a7"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
+XLX["a7"]["Position"] = UDim2.new(0.25839, 0, 0.33394, 0);
+XLX["a7"]["Name"] = [[xxx2tab]];
+XLX["a7"]["BackgroundTransparency"] = 0.06;
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame
-XLX["a5"] = Instance.new("ScrollingFrame", XLX["a4"]);
-XLX["a5"]["Active"] = true;
-XLX["a5"]["BorderSizePixel"] = 0;
-XLX["a5"]["ScrollBarImageTransparency"] = 1;
-XLX["a5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["a5"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
-XLX["a5"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["a5"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
-XLX["a5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["a5"]["ScrollBarThickness"] = 0;
-XLX["a5"]["LayoutOrder"] = 2;
-XLX["a5"]["BackgroundTransparency"] = 1;
+XLX["a8"] = Instance.new("ScrollingFrame", XLX["a7"]);
+XLX["a8"]["Active"] = true;
+XLX["a8"]["BorderSizePixel"] = 0;
+XLX["a8"]["ScrollBarImageTransparency"] = 1;
+XLX["a8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["a8"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
+XLX["a8"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["a8"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
+XLX["a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["a8"]["ScrollBarThickness"] = 0;
+XLX["a8"]["LayoutOrder"] = 2;
+XLX["a8"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Spider
-XLX["a6"] = Instance.new("TextButton", XLX["a5"]);
-XLX["a6"]["TextWrapped"] = true;
-XLX["a6"]["BorderSizePixel"] = 0;
-XLX["a6"]["TextSize"] = 14;
-XLX["a6"]["TextScaled"] = true;
-XLX["a6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["a6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["a6"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["a6"]["BackgroundTransparency"] = 1;
-XLX["a6"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
-XLX["a6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["a6"]["Text"] = [[Spider]];
-XLX["a6"]["Name"] = [[Spider]];
-
-
--- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Spider.LocalScript
-XLX["a7"] = Instance.new("LocalScript", XLX["a6"]);
-
-
-
--- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.UIListLayout
-XLX["a8"] = Instance.new("UIListLayout", XLX["a5"]);
-XLX["a8"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-
-
--- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Velocity
-XLX["a9"] = Instance.new("TextButton", XLX["a5"]);
+XLX["a9"] = Instance.new("TextButton", XLX["a8"]);
 XLX["a9"]["TextWrapped"] = true;
 XLX["a9"]["BorderSizePixel"] = 0;
 XLX["a9"]["TextSize"] = 14;
@@ -1460,619 +1460,645 @@ XLX["a9"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.R
 XLX["a9"]["BackgroundTransparency"] = 1;
 XLX["a9"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
 XLX["a9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["a9"]["Text"] = [[Velocity]];
-XLX["a9"]["Name"] = [[Velocity]];
+XLX["a9"]["Text"] = [[Spider]];
+XLX["a9"]["Name"] = [[Spider]];
 
 
--- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Velocity.LocalScript
+-- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Spider.LocalScript
 XLX["aa"] = Instance.new("LocalScript", XLX["a9"]);
 
 
 
+-- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.UIListLayout
+XLX["ab"] = Instance.new("UIListLayout", XLX["a8"]);
+XLX["ab"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Velocity
+XLX["ac"] = Instance.new("TextButton", XLX["a8"]);
+XLX["ac"]["TextWrapped"] = true;
+XLX["ac"]["BorderSizePixel"] = 0;
+XLX["ac"]["TextSize"] = 14;
+XLX["ac"]["TextScaled"] = true;
+XLX["ac"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ac"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ac"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["ac"]["BackgroundTransparency"] = 1;
+XLX["ac"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["ac"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["ac"]["Text"] = [[Velocity]];
+XLX["ac"]["Name"] = [[Velocity]];
+
+
+-- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Velocity.LocalScript
+XLX["ad"] = Instance.new("LocalScript", XLX["ac"]);
+
+
+
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.NoFall
-XLX["ab"] = Instance.new("TextButton", XLX["a5"]);
-XLX["ab"]["TextWrapped"] = true;
-XLX["ab"]["BorderSizePixel"] = 0;
-XLX["ab"]["TextSize"] = 14;
-XLX["ab"]["TextScaled"] = true;
-XLX["ab"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["ab"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["ab"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["ab"]["BackgroundTransparency"] = 1;
-XLX["ab"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
-XLX["ab"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["ab"]["Text"] = [[NoFall]];
-XLX["ab"]["Name"] = [[NoFall]];
+XLX["ae"] = Instance.new("TextButton", XLX["a8"]);
+XLX["ae"]["TextWrapped"] = true;
+XLX["ae"]["BorderSizePixel"] = 0;
+XLX["ae"]["TextSize"] = 14;
+XLX["ae"]["TextScaled"] = true;
+XLX["ae"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ae"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ae"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["ae"]["BackgroundTransparency"] = 1;
+XLX["ae"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["ae"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["ae"]["Text"] = [[NoFall]];
+XLX["ae"]["Name"] = [[NoFall]];
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.NoFall.LocalScript
-XLX["ac"] = Instance.new("LocalScript", XLX["ab"]);
+XLX["af"] = Instance.new("LocalScript", XLX["ae"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.SafeWalk
-XLX["ad"] = Instance.new("TextButton", XLX["a5"]);
-XLX["ad"]["TextWrapped"] = true;
-XLX["ad"]["BorderSizePixel"] = 0;
-XLX["ad"]["TextSize"] = 14;
-XLX["ad"]["TextScaled"] = true;
-XLX["ad"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["ad"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["ad"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["ad"]["BackgroundTransparency"] = 1;
-XLX["ad"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
-XLX["ad"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["ad"]["Text"] = [[SafeWalk]];
-XLX["ad"]["Name"] = [[SafeWalk]];
+XLX["b0"] = Instance.new("TextButton", XLX["a8"]);
+XLX["b0"]["TextWrapped"] = true;
+XLX["b0"]["BorderSizePixel"] = 0;
+XLX["b0"]["TextSize"] = 14;
+XLX["b0"]["TextScaled"] = true;
+XLX["b0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b0"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["b0"]["BackgroundTransparency"] = 1;
+XLX["b0"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["b0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["b0"]["Text"] = [[SafeWalk]];
+XLX["b0"]["Name"] = [[SafeWalk]];
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.SafeWalk.LocalScript
-XLX["ae"] = Instance.new("LocalScript", XLX["ad"]);
+XLX["b1"] = Instance.new("LocalScript", XLX["b0"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Blink
-XLX["af"] = Instance.new("TextButton", XLX["a5"]);
-XLX["af"]["TextWrapped"] = true;
-XLX["af"]["BorderSizePixel"] = 0;
-XLX["af"]["TextSize"] = 14;
-XLX["af"]["TextScaled"] = true;
-XLX["af"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["af"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["af"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["af"]["BackgroundTransparency"] = 1;
-XLX["af"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
-XLX["af"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["af"]["Text"] = [[Blink]];
-XLX["af"]["Name"] = [[Blink]];
+XLX["b2"] = Instance.new("TextButton", XLX["a8"]);
+XLX["b2"]["TextWrapped"] = true;
+XLX["b2"]["BorderSizePixel"] = 0;
+XLX["b2"]["TextSize"] = 14;
+XLX["b2"]["TextScaled"] = true;
+XLX["b2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b2"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["b2"]["BackgroundTransparency"] = 1;
+XLX["b2"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["b2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["b2"]["Text"] = [[Blink]];
+XLX["b2"]["Name"] = [[Blink]];
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Blink.LocalScript
-XLX["b0"] = Instance.new("LocalScript", XLX["af"]);
+XLX["b3"] = Instance.new("LocalScript", XLX["b2"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.WaterWalk
-XLX["b1"] = Instance.new("TextButton", XLX["a5"]);
-XLX["b1"]["TextWrapped"] = true;
-XLX["b1"]["BorderSizePixel"] = 0;
-XLX["b1"]["TextSize"] = 14;
-XLX["b1"]["TextScaled"] = true;
-XLX["b1"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["b1"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["b1"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["b1"]["BackgroundTransparency"] = 1;
-XLX["b1"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
-XLX["b1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["b1"]["Text"] = [[Water Walk]];
-XLX["b1"]["Name"] = [[WaterWalk]];
+XLX["b4"] = Instance.new("TextButton", XLX["a8"]);
+XLX["b4"]["TextWrapped"] = true;
+XLX["b4"]["BorderSizePixel"] = 0;
+XLX["b4"]["TextSize"] = 14;
+XLX["b4"]["TextScaled"] = true;
+XLX["b4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b4"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["b4"]["BackgroundTransparency"] = 1;
+XLX["b4"]["Size"] = UDim2.new(1, 0, 0.04906, 0);
+XLX["b4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["b4"]["Text"] = [[Water Walk]];
+XLX["b4"]["Name"] = [[WaterWalk]];
 
 
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.WaterWalk.LocalScript
-XLX["b2"] = Instance.new("LocalScript", XLX["b1"]);
+XLX["b5"] = Instance.new("LocalScript", XLX["b4"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx2tab.UICorner
-XLX["b3"] = Instance.new("UICorner", XLX["a4"]);
-XLX["b3"]["CornerRadius"] = UDim.new(0, 5);
+XLX["b6"] = Instance.new("UICorner", XLX["a7"]);
+XLX["b6"]["CornerRadius"] = UDim.new(0, 5);
 
 
 -- StarterGui.ErestiveBD.xxx2tab.UIStroke
-XLX["b4"] = Instance.new("UIStroke", XLX["a4"]);
-XLX["b4"]["Enabled"] = false;
-XLX["b4"]["Transparency"] = 0.8;
-XLX["b4"]["Thickness"] = 1.5;
-XLX["b4"]["Color"] = Color3.fromRGB(27, 27, 27);
+XLX["b7"] = Instance.new("UIStroke", XLX["a7"]);
+XLX["b7"]["Enabled"] = false;
+XLX["b7"]["Transparency"] = 0.8;
+XLX["b7"]["Thickness"] = 1.5;
+XLX["b7"]["Color"] = Color3.fromRGB(27, 27, 27);
 
 
 -- StarterGui.ErestiveBD.xxx2tab.1A1
-XLX["b5"] = Instance.new("TextLabel", XLX["a4"]);
-XLX["b5"]["TextWrapped"] = true;
-XLX["b5"]["ZIndex"] = 999999991;
-XLX["b5"]["BorderSizePixel"] = 0;
-XLX["b5"]["TextSize"] = 28;
-XLX["b5"]["TextTransparency"] = 0.16;
-XLX["b5"]["TextScaled"] = true;
-XLX["b5"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
-XLX["b5"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-XLX["b5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["b5"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
-XLX["b5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["b5"]["Text"] = [[Player]];
-XLX["b5"]["LayoutOrder"] = 1;
-XLX["b5"]["Name"] = [[1A1]];
-XLX["b5"]["Position"] = UDim2.new(-0, 0, 0, 0);
+XLX["b8"] = Instance.new("TextLabel", XLX["a7"]);
+XLX["b8"]["TextWrapped"] = true;
+XLX["b8"]["ZIndex"] = 999999991;
+XLX["b8"]["BorderSizePixel"] = 0;
+XLX["b8"]["TextSize"] = 28;
+XLX["b8"]["TextTransparency"] = 0.16;
+XLX["b8"]["TextScaled"] = true;
+XLX["b8"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
+XLX["b8"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+XLX["b8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["b8"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
+XLX["b8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["b8"]["Text"] = [[Player]];
+XLX["b8"]["LayoutOrder"] = 1;
+XLX["b8"]["Name"] = [[1A1]];
+XLX["b8"]["Position"] = UDim2.new(-0, 0, 0, 0);
 
 
 -- StarterGui.ErestiveBD.xxx2tab.1A1.UITextSizeConstraint
-XLX["b6"] = Instance.new("UITextSizeConstraint", XLX["b5"]);
-XLX["b6"]["MaxTextSize"] = 28;
+XLX["b9"] = Instance.new("UITextSizeConstraint", XLX["b8"]);
+XLX["b9"]["MaxTextSize"] = 28;
 
 
 -- StarterGui.ErestiveBD.xxx2tab.1A1.UIDrag
-XLX["b7"] = Instance.new("LocalScript", XLX["b5"]);
-XLX["b7"]["Name"] = [[UIDrag]];
+XLX["ba"] = Instance.new("LocalScript", XLX["b8"]);
+XLX["ba"]["Name"] = [[UIDrag]];
 
 
 -- StarterGui.ErestiveBD.xxx2tab.UIListLayout
-XLX["b8"] = Instance.new("UIListLayout", XLX["a4"]);
-XLX["b8"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["bb"] = Instance.new("UIListLayout", XLX["a7"]);
+XLX["bb"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx2tab.UIAspectRatioConstraint
-XLX["b9"] = Instance.new("UIAspectRatioConstraint", XLX["a4"]);
-XLX["b9"]["AspectRatio"] = 0.48142;
+XLX["bc"] = Instance.new("UIAspectRatioConstraint", XLX["a7"]);
+XLX["bc"]["AspectRatio"] = 0.48142;
 
 
 -- StarterGui.ErestiveBD.xxx4tab
-XLX["ba"] = Instance.new("Frame", XLX["1"]);
-XLX["ba"]["ZIndex"] = 999999991;
-XLX["ba"]["BorderSizePixel"] = 0;
-XLX["ba"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
-XLX["ba"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-XLX["ba"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
-XLX["ba"]["Position"] = UDim2.new(0.56303, 0, 0.33394, 0);
-XLX["ba"]["Name"] = [[xxx4tab]];
-XLX["ba"]["BackgroundTransparency"] = 0.06;
+XLX["bd"] = Instance.new("Frame", XLX["1"]);
+XLX["bd"]["ZIndex"] = 999999991;
+XLX["bd"]["BorderSizePixel"] = 0;
+XLX["bd"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
+XLX["bd"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+XLX["bd"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
+XLX["bd"]["Position"] = UDim2.new(0.56303, 0, 0.33394, 0);
+XLX["bd"]["Name"] = [[xxx4tab]];
+XLX["bd"]["BackgroundTransparency"] = 0.06;
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame
-XLX["bb"] = Instance.new("ScrollingFrame", XLX["ba"]);
-XLX["bb"]["Active"] = true;
-XLX["bb"]["BorderSizePixel"] = 0;
-XLX["bb"]["ScrollBarImageTransparency"] = 1;
-XLX["bb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["bb"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
-XLX["bb"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["bb"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
-XLX["bb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["bb"]["ScrollBarThickness"] = 0;
-XLX["bb"]["LayoutOrder"] = 2;
-XLX["bb"]["BackgroundTransparency"] = 1;
+XLX["be"] = Instance.new("ScrollingFrame", XLX["bd"]);
+XLX["be"]["Active"] = true;
+XLX["be"]["BorderSizePixel"] = 0;
+XLX["be"]["ScrollBarImageTransparency"] = 1;
+XLX["be"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["be"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
+XLX["be"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["be"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
+XLX["be"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["be"]["ScrollBarThickness"] = 0;
+XLX["be"]["LayoutOrder"] = 2;
+XLX["be"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.UIListLayout
-XLX["bc"] = Instance.new("UIListLayout", XLX["bb"]);
-XLX["bc"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["bf"] = Instance.new("UIListLayout", XLX["be"]);
+XLX["bf"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.ArrowESP
-XLX["bd"] = Instance.new("TextButton", XLX["bb"]);
-XLX["bd"]["TextWrapped"] = true;
-XLX["bd"]["TextSize"] = 14;
-XLX["bd"]["TextScaled"] = true;
-XLX["bd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["bd"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["bd"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["bd"]["ZIndex"] = 2;
-XLX["bd"]["BackgroundTransparency"] = 1;
-XLX["bd"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["bd"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["bd"]["Text"] = [[ArrowESP]];
-XLX["bd"]["Name"] = [[ArrowESP]];
+XLX["c0"] = Instance.new("TextButton", XLX["be"]);
+XLX["c0"]["TextWrapped"] = true;
+XLX["c0"]["TextSize"] = 14;
+XLX["c0"]["TextScaled"] = true;
+XLX["c0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["c0"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["c0"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["c0"]["ZIndex"] = 2;
+XLX["c0"]["BackgroundTransparency"] = 1;
+XLX["c0"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["c0"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["c0"]["Text"] = [[ArrowESP]];
+XLX["c0"]["Name"] = [[ArrowESP]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.ArrowESP.LocalScript
-XLX["be"] = Instance.new("LocalScript", XLX["bd"]);
+XLX["c1"] = Instance.new("LocalScript", XLX["c0"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.SkeletonESP
-XLX["bf"] = Instance.new("TextButton", XLX["bb"]);
-XLX["bf"]["TextWrapped"] = true;
-XLX["bf"]["TextSize"] = 14;
-XLX["bf"]["TextScaled"] = true;
-XLX["bf"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["bf"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["bf"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["bf"]["ZIndex"] = 2;
-XLX["bf"]["BackgroundTransparency"] = 1;
-XLX["bf"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["bf"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["bf"]["Text"] = [[SkeletonESP]];
-XLX["bf"]["Name"] = [[SkeletonESP]];
+XLX["c2"] = Instance.new("TextButton", XLX["be"]);
+XLX["c2"]["TextWrapped"] = true;
+XLX["c2"]["TextSize"] = 14;
+XLX["c2"]["TextScaled"] = true;
+XLX["c2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["c2"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["c2"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["c2"]["ZIndex"] = 2;
+XLX["c2"]["BackgroundTransparency"] = 1;
+XLX["c2"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["c2"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["c2"]["Text"] = [[SkeletonESP]];
+XLX["c2"]["Name"] = [[SkeletonESP]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.SkeletonESP.LocalScript
-XLX["c0"] = Instance.new("LocalScript", XLX["bf"]);
+XLX["c3"] = Instance.new("LocalScript", XLX["c2"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.BoxESP
-XLX["c1"] = Instance.new("TextButton", XLX["bb"]);
-XLX["c1"]["TextWrapped"] = true;
-XLX["c1"]["TextSize"] = 14;
-XLX["c1"]["TextScaled"] = true;
-XLX["c1"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["c1"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["c1"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["c1"]["ZIndex"] = 2;
-XLX["c1"]["BackgroundTransparency"] = 1;
-XLX["c1"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["c1"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["c1"]["Text"] = [[BoxESP]];
-XLX["c1"]["Name"] = [[BoxESP]];
+XLX["c4"] = Instance.new("TextButton", XLX["be"]);
+XLX["c4"]["TextWrapped"] = true;
+XLX["c4"]["TextSize"] = 14;
+XLX["c4"]["TextScaled"] = true;
+XLX["c4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["c4"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["c4"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["c4"]["ZIndex"] = 2;
+XLX["c4"]["BackgroundTransparency"] = 1;
+XLX["c4"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["c4"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["c4"]["Text"] = [[BoxESP]];
+XLX["c4"]["Name"] = [[BoxESP]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.BoxESP.Wallhack
-XLX["c2"] = Instance.new("LocalScript", XLX["c1"]);
-XLX["c2"]["Name"] = [[Wallhack]];
+XLX["c5"] = Instance.new("LocalScript", XLX["c4"]);
+XLX["c5"]["Name"] = [[Wallhack]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.FullBright
-XLX["c3"] = Instance.new("TextButton", XLX["bb"]);
-XLX["c3"]["TextWrapped"] = true;
-XLX["c3"]["TextSize"] = 14;
-XLX["c3"]["TextScaled"] = true;
-XLX["c3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["c3"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["c3"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["c3"]["ZIndex"] = 2;
-XLX["c3"]["BackgroundTransparency"] = 1;
-XLX["c3"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["c3"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["c3"]["Text"] = [[FullBright]];
-XLX["c3"]["Name"] = [[FullBright]];
+XLX["c6"] = Instance.new("TextButton", XLX["be"]);
+XLX["c6"]["TextWrapped"] = true;
+XLX["c6"]["TextSize"] = 14;
+XLX["c6"]["TextScaled"] = true;
+XLX["c6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["c6"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["c6"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["c6"]["ZIndex"] = 2;
+XLX["c6"]["BackgroundTransparency"] = 1;
+XLX["c6"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["c6"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["c6"]["Text"] = [[FullBright]];
+XLX["c6"]["Name"] = [[FullBright]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.FullBright.Wallhack
-XLX["c4"] = Instance.new("LocalScript", XLX["c3"]);
-XLX["c4"]["Name"] = [[Wallhack]];
+XLX["c7"] = Instance.new("LocalScript", XLX["c6"]);
+XLX["c7"]["Name"] = [[Wallhack]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Tracers
-XLX["c5"] = Instance.new("TextButton", XLX["bb"]);
-XLX["c5"]["TextWrapped"] = true;
-XLX["c5"]["TextSize"] = 14;
-XLX["c5"]["TextScaled"] = true;
-XLX["c5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["c5"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["c5"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["c5"]["ZIndex"] = 2;
-XLX["c5"]["BackgroundTransparency"] = 1;
-XLX["c5"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["c5"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["c5"]["Text"] = [[Tracers]];
-XLX["c5"]["Name"] = [[Tracers]];
+XLX["c8"] = Instance.new("TextButton", XLX["be"]);
+XLX["c8"]["TextWrapped"] = true;
+XLX["c8"]["TextSize"] = 14;
+XLX["c8"]["TextScaled"] = true;
+XLX["c8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["c8"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["c8"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["c8"]["ZIndex"] = 2;
+XLX["c8"]["BackgroundTransparency"] = 1;
+XLX["c8"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["c8"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["c8"]["Text"] = [[Tracers]];
+XLX["c8"]["Name"] = [[Tracers]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Tracers.Wallhack
-XLX["c6"] = Instance.new("LocalScript", XLX["c5"]);
-XLX["c6"]["Name"] = [[Wallhack]];
+XLX["c9"] = Instance.new("LocalScript", XLX["c8"]);
+XLX["c9"]["Name"] = [[Wallhack]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Breadcrumbs
-XLX["c7"] = Instance.new("TextButton", XLX["bb"]);
-XLX["c7"]["TextWrapped"] = true;
-XLX["c7"]["TextSize"] = 14;
-XLX["c7"]["TextScaled"] = true;
-XLX["c7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["c7"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["c7"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["c7"]["ZIndex"] = 2;
-XLX["c7"]["BackgroundTransparency"] = 1;
-XLX["c7"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["c7"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["c7"]["Text"] = [[Breadcrumbs]];
-XLX["c7"]["Name"] = [[Breadcrumbs]];
+XLX["ca"] = Instance.new("TextButton", XLX["be"]);
+XLX["ca"]["TextWrapped"] = true;
+XLX["ca"]["TextSize"] = 14;
+XLX["ca"]["TextScaled"] = true;
+XLX["ca"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ca"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["ca"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["ca"]["ZIndex"] = 2;
+XLX["ca"]["BackgroundTransparency"] = 1;
+XLX["ca"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["ca"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["ca"]["Text"] = [[Breadcrumbs]];
+XLX["ca"]["Name"] = [[Breadcrumbs]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Breadcrumbs.Wallhack
-XLX["c8"] = Instance.new("LocalScript", XLX["c7"]);
-XLX["c8"]["Name"] = [[Wallhack]];
+XLX["cb"] = Instance.new("LocalScript", XLX["ca"]);
+XLX["cb"]["Name"] = [[Wallhack]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.UICorner
-XLX["c9"] = Instance.new("UICorner", XLX["ba"]);
-XLX["c9"]["CornerRadius"] = UDim.new(0, 5);
+XLX["cc"] = Instance.new("UICorner", XLX["bd"]);
+XLX["cc"]["CornerRadius"] = UDim.new(0, 5);
 
 
 -- StarterGui.ErestiveBD.xxx4tab.UIStroke
-XLX["ca"] = Instance.new("UIStroke", XLX["ba"]);
-XLX["ca"]["Enabled"] = false;
-XLX["ca"]["Transparency"] = 0.8;
-XLX["ca"]["Thickness"] = 1.5;
-XLX["ca"]["Color"] = Color3.fromRGB(27, 27, 27);
+XLX["cd"] = Instance.new("UIStroke", XLX["bd"]);
+XLX["cd"]["Enabled"] = false;
+XLX["cd"]["Transparency"] = 0.8;
+XLX["cd"]["Thickness"] = 1.5;
+XLX["cd"]["Color"] = Color3.fromRGB(27, 27, 27);
 
 
 -- StarterGui.ErestiveBD.xxx4tab.1A1
-XLX["cb"] = Instance.new("TextLabel", XLX["ba"]);
-XLX["cb"]["TextWrapped"] = true;
-XLX["cb"]["ZIndex"] = 999999991;
-XLX["cb"]["BorderSizePixel"] = 0;
-XLX["cb"]["TextSize"] = 28;
-XLX["cb"]["TextTransparency"] = 0.16;
-XLX["cb"]["TextScaled"] = true;
-XLX["cb"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
-XLX["cb"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-XLX["cb"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["cb"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
-XLX["cb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["cb"]["Text"] = [[Render]];
-XLX["cb"]["LayoutOrder"] = 1;
-XLX["cb"]["Name"] = [[1A1]];
-XLX["cb"]["Position"] = UDim2.new(-0, 0, 0, 0);
+XLX["ce"] = Instance.new("TextLabel", XLX["bd"]);
+XLX["ce"]["TextWrapped"] = true;
+XLX["ce"]["ZIndex"] = 999999991;
+XLX["ce"]["BorderSizePixel"] = 0;
+XLX["ce"]["TextSize"] = 28;
+XLX["ce"]["TextTransparency"] = 0.16;
+XLX["ce"]["TextScaled"] = true;
+XLX["ce"]["BackgroundColor3"] = Color3.fromRGB(110, 162, 218);
+XLX["ce"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+XLX["ce"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["ce"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
+XLX["ce"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["ce"]["Text"] = [[Render]];
+XLX["ce"]["LayoutOrder"] = 1;
+XLX["ce"]["Name"] = [[1A1]];
+XLX["ce"]["Position"] = UDim2.new(-0, 0, 0, 0);
 
 
 -- StarterGui.ErestiveBD.xxx4tab.1A1.UITextSizeConstraint
-XLX["cc"] = Instance.new("UITextSizeConstraint", XLX["cb"]);
-XLX["cc"]["MaxTextSize"] = 28;
+XLX["cf"] = Instance.new("UITextSizeConstraint", XLX["ce"]);
+XLX["cf"]["MaxTextSize"] = 28;
 
 
 -- StarterGui.ErestiveBD.xxx4tab.1A1.UIDrag
-XLX["cd"] = Instance.new("LocalScript", XLX["cb"]);
-XLX["cd"]["Name"] = [[UIDrag]];
+XLX["d0"] = Instance.new("LocalScript", XLX["ce"]);
+XLX["d0"]["Name"] = [[UIDrag]];
 
 
 -- StarterGui.ErestiveBD.xxx4tab.UIListLayout
-XLX["ce"] = Instance.new("UIListLayout", XLX["ba"]);
-XLX["ce"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["d1"] = Instance.new("UIListLayout", XLX["bd"]);
+XLX["d1"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx4tab.UIAspectRatioConstraint
-XLX["cf"] = Instance.new("UIAspectRatioConstraint", XLX["ba"]);
-XLX["cf"]["AspectRatio"] = 0.48142;
+XLX["d2"] = Instance.new("UIAspectRatioConstraint", XLX["bd"]);
+XLX["d2"]["AspectRatio"] = 0.48142;
 
 
 -- StarterGui.ErestiveBD.TargetHUD
-XLX["d0"] = Instance.new("Frame", XLX["1"]);
-XLX["d0"]["ZIndex"] = 999999999;
-XLX["d0"]["BorderSizePixel"] = 0;
-XLX["d0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["d0"]["Size"] = UDim2.new(1, 0, 1, 0);
-XLX["d0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["d0"]["Name"] = [[TargetHUD]];
-XLX["d0"]["BackgroundTransparency"] = 1;
+XLX["d3"] = Instance.new("Frame", XLX["1"]);
+XLX["d3"]["ZIndex"] = 999999999;
+XLX["d3"]["BorderSizePixel"] = 0;
+XLX["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["d3"]["Size"] = UDim2.new(1, 0, 1, 0);
+XLX["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d3"]["Name"] = [[TargetHUD]];
+XLX["d3"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame
-XLX["d1"] = Instance.new("Frame", XLX["d0"]);
-XLX["d1"]["Visible"] = false;
-XLX["d1"]["BorderSizePixel"] = 0;
-XLX["d1"]["BackgroundColor3"] = Color3.fromRGB(9, 10, 17);
-XLX["d1"]["Size"] = UDim2.new(0, 200, 0, 70);
-XLX["d1"]["Position"] = UDim2.new(0.08308, 0, 0.61687, 0);
-XLX["d1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d4"] = Instance.new("Frame", XLX["d3"]);
+XLX["d4"]["Visible"] = false;
+XLX["d4"]["BorderSizePixel"] = 0;
+XLX["d4"]["BackgroundColor3"] = Color3.fromRGB(9, 10, 17);
+XLX["d4"]["Size"] = UDim2.new(0, 200, 0, 70);
+XLX["d4"]["Position"] = UDim2.new(0.08308, 0, 0.61687, 0);
+XLX["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.Avatar
-XLX["d2"] = Instance.new("ImageLabel", XLX["d1"]);
-XLX["d2"]["BorderSizePixel"] = 0;
-XLX["d2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["d2"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-XLX["d2"]["Size"] = UDim2.new(0, 62, 0, 62);
-XLX["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["d2"]["BackgroundTransparency"] = 1;
-XLX["d2"]["Name"] = [[Avatar]];
-XLX["d2"]["Position"] = UDim2.new(0.035, 0, 0.05714, 0);
+XLX["d5"] = Instance.new("ImageLabel", XLX["d4"]);
+XLX["d5"]["BorderSizePixel"] = 0;
+XLX["d5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["d5"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+XLX["d5"]["Size"] = UDim2.new(0, 62, 0, 62);
+XLX["d5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d5"]["BackgroundTransparency"] = 1;
+XLX["d5"]["Name"] = [[Avatar]];
+XLX["d5"]["Position"] = UDim2.new(0.035, 0, 0.05714, 0);
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.Avatar.UICorner
-XLX["d3"] = Instance.new("UICorner", XLX["d2"]);
+XLX["d6"] = Instance.new("UICorner", XLX["d5"]);
 
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.Username
-XLX["d4"] = Instance.new("TextLabel", XLX["d1"]);
-XLX["d4"]["TextWrapped"] = true;
-XLX["d4"]["BorderSizePixel"] = 0;
-XLX["d4"]["TextSize"] = 14;
-XLX["d4"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-XLX["d4"]["TextScaled"] = true;
-XLX["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["d4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["d4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["d4"]["BackgroundTransparency"] = 1;
-XLX["d4"]["Size"] = UDim2.new(0, 126, 0, 27);
-XLX["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["d4"]["Name"] = [[Username]];
-XLX["d4"]["Position"] = UDim2.new(0.37, 0, 0.05714, 0);
+XLX["d7"] = Instance.new("TextLabel", XLX["d4"]);
+XLX["d7"]["TextWrapped"] = true;
+XLX["d7"]["BorderSizePixel"] = 0;
+XLX["d7"]["TextSize"] = 14;
+XLX["d7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+XLX["d7"]["TextScaled"] = true;
+XLX["d7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["d7"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["d7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["d7"]["BackgroundTransparency"] = 1;
+XLX["d7"]["Size"] = UDim2.new(0, 126, 0, 27);
+XLX["d7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d7"]["Name"] = [[Username]];
+XLX["d7"]["Position"] = UDim2.new(0.37, 0, 0.05714, 0);
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.HealthBar
-XLX["d5"] = Instance.new("Frame", XLX["d1"]);
-XLX["d5"]["BorderSizePixel"] = 0;
-XLX["d5"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
-XLX["d5"]["ClipsDescendants"] = true;
-XLX["d5"]["Size"] = UDim2.new(0, 120, 0, 14);
-XLX["d5"]["Position"] = UDim2.new(0.37, 0, 0.68571, 0);
-XLX["d5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["d5"]["Name"] = [[HealthBar]];
+XLX["d8"] = Instance.new("Frame", XLX["d4"]);
+XLX["d8"]["BorderSizePixel"] = 0;
+XLX["d8"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
+XLX["d8"]["ClipsDescendants"] = true;
+XLX["d8"]["Size"] = UDim2.new(0, 120, 0, 14);
+XLX["d8"]["Position"] = UDim2.new(0.37, 0, 0.68571, 0);
+XLX["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d8"]["Name"] = [[HealthBar]];
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.HealthBar.Fill
-XLX["d6"] = Instance.new("Frame", XLX["d5"]);
-XLX["d6"]["BorderSizePixel"] = 0;
-XLX["d6"]["BackgroundColor3"] = Color3.fromRGB(73, 231, 73);
-XLX["d6"]["Size"] = UDim2.new(1, 0, 1, 0);
-XLX["d6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["d6"]["Name"] = [[Fill]];
+XLX["d9"] = Instance.new("Frame", XLX["d8"]);
+XLX["d9"]["BorderSizePixel"] = 0;
+XLX["d9"]["BackgroundColor3"] = Color3.fromRGB(73, 231, 73);
+XLX["d9"]["Size"] = UDim2.new(1, 0, 1, 0);
+XLX["d9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["d9"]["Name"] = [[Fill]];
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.HealthBar.Fill.UICorner
-XLX["d7"] = Instance.new("UICorner", XLX["d6"]);
-XLX["d7"]["CornerRadius"] = UDim.new(0, 50);
+XLX["da"] = Instance.new("UICorner", XLX["d9"]);
+XLX["da"]["CornerRadius"] = UDim.new(0, 50);
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.HealthBar.UICorner
-XLX["d8"] = Instance.new("UICorner", XLX["d5"]);
-XLX["d8"]["CornerRadius"] = UDim.new(0, 50);
+XLX["db"] = Instance.new("UICorner", XLX["d8"]);
+XLX["db"]["CornerRadius"] = UDim.new(0, 50);
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.UICorner
-XLX["d9"] = Instance.new("UICorner", XLX["d1"]);
+XLX["dc"] = Instance.new("UICorner", XLX["d4"]);
 
 
 
 -- StarterGui.ErestiveBD.TargetHUD.Frame.Hp
-XLX["da"] = Instance.new("TextLabel", XLX["d1"]);
-XLX["da"]["TextWrapped"] = true;
-XLX["da"]["BorderSizePixel"] = 0;
-XLX["da"]["TextSize"] = 14;
-XLX["da"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-XLX["da"]["TextScaled"] = true;
-XLX["da"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["da"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-XLX["da"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
-XLX["da"]["BackgroundTransparency"] = 1;
-XLX["da"]["Size"] = UDim2.new(0, 126, 0, 17);
-XLX["da"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["da"]["Text"] = [[HP: 100,0 (+24,0)]];
-XLX["da"]["Name"] = [[Hp]];
-XLX["da"]["Position"] = UDim2.new(0.37, 0, 0.44286, 0);
+XLX["dd"] = Instance.new("TextLabel", XLX["d4"]);
+XLX["dd"]["TextWrapped"] = true;
+XLX["dd"]["BorderSizePixel"] = 0;
+XLX["dd"]["TextSize"] = 14;
+XLX["dd"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+XLX["dd"]["TextScaled"] = true;
+XLX["dd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["dd"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+XLX["dd"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
+XLX["dd"]["BackgroundTransparency"] = 1;
+XLX["dd"]["Size"] = UDim2.new(0, 126, 0, 17);
+XLX["dd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["dd"]["Text"] = [[HP: 100,0 (+24,0)]];
+XLX["dd"]["Name"] = [[Hp]];
+XLX["dd"]["Position"] = UDim2.new(0.37, 0, 0.44286, 0);
 
 
 -- StarterGui.ErestiveBD.xxx5tab
-XLX["db"] = Instance.new("Frame", XLX["1"]);
-XLX["db"]["ZIndex"] = 999999991;
-XLX["db"]["BorderSizePixel"] = 0;
-XLX["db"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
-XLX["db"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-XLX["db"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
-XLX["db"]["Position"] = UDim2.new(0.71198, 0, 0.33394, 0);
-XLX["db"]["Name"] = [[xxx5tab]];
-XLX["db"]["BackgroundTransparency"] = 0.06;
+XLX["de"] = Instance.new("Frame", XLX["1"]);
+XLX["de"]["ZIndex"] = 999999991;
+XLX["de"]["BorderSizePixel"] = 0;
+XLX["de"]["BackgroundColor3"] = Color3.fromRGB(6, 6, 9);
+XLX["de"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+XLX["de"]["Size"] = UDim2.new(0.14192, 0, 0.47451, 0);
+XLX["de"]["Position"] = UDim2.new(0.71198, 0, 0.33394, 0);
+XLX["de"]["Name"] = [[xxx5tab]];
+XLX["de"]["BackgroundTransparency"] = 0.06;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame
-XLX["dc"] = Instance.new("ScrollingFrame", XLX["db"]);
-XLX["dc"]["Active"] = true;
-XLX["dc"]["BorderSizePixel"] = 0;
-XLX["dc"]["ScrollBarImageTransparency"] = 1;
-XLX["dc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["dc"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
-XLX["dc"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["dc"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
-XLX["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["dc"]["ScrollBarThickness"] = 0;
-XLX["dc"]["LayoutOrder"] = 2;
-XLX["dc"]["BackgroundTransparency"] = 1;
+XLX["df"] = Instance.new("ScrollingFrame", XLX["de"]);
+XLX["df"]["Active"] = true;
+XLX["df"]["BorderSizePixel"] = 0;
+XLX["df"]["ScrollBarImageTransparency"] = 1;
+XLX["df"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["df"]["Size"] = UDim2.new(1, 0, 0.87821, 0);
+XLX["df"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["df"]["Position"] = UDim2.new(0, 0, 0.12179, 0);
+XLX["df"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["df"]["ScrollBarThickness"] = 0;
+XLX["df"]["LayoutOrder"] = 2;
+XLX["df"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.UIListLayout
-XLX["dd"] = Instance.new("UIListLayout", XLX["dc"]);
-XLX["dd"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["e0"] = Instance.new("UIListLayout", XLX["df"]);
+XLX["e0"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG
-XLX["de"] = Instance.new("TextButton", XLX["dc"]);
-XLX["de"]["TextWrapped"] = true;
-XLX["de"]["TextSize"] = 14;
-XLX["de"]["TextScaled"] = true;
-XLX["de"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["de"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["de"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["de"]["ZIndex"] = 2;
-XLX["de"]["BackgroundTransparency"] = 1;
-XLX["de"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["de"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["de"]["Text"] = [[Save CFG]];
-XLX["de"]["Name"] = [[SaveCFG]];
-XLX["de"]["Visible"] = false;
+XLX["e1"] = Instance.new("TextButton", XLX["df"]);
+XLX["e1"]["TextWrapped"] = true;
+XLX["e1"]["TextSize"] = 14;
+XLX["e1"]["TextScaled"] = true;
+XLX["e1"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e1"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["e1"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["e1"]["ZIndex"] = 2;
+XLX["e1"]["BackgroundTransparency"] = 1;
+XLX["e1"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["e1"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["e1"]["Text"] = [[Save CFG]];
+XLX["e1"]["Name"] = [[SaveCFG]];
+XLX["e1"]["Visible"] = false;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG.LocalScript
-XLX["df"] = Instance.new("LocalScript", XLX["de"]);
+XLX["e2"] = Instance.new("LocalScript", XLX["e1"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG
-XLX["e0"] = Instance.new("TextButton", XLX["dc"]);
-XLX["e0"]["TextWrapped"] = true;
-XLX["e0"]["TextSize"] = 14;
-XLX["e0"]["TextScaled"] = true;
-XLX["e0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["e0"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["e0"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["e0"]["ZIndex"] = 2;
-XLX["e0"]["BackgroundTransparency"] = 1;
-XLX["e0"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["e0"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["e0"]["Text"] = [[Load CFG]];
-XLX["e0"]["Name"] = [[LoadCFG]];
-XLX["e0"]["Visible"] = false;
+XLX["e3"] = Instance.new("TextButton", XLX["df"]);
+XLX["e3"]["TextWrapped"] = true;
+XLX["e3"]["TextSize"] = 14;
+XLX["e3"]["TextScaled"] = true;
+XLX["e3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e3"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["e3"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["e3"]["ZIndex"] = 2;
+XLX["e3"]["BackgroundTransparency"] = 1;
+XLX["e3"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["e3"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["e3"]["Text"] = [[Load CFG]];
+XLX["e3"]["Name"] = [[LoadCFG]];
+XLX["e3"]["Visible"] = false;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG.LocalScript
-XLX["e1"] = Instance.new("LocalScript", XLX["e0"]);
+XLX["e4"] = Instance.new("LocalScript", XLX["e3"]);
 
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.NameCFG
-XLX["e2"] = Instance.new("TextBox", XLX["dc"]);
-XLX["e2"]["Visible"] = false;
-XLX["e2"]["Name"] = [[NameCFG]];
-XLX["e2"]["BorderSizePixel"] = 0;
-XLX["e2"]["TextWrapped"] = true;
-XLX["e2"]["TextSize"] = 14;
-XLX["e2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["e2"]["TextScaled"] = true;
-XLX["e2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["e2"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["e2"]["PlaceholderText"] = [[Name CFG]];
-XLX["e2"]["Size"] = UDim2.new(1, 0, 0.049, 0);
-XLX["e2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["e2"]["Text"] = [[]];
-XLX["e2"]["BackgroundTransparency"] = 1;
+XLX["e5"] = Instance.new("TextBox", XLX["df"]);
+XLX["e5"]["Visible"] = false;
+XLX["e5"]["Name"] = [[NameCFG]];
+XLX["e5"]["BorderSizePixel"] = 0;
+XLX["e5"]["TextWrapped"] = true;
+XLX["e5"]["TextSize"] = 14;
+XLX["e5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e5"]["TextScaled"] = true;
+XLX["e5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e5"]["FontFace"] = Font.new([[rbxassetid://16658246179]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["e5"]["PlaceholderText"] = [[Name CFG]];
+XLX["e5"]["Size"] = UDim2.new(1, 0, 0.049, 0);
+XLX["e5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["e5"]["Text"] = [[]];
+XLX["e5"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LocalScript
-XLX["e3"] = Instance.new("LocalScript", XLX["dc"]);
-XLX["e3"]["Enabled"] = false;
-XLX["e3"]["Disabled"] = true;
+XLX["e6"] = Instance.new("LocalScript", XLX["df"]);
+XLX["e6"]["Enabled"] = false;
+XLX["e6"]["Disabled"] = true;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.UICorner
-XLX["e4"] = Instance.new("UICorner", XLX["db"]);
-XLX["e4"]["CornerRadius"] = UDim.new(0, 5);
+XLX["e7"] = Instance.new("UICorner", XLX["de"]);
+XLX["e7"]["CornerRadius"] = UDim.new(0, 5);
 
 
 -- StarterGui.ErestiveBD.xxx5tab.UIStroke
-XLX["e5"] = Instance.new("UIStroke", XLX["db"]);
-XLX["e5"]["Enabled"] = false;
-XLX["e5"]["Transparency"] = 0.8;
-XLX["e5"]["Thickness"] = 1.5;
-XLX["e5"]["Color"] = Color3.fromRGB(27, 27, 27);
+XLX["e8"] = Instance.new("UIStroke", XLX["de"]);
+XLX["e8"]["Enabled"] = false;
+XLX["e8"]["Transparency"] = 0.8;
+XLX["e8"]["Thickness"] = 1.5;
+XLX["e8"]["Color"] = Color3.fromRGB(27, 27, 27);
 
 
 -- StarterGui.ErestiveBD.xxx5tab.1A1
-XLX["e6"] = Instance.new("TextLabel", XLX["db"]);
-XLX["e6"]["TextWrapped"] = true;
-XLX["e6"]["ZIndex"] = 999999991;
-XLX["e6"]["BorderSizePixel"] = 0;
-XLX["e6"]["TextSize"] = 28;
-XLX["e6"]["TextTransparency"] = 0.16;
-XLX["e6"]["TextScaled"] = true;
-XLX["e6"]["BackgroundColor3"] = Color3.fromRGB(88, 101, 218);
-XLX["e6"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-XLX["e6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["e6"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
-XLX["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["e6"]["Text"] = [[Config (BETA)]];
-XLX["e6"]["LayoutOrder"] = 1;
-XLX["e6"]["Name"] = [[1A1]];
-XLX["e6"]["Position"] = UDim2.new(-0, 0, 0, 0);
+XLX["e9"] = Instance.new("TextLabel", XLX["de"]);
+XLX["e9"]["TextWrapped"] = true;
+XLX["e9"]["ZIndex"] = 999999991;
+XLX["e9"]["BorderSizePixel"] = 0;
+XLX["e9"]["TextSize"] = 28;
+XLX["e9"]["TextTransparency"] = 0.16;
+XLX["e9"]["TextScaled"] = true;
+XLX["e9"]["BackgroundColor3"] = Color3.fromRGB(88, 101, 218);
+XLX["e9"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
+XLX["e9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["e9"]["Size"] = UDim2.new(1, 0, 0.1316, 0);
+XLX["e9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["e9"]["Text"] = [[Config (BETA)]];
+XLX["e9"]["LayoutOrder"] = 1;
+XLX["e9"]["Name"] = [[1A1]];
+XLX["e9"]["Position"] = UDim2.new(-0, 0, 0, 0);
 
 
 -- StarterGui.ErestiveBD.xxx5tab.1A1.UITextSizeConstraint
-XLX["e7"] = Instance.new("UITextSizeConstraint", XLX["e6"]);
-XLX["e7"]["MaxTextSize"] = 28;
+XLX["ea"] = Instance.new("UITextSizeConstraint", XLX["e9"]);
+XLX["ea"]["MaxTextSize"] = 28;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.1A1.UIDrag
-XLX["e8"] = Instance.new("LocalScript", XLX["e6"]);
-XLX["e8"]["Name"] = [[UIDrag]];
+XLX["eb"] = Instance.new("LocalScript", XLX["e9"]);
+XLX["eb"]["Name"] = [[UIDrag]];
 
 
 -- StarterGui.ErestiveBD.xxx5tab.UIListLayout
-XLX["e9"] = Instance.new("UIListLayout", XLX["db"]);
-XLX["e9"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["ec"] = Instance.new("UIListLayout", XLX["de"]);
+XLX["ec"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.UIAspectRatioConstraint
-XLX["ea"] = Instance.new("UIAspectRatioConstraint", XLX["db"]);
-XLX["ea"]["AspectRatio"] = 0.48142;
+XLX["ed"] = Instance.new("UIAspectRatioConstraint", XLX["de"]);
+XLX["ed"]["AspectRatio"] = 0.48142;
 
 
 -- Require XLX wrapper
@@ -3479,8 +3505,9 @@ local script = XLX["7d"];
 	local button = script.Parent
 	local enabled = false 
 	
-	-- Ссылка на ОБЪЕКТ значения (убрали .Value в конце)
+	-- Ссылки на ОБЪЕКТЫ значений в меню
 	local teamCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value
+	local friendCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.FriendCheck.Value
 	
 	-- Настройки
 	local maxDistance = 18
@@ -3499,11 +3526,20 @@ local script = XLX["7d"];
 		VIM:SendMouseButtonEvent(0, 0, 0, false, game, 1)
 	end
 	
+	-- Функция проверки на друга (через API Roblox)
+	local function isFriend(otherPlayer)
+		local success, result = pcall(function()
+			return player:IsFriendsWith(otherPlayer.UserId)
+		end)
+		return success and result
+	end
+	
 	RunService.RenderStepped:Connect(function()
 		if enabled and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
 	
-			-- СЧИТЫВАЕМ АКТУАЛЬНЫЙ ТИМЧЕК КАЖДЫЙ КАДР
+			-- Считываем статусы из меню каждый кадр
 			local currentTeamCheck = teamCheckValueObject.Value
+			local currentFriendCheck = friendCheckValueObject.Value
 	
 			local rayOrigin = camera.CFrame.Position
 			local rayDirection = camera.CFrame.LookVector * maxDistance
@@ -3518,20 +3554,26 @@ local script = XLX["7d"];
 				local hitModel = result.Instance:FindFirstAncestorOfClass("Model")
 				if hitModel then
 					local humanoid = hitModel:FindFirstChildOfClass("Humanoid")
-	
-					-- ПРОВЕРКА КОМАНДЫ
 					local targetPlayer = game.Players:GetPlayerFromCharacter(hitModel)
-					local isTeammate = false
 	
-					-- Если ТимЧек включен в меню, проверяем команду игрока
-					if currentTeamCheck and targetPlayer then
-						if targetPlayer.Team == player.Team then
-							isTeammate = true
+					local shouldSkip = false
+	
+					if targetPlayer then
+						-- 1. ПРОВЕРКА КОМАНДЫ
+						if currentTeamCheck and targetPlayer.Team == player.Team then
+							shouldSkip = true
+						end
+	
+						-- 2. ПРОВЕРКА ДРУЗЕЙ
+						if not shouldSkip and currentFriendCheck then
+							if isFriend(targetPlayer) then
+								shouldSkip = true
+							end
 						end
 					end
 	
-					-- Стреляем только если это не союзник
-					if humanoid and humanoid.Health > 0 and not isTeammate then
+					-- Стреляем только если это живой враг и не "свой"
+					if humanoid and humanoid.Health > 0 and not shouldSkip then
 						if tick() - lastClick >= (clickCooldown + math.random(0, 30) / 1000) then
 							performClick()
 							lastClick = tick()
@@ -3555,8 +3597,9 @@ local script = XLX["7f"];
 	local button = script.Parent
 	local enabled = false
 	
-	-- Указываем путь к самому ОБЪЕКТУ (Value), а не к его значению
+	-- Ссылки на ОБЪЕКТЫ значений (Value)
 	local teamCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value
+	local friendCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.FriendCheck.Value -- Ссылка на FriendCheck
 	
 	-- Настройки Aim Assist
 	local smoothSize = 0.15 
@@ -3580,18 +3623,32 @@ local script = XLX["7f"];
 		fovCircle.Visible = enabled
 	end)
 	
+	-- Функция проверки друзей
+	local function isFriend(otherPlayer)
+		local success, result = pcall(function()
+			return player:IsFriendsWith(otherPlayer.UserId)
+		end)
+		return success and result
+	end
+	
 	local function getClosestPlayer()
 		local closestPlayer = nil
 		local shortestDistance = math.huge
 		local isRMBPressed = uis:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
 	
-		-- ПОЛУЧАЕМ АКТУАЛЬНОЕ ЗНАЧЕНИЕ ТИМЧЕКА ПРЯМО СЕЙЧАС
+		-- Получаем статусы из меню
 		local isTeamCheckEnabled = teamCheckValueObject.Value
+		local isFriendCheckEnabled = friendCheckValueObject.Value
 	
 		for _, v in pairs(game.Players:GetPlayers()) do
-			-- Проверка команды
+			-- 1. Проверка команды
 			if isTeamCheckEnabled and v.Team == player.Team then 
 				continue 
+			end
+	
+			-- 2. Проверка друзей
+			if isFriendCheckEnabled and isFriend(v) then
+				continue
 			end
 	
 			if v ~= player and v.Character and v.Character:FindFirstChild(aimPart) and v.Character.Humanoid.Health > 0 then
@@ -3802,11 +3859,6 @@ local script = XLX["86"];
 				-- 1. ПОВОРОТ КАМЕРЫ
 				local targetLook = CFrame.new(Camera.CFrame.Position, target.Position)
 				Camera.CFrame = Camera.CFrame:Lerp(targetLook, rotationSmoothness)
-	
-				-- 2. ИМИТАЦИЯ УДАРА
-				VIM:SendMouseButtonEvent(0, 0, 0, true, game, 1)
-				task.wait(0.01)
-				VIM:SendMouseButtonEvent(0, 0, 0, false, game, 1)
 			end
 		end
 	end)
@@ -4056,9 +4108,25 @@ local script = XLX["9b"];
 	end)
 end;
 task.spawn(C_9b);
+-- StarterGui.ErestiveBD.xxx3tab.ScrollingFrame.FriendCheck.LocalScript
+local function C_9e()
+local script = XLX["9e"];
+	local RunService = game:GetService("RunService")
+	local player = game.Players.LocalPlayer
+	local button = script.Parent
+	local enabled = false
+	
+	button.MouseButton1Click:Connect(function()
+		enabled = not enabled
+		button.Text = enabled and "FriendCheck: ON" or "FriendCheck: OFF"
+		script.Parent.Value.Value = enabled
+		button.BackgroundColor3 = enabled and Color3.fromRGB(255, 170, 0) or Color3.fromRGB(200, 0, 0)
+	end)
+end;
+task.spawn(C_9e);
 -- StarterGui.ErestiveBD.xxx3tab.1A1.UIDrag
-local function C_a1()
-local script = XLX["a1"];
+local function C_a4()
+local script = XLX["a4"];
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent.Parent
 	local dragToggle = nil
@@ -4094,10 +4162,10 @@ local script = XLX["a1"];
 		end
 	end)
 end;
-task.spawn(C_a1);
+task.spawn(C_a4);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Spider.LocalScript
-local function C_a7()
-local script = XLX["a7"];
+local function C_aa()
+local script = XLX["aa"];
 	local RunService = game:GetService("RunService")
 	local Players = game:GetService("Players")
 	local player = game.Players.LocalPlayer
@@ -4142,10 +4210,10 @@ local script = XLX["a7"];
 	end)
 	
 end;
-task.spawn(C_a7);
+task.spawn(C_aa);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Velocity.LocalScript
-local function C_aa()
-local script = XLX["aa"];
+local function C_ad()
+local script = XLX["ad"];
 	local RunService = game:GetService("RunService")
 	local player = game.Players.LocalPlayer
 	local enabled = false
@@ -4176,10 +4244,10 @@ local script = XLX["aa"];
 	end)
 	
 end;
-task.spawn(C_aa);
+task.spawn(C_ad);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.NoFall.LocalScript
-local function C_ac()
-local script = XLX["ac"];
+local function C_af()
+local script = XLX["af"];
 	local RunService = game:GetService("RunService")
 	local player = game.Players.LocalPlayer
 	local button = script.Parent
@@ -4203,10 +4271,10 @@ local script = XLX["ac"];
 	end)
 	
 end;
-task.spawn(C_ac);
+task.spawn(C_af);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.SafeWalk.LocalScript
-local function C_ae()
-local script = XLX["ae"];
+local function C_b1()
+local script = XLX["b1"];
 	local RunService = game:GetService("RunService")
 	local player = game.Players.LocalPlayer
 	local button = script.Parent
@@ -4234,10 +4302,10 @@ local script = XLX["ae"];
 	end)
 	
 end;
-task.spawn(C_ae);
+task.spawn(C_b1);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.Blink.LocalScript
-local function C_b0()
-local script = XLX["b0"];
+local function C_b3()
+local script = XLX["b3"];
 	local player = game.Players.LocalPlayer
 	local runService = game:GetService("RunService")
 	
@@ -4280,10 +4348,10 @@ local script = XLX["b0"];
 	end)
 	
 end;
-task.spawn(C_b0);
+task.spawn(C_b3);
 -- StarterGui.ErestiveBD.xxx2tab.ScrollingFrame.WaterWalk.LocalScript
-local function C_b2()
-local script = XLX["b2"];
+local function C_b5()
+local script = XLX["b5"];
 	local RunService = game:GetService("RunService")
 	local player = game.Players.LocalPlayer
 	local enabled = false
@@ -4317,10 +4385,10 @@ local script = XLX["b2"];
 	end)
 	
 end;
-task.spawn(C_b2);
+task.spawn(C_b5);
 -- StarterGui.ErestiveBD.xxx2tab.1A1.UIDrag
-local function C_b7()
-local script = XLX["b7"];
+local function C_ba()
+local script = XLX["ba"];
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent.Parent
 	local dragToggle = nil
@@ -4356,10 +4424,10 @@ local script = XLX["b7"];
 		end
 	end)
 end;
-task.spawn(C_b7);
+task.spawn(C_ba);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.ArrowESP.LocalScript
-local function C_be()
-local script = XLX["be"];
+local function C_c1()
+local script = XLX["c1"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local Camera = workspace.CurrentCamera
@@ -4480,10 +4548,10 @@ local script = XLX["be"];
 	end)
 	
 end;
-task.spawn(C_be);
+task.spawn(C_c1);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.SkeletonESP.LocalScript
-local function C_c0()
-local script = XLX["c0"];
+local function C_c3()
+local script = XLX["c3"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local Camera = workspace.CurrentCamera
@@ -4650,10 +4718,10 @@ local script = XLX["c0"];
 	end)
 	
 end;
-task.spawn(C_c0);
+task.spawn(C_c3);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.BoxESP.Wallhack
-local function C_c2()
-local script = XLX["c2"];
+local function C_c5()
+local script = XLX["c5"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local localPlayer = Players.LocalPlayer
@@ -4789,10 +4857,10 @@ local script = XLX["c2"];
 	Players.PlayerRemoving:Connect(RemoveESP)
 	
 end;
-task.spawn(C_c2);
+task.spawn(C_c5);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.FullBright.Wallhack
-local function C_c4()
-local script = XLX["c4"];
+local function C_c7()
+local script = XLX["c7"];
 	local Lighting = game:GetService("Lighting")
 	local button = script.Parent
 	local enabled = false
@@ -4820,10 +4888,10 @@ local script = XLX["c4"];
 	end)
 	
 end;
-task.spawn(C_c4);
+task.spawn(C_c7);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Tracers.Wallhack
-local function C_c6()
-local script = XLX["c6"];
+local function C_c9()
+local script = XLX["c9"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local Camera = workspace.CurrentCamera
@@ -4891,10 +4959,10 @@ local script = XLX["c6"];
 	Players.PlayerRemoving:Connect(removeLine)
 	
 end;
-task.spawn(C_c6);
+task.spawn(C_c9);
 -- StarterGui.ErestiveBD.xxx4tab.ScrollingFrame.Breadcrumbs.Wallhack
-local function C_c8()
-local script = XLX["c8"];
+local function C_cb()
+local script = XLX["cb"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local button = script.Parent
@@ -4965,10 +5033,10 @@ local script = XLX["c8"];
 	end
 	
 end;
-task.spawn(C_c8);
+task.spawn(C_cb);
 -- StarterGui.ErestiveBD.xxx4tab.1A1.UIDrag
-local function C_cd()
-local script = XLX["cd"];
+local function C_d0()
+local script = XLX["d0"];
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent.Parent
 	local dragToggle = nil
@@ -5004,10 +5072,10 @@ local script = XLX["cd"];
 		end
 	end)
 end;
-task.spawn(C_cd);
+task.spawn(C_d0);
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG.LocalScript
-local function C_df()
-local script = XLX["df"];
+local function C_e2()
+local script = XLX["e2"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local Camera = workspace.CurrentCamera
@@ -5128,10 +5196,10 @@ local script = XLX["df"];
 	end)
 	
 end;
-task.spawn(C_df);
+task.spawn(C_e2);
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG.LocalScript
-local function C_e1()
-local script = XLX["e1"];
+local function C_e4()
+local script = XLX["e4"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local Camera = workspace.CurrentCamera
@@ -5252,10 +5320,10 @@ local script = XLX["e1"];
 	end)
 	
 end;
-task.spawn(C_e1);
+task.spawn(C_e4);
 -- StarterGui.ErestiveBD.xxx5tab.1A1.UIDrag
-local function C_e8()
-local script = XLX["e8"];
+local function C_eb()
+local script = XLX["eb"];
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent.Parent
 	local dragToggle = nil
@@ -5291,6 +5359,6 @@ local script = XLX["e8"];
 		end
 	end)
 end;
-task.spawn(C_e8);
+task.spawn(C_eb);
 
 return XLX["1"], require;
