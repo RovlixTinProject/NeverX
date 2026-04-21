@@ -1969,6 +1969,7 @@ XLX["de"]["Size"] = UDim2.new(1, 0, 0.049, 0);
 XLX["de"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
 XLX["de"]["Text"] = [[Save CFG]];
 XLX["de"]["Name"] = [[SaveCFG]];
+XLX["de"]["Visible"] = false;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.SaveCFG.LocalScript
@@ -1990,6 +1991,7 @@ XLX["e0"]["Size"] = UDim2.new(1, 0, 0.049, 0);
 XLX["e0"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
 XLX["e0"]["Text"] = [[Load CFG]];
 XLX["e0"]["Name"] = [[LoadCFG]];
+XLX["e0"]["Visible"] = false;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LoadCFG.LocalScript
@@ -1999,6 +2001,7 @@ XLX["e1"] = Instance.new("LocalScript", XLX["e0"]);
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.NameCFG
 XLX["e2"] = Instance.new("TextBox", XLX["dc"]);
+XLX["e2"]["Visible"] = false;
 XLX["e2"]["Name"] = [[NameCFG]];
 XLX["e2"]["BorderSizePixel"] = 0;
 XLX["e2"]["TextWrapped"] = true;
@@ -2016,7 +2019,8 @@ XLX["e2"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LocalScript
 XLX["e3"] = Instance.new("LocalScript", XLX["dc"]);
-
+XLX["e3"]["Enabled"] = false;
+XLX["e3"]["Disabled"] = true;
 
 
 -- StarterGui.ErestiveBD.xxx5tab.UICorner
@@ -3475,8 +3479,8 @@ local script = XLX["7d"];
 	local button = script.Parent
 	local enabled = false 
 	
-	-- НАСТРОЙКА ТИМЧЕКА
-	local teamCheckEnabled = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value.Value
+	-- Ссылка на ОБЪЕКТ значения (убрали .Value в конце)
+	local teamCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value
 	
 	-- Настройки
 	local maxDistance = 18
@@ -3496,10 +3500,10 @@ local script = XLX["7d"];
 	end
 	
 	RunService.RenderStepped:Connect(function()
-		-- Обновляем статус тимчека (если нужно динамически)
-		-- teamCheckEnabled = (_G.Settings["TeamCheck"] == true)
-	
 		if enabled and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+	
+			-- СЧИТЫВАЕМ АКТУАЛЬНЫЙ ТИМЧЕК КАЖДЫЙ КАДР
+			local currentTeamCheck = teamCheckValueObject.Value
 	
 			local rayOrigin = camera.CFrame.Position
 			local rayDirection = camera.CFrame.LookVector * maxDistance
@@ -3519,13 +3523,14 @@ local script = XLX["7d"];
 					local targetPlayer = game.Players:GetPlayerFromCharacter(hitModel)
 					local isTeammate = false
 	
-					if teamCheckEnabled and targetPlayer then
+					-- Если ТимЧек включен в меню, проверяем команду игрока
+					if currentTeamCheck and targetPlayer then
 						if targetPlayer.Team == player.Team then
 							isTeammate = true
 						end
 					end
 	
-					-- Кликаем только если это живой гуманоид и НЕ союзник
+					-- Стреляем только если это не союзник
 					if humanoid and humanoid.Health > 0 and not isTeammate then
 						if tick() - lastClick >= (clickCooldown + math.random(0, 30) / 1000) then
 							performClick()
@@ -3550,8 +3555,8 @@ local script = XLX["7f"];
 	local button = script.Parent
 	local enabled = false
 	
-	-- ПУТЬ К ТВОЕЙ КНОПКЕ ТИМЧЕКА (Укажи свой)
-	local teamCheck = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value.Value
+	-- Указываем путь к самому ОБЪЕКТУ (Value), а не к его значению
+	local teamCheckValueObject = script.Parent.Parent.Parent.Parent.xxx3tab.ScrollingFrame.TeamCheck.Value
 	
 	-- Настройки Aim Assist
 	local smoothSize = 0.15 
@@ -3580,9 +3585,12 @@ local script = XLX["7f"];
 		local shortestDistance = math.huge
 		local isRMBPressed = uis:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
 	
+		-- ПОЛУЧАЕМ АКТУАЛЬНОЕ ЗНАЧЕНИЕ ТИМЧЕКА ПРЯМО СЕЙЧАС
+		local isTeamCheckEnabled = teamCheckValueObject.Value
+	
 		for _, v in pairs(game.Players:GetPlayers()) do
-			-- УСЛОВИЕ ТИМЧЕКА: Если включено и игрок в твоей команде — пропускаем его
-			if teamCheck and v.Team == player.Team then 
+			-- Проверка команды
+			if isTeamCheckEnabled and v.Team == player.Team then 
 				continue 
 			end
 	
@@ -3608,9 +3616,6 @@ local script = XLX["7f"];
 	end
 	
 	runService.RenderStepped:Connect(function()
-		-- Обновляем значение teamCheck из конфига или текста кнопки каждый кадр
-		-- teamCheck = (твой_путь_к_кнопке.Text == "TeamCheck: ON")
-	
 		fovCircle.Position = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
 	
 		if enabled and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
@@ -5248,98 +5253,6 @@ local script = XLX["e1"];
 	
 end;
 task.spawn(C_e1);
--- StarterGui.ErestiveBD.xxx5tab.ScrollingFrame.LocalScript
-local function C_e3()
-local script = XLX["e3"];
-	local HttpService = game:GetService("HttpService")
-	local folder = "Erestive_Configs"
-	local file = folder .. "/BDV_autosave.json"
-	
-	-- 1. Создаем папку в файлах экзекутора
-	if not isfolder(folder) then makefolder(folder) end
-	
-	_G.Settings = {} -- Глобальная таблица для твоих читов
-	local UpdateGui = Instance.new("BindableEvent") -- Сигнал для обновления текста
-	
-	-- Функция сохранения
-	local function save()
-		local data = {}
-		for name, value in pairs(_G.Settings) do
-			data[name] = value
-		end
-		writefile(file, HttpService:JSONEncode(data))
-	end
-	
-	-- Функция загрузки
-	local function load()
-		if isfile(file) then
-			local status, data = pcall(function() return HttpService:JSONDecode(readfile(file)) end)
-			if status then 
-				_G.Settings = data 
-				UpdateGui:Fire() -- Команда кнопкам: "Обновитесь!"
-			end
-		end
-	end
-	
-	-- 2. ГЛАВНЫЙ ЦИКЛ: Автоматическая настройка всех кнопок
-	-- Он ищет все кнопки во всем твоем GUI
-	local screenGui = script:FindFirstAncestorOfClass("ScreenGui")
-	
-	for _, btn in pairs(screenGui:GetDescendants()) do
-		-- Берем только кнопки функций (игнорируем кнопки Save/Load/Name)
-		if btn:IsA("TextButton") and not btn.Name:find("CFG") and btn.Name ~= "OnOrOff" then
-			local name = btn.Name -- Автоматически берем название объекта кнопки
-	
-			local function refresh()
-				local on = _G.Settings[name] or false
-				btn.Text = name .. ": " .. (on and "ON" or "OFF")
-				btn.BackgroundColor3 = on and Color3.fromRGB(0, 255, 120) or Color3.fromRGB(35, 35, 35)
-			end
-	
-			-- Клик по кнопке
-			btn.MouseButton1Click:Connect(function()
-				_G.Settings[name] = not (_G.Settings[name] or false)
-				refresh()
-				save() -- Автосохранение после каждого клика
-			end)
-	
-			UpdateGui.Event:Connect(refresh)
-			refresh()
-		end
-	end
-	
-	-- 3. Привязка кнопок Save/Load (по твоей иерархии)
-	local frame = script.Parent
-	local saveBtn = frame:WaitForChild("SaveCFG")
-	local loadBtn = frame:WaitForChild("LoadCFG")
-	local nameInput = frame:WaitForChild("NameCFG")
-	
-	saveBtn.MouseButton1Click:Connect(function()
-		local customName = nameInput.Text ~= "" and nameInput.Text or "autosave"
-		writefile(folder .. "/" .. customName .. ".json", HttpService:JSONEncode(_G.Settings))
-		saveBtn.Text = "Saved!"
-		task.wait(1)
-		saveBtn.Text = "SaveCFG"
-	end)
-	
-	loadBtn.MouseButton1Click:Connect(function()
-		local customName = nameInput.Text ~= "" and nameInput.Text or "autosave"
-		local path = folder .. "/" .. customName .. ".json"
-		if isfile(path) then
-			_G.Settings = HttpService:JSONDecode(readfile(path))
-			UpdateGui:Fire()
-			loadBtn.Text = "Loaded!"
-		else
-			loadBtn.Text = "Error!"
-		end
-		task.wait(1)
-		loadBtn.Text = "LoadCFG"
-	end)
-	
-	load() -- Автозагрузка при старте
-	
-end;
-task.spawn(C_e3);
 -- StarterGui.ErestiveBD.xxx5tab.1A1.UIDrag
 local function C_e8()
 local script = XLX["e8"];
