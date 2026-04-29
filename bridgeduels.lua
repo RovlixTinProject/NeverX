@@ -1343,7 +1343,7 @@ XLX["99"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum
 XLX["99"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 XLX["99"]["Size"] = UDim2.new(1, 0, 1, 0);
 XLX["99"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["99"]["Text"] = [[FPS: 50]];
+XLX["99"]["Text"] = [[FPS: ??]];
 XLX["99"]["Position"] = UDim2.new(0.38492, 0, 0, 0);
 
 
@@ -1401,7 +1401,7 @@ XLX["a0"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum
 XLX["a0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 XLX["a0"]["Size"] = UDim2.new(1, 0, 1, 0);
 XLX["a0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["a0"]["Text"] = [[PING: 10ms]];
+XLX["a0"]["Text"] = [[PING: ??ms]];
 XLX["a0"]["Position"] = UDim2.new(0.38492, 0, 0, 0);
 
 
