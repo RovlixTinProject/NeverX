@@ -5957,7 +5957,7 @@ XLX["2a3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 XLX["2a3"]["BackgroundTransparency"] = 1;
 XLX["2a3"]["Size"] = UDim2.new(0.73053, 0, 0.5158, 0);
 XLX["2a3"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["2a3"]["Text"] = [[ESP2]];
+XLX["2a3"]["Text"] = [[IMAGE ESP]];
 XLX["2a3"]["Name"] = [[OnOrOff]];
 XLX["2a3"]["Position"] = UDim2.new(0.07602, 0, 0.2225, 0);
 
@@ -6104,7 +6104,7 @@ XLX["2b5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 XLX["2b5"]["BackgroundTransparency"] = 1;
 XLX["2b5"]["Size"] = UDim2.new(0.64709, 0, 0.5158, 0);
 XLX["2b5"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["2b5"]["Text"] = [[NAME ESP]];
+XLX["2b5"]["Text"] = [[INFO ESP]];
 XLX["2b5"]["Name"] = [[nam32]];
 XLX["2b5"]["Position"] = UDim2.new(0.11809, 0, 0.2225, 0);
 
@@ -11740,7 +11740,7 @@ XLX["542"]["BackgroundTransparency"] = 1;
 XLX["542"]["RichText"] = true;
 XLX["542"]["Size"] = UDim2.new(0, 101, 0, 21);
 XLX["542"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["542"]["Text"] = [[5.8 | 18.05.26]];
+XLX["542"]["Text"] = [[5.9 | 18.05.26]];
 XLX["542"]["Position"] = UDim2.new(0.00975, 0, 0.52912, 0);
 
 
@@ -18551,18 +18551,206 @@ task.spawn(C_2a8);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame6.ONOFF6.Slider.Button.LocalScript
 local function C_2ad()
 local script = XLX["2ad"];
-	-- Локальный скрипт для обработки события нажатия кнопки
-	local button = script.Parent.Parent.Button -- Убедись, что кнопка названа именно так!
+	local MAX_ESP_DISTANCE = 500
 	
-	button.MouseButton1Click:Connect(function()
-		if script.Parent.Parent.Parent.OnOrOff.Text == "On" then
-			button.BackgroundColor3 = Color3.new(0.215686, 0, 0)
-			script.Parent.Parent.Parent.OnOrOff.Text = "Off"
-		else
-			button.BackgroundColor3 = Color3.new(0.027451, 0.215686, 0)
-			script.Parent.Parent.Parent.OnOrOff.Text = "On"
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local camera = workspace.CurrentCamera
+	local localPlayer = Players.LocalPlayer
+	
+	local button = script.Parent
+	local espEnabled = false
+	
+	-- Создаем ScreenGui в PlayerGui
+	local playerGui = localPlayer:WaitForChild("PlayerGui")
+	local espGui = playerGui:FindFirstChild("Aurora_ESP_Gui")
+	if not espGui then
+		espGui = Instance.new("ScreenGui")
+		espGui.Name = "Aurora_ESP_Gui"
+		espGui.IgnoreGuiInset = true
+		espGui.Parent = playerGui
+	end
+	
+	local activeBars = {}
+	
+	local function removeHealthbar(playerObj)
+		if activeBars[playerObj] then
+			activeBars[playerObj]:Destroy()
+			activeBars[playerObj] = nil
+		end
+	end
+	
+	-- Твоя родная функция проверки видимости из аимбота
+	local function checkVisibility(part, targetModel)
+		local origin = camera.CFrame.Position
+		local direction = part.Position - origin
+		local filter = {localPlayer.Character, camera, targetModel}
+	
+		local params = RaycastParams.new()
+		params.FilterDescendantsInstances = filter
+		params.FilterType = Enum.RaycastFilterType.Exclude
+	
+		local hit1 = workspace:Raycast(origin, direction, params)
+		if not hit1 then return true end 
+		if hit1.Instance:IsDescendantOf(targetModel) then return true end
+	
+		return false 
+	end
+	
+	-- Создаем 2D контейнер хелсбара и текстов
+	local function createBarContainer(playerObj)
+		local strokeFrame = Instance.new("Frame")
+		strokeFrame.Name = "ESP_HealthBackground"
+		strokeFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		strokeFrame.BorderSizePixel = 0
+		strokeFrame.Visible = false
+		strokeFrame.Parent = espGui
+	
+		local innerBg = Instance.new("Frame")
+		innerBg.Name = "InnerBg"
+		innerBg.Size = UDim2.new(1, -2, 1, -2)
+		innerBg.Position = UDim2.new(0, 1, 0, 1)
+		innerBg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		innerBg.BorderSizePixel = 0
+		innerBg.Parent = strokeFrame
+	
+		local gradientBar = Instance.new("Frame")
+		gradientBar.Name = "GradientBar"
+		gradientBar.Size = UDim2.new(1, 0, 1, 0)
+		gradientBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		gradientBar.BorderSizePixel = 0
+		gradientBar.Parent = innerBg
+	
+		local gradient = Instance.new("UIGradient")
+		gradient.Rotation = 90
+		gradient.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 230, 60)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(230, 30, 30))
+		})
+		gradient.Parent = gradientBar
+	
+		local blackMask = Instance.new("Frame")
+		blackMask.Name = "BlackMask"
+		blackMask.Size = UDim2.new(1, 0, 0, 0)
+		blackMask.Position = UDim2.new(0, 0, 0, 0)
+		blackMask.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		blackMask.BorderSizePixel = 0
+		blackMask.ZIndex = 2
+		blackMask.Parent = innerBg
+	
+		local topText = Instance.new("TextLabel")
+		topText.Name = "TopText"
+		topText.BackgroundTransparency = 1
+		topText.Size = UDim2.new(0, 200, 0, 20)
+		topText.Font = Enum.Font.SourceSansBold
+		topText.TextSize = 14
+		topText.TextColor3 = Color3.fromRGB(255, 255, 255)
+		topText.TextStrokeTransparency = 0
+		topText.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+		topText.TextXAlignment = Enum.TextXAlignment.Center
+		topText.Parent = strokeFrame
+	
+		local bottomText = Instance.new("TextLabel")
+		bottomText.Name = "BottomText"
+		bottomText.BackgroundTransparency = 1
+		bottomText.Size = UDim2.new(0, 200, 0, 20)
+		bottomText.Font = Enum.Font.SourceSansBold
+		bottomText.TextSize = 12 -- Слегка уменьшили для аккуратности
+		bottomText.TextColor3 = Color3.fromRGB(255, 255, 255)
+		bottomText.TextStrokeTransparency = 0
+		bottomText.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+		bottomText.TextXAlignment = Enum.TextXAlignment.Center
+		bottomText.Parent = strokeFrame
+	
+		activeBars[playerObj] = strokeFrame
+	end
+	
+	RunService.RenderStepped:Connect(function()
+		if not espEnabled then return end
+	
+		for _, p in ipairs(Players:GetPlayers()) do
+			if p ~= localPlayer and p.Character then
+				local hum = p.Character:FindFirstChildOfClass("Humanoid")
+				local head = p.Character:FindFirstChild("Head")
+				local root = p.Character:FindFirstChild("HumanoidRootPart")
+				local leg = p.Character:FindFirstChild("Left Leg") or p.Character:FindFirstChild("LeftLowerLeg") or root
+	
+				if hum and hum.Health > 0 and head and root and leg then
+					-- Расчет дистанции
+					local distance = (camera.CFrame.Position - root.Position).Magnitude
+	
+					if distance > MAX_ESP_DISTANCE then
+						if activeBars[p] then activeBars[p].Visible = false end
+					else
+						local topPos, topOnScreen = camera:WorldToViewportPoint(head.Position + Vector3.new(0, 1.2, 0))
+						local bottomPos, bottomOnScreen = camera:WorldToViewportPoint(leg.Position - Vector3.new(0, 1.5, 0))
+	
+						if topOnScreen and bottomOnScreen then
+							if not activeBars[p] then
+								createBarContainer(p)
+							end
+	
+							local container = activeBars[p]
+							local blackMask = container.InnerBg.BlackMask
+							local topText = container.TopText
+							local bottomText = container.BottomText
+	
+							local boxHeight = math.abs(topPos.Y - bottomPos.Y)
+							local boxWidth = 4
+							local boxWidthOffset = boxHeight / 2 
+	
+							container.Size = UDim2.new(0, boxWidth, 0, boxHeight)
+							container.Position = UDim2.new(0, topPos.X - (boxWidthOffset / 2) - 6, 0, topPos.Y)
+	
+							local healthPercent = math.clamp(hum.Health / hum.MaxHealth, 0, 1)
+							local missingHealthPercent = 1 - healthPercent
+							blackMask.Size = UDim2.new(1, 0, missingHealthPercent, 0)
+	
+							local healthTextValue = math.floor(healthPercent * 100)
+							topText.Text = p.Name .. " [" .. healthTextValue .. "%]"
+							topText.Position = UDim2.new(0, (boxWidthOffset / 2) + 6 - 100, 0, -20)
+	
+							-- НОВАЯ ЛОГИКА ВМЕСТО KNIFE: Дистанция + Валлчек
+							local isVisible = checkVisibility(head, p.Character)
+							local distanceInMeters = math.floor(distance / 3) -- Переводим студы в условные метры
+	
+							if isVisible then
+								bottomText.Text = distanceInMeters .. "M | VISIBLE"
+								bottomText.TextColor3 = Color3.fromRGB(0, 255, 130) -- Зеленый, если виден
+							else
+								bottomText.Text = distanceInMeters .. "M | WALL"
+								bottomText.TextColor3 = Color3.fromRGB(170, 170, 170) -- Серый за стеной
+							end
+	
+							bottomText.Position = UDim2.new(0, (boxWidthOffset / 2) + 6 - 100, 0, boxHeight + 2)
+	
+							container.Visible = true
+						else
+							if activeBars[p] then activeBars[p].Visible = false end
+						end
+					end
+				else
+					removeHealthbar(p)
+				end
+			else
+				removeHealthbar(p)
+			end
 		end
 	end)
+	
+	local function clearAllESP()
+		for p, _ in pairs(activeBars) do removeHealthbar(p) end
+	end
+	
+	button.MouseButton1Click:Connect(function()
+		espEnabled = not espEnabled
+		button.BackgroundColor3 = espEnabled and Color3.fromRGB(0, 250, 100) or Color3.fromRGB(200, 0, 0)
+	
+		if not espEnabled then clearAllESP() end
+	end)
+	
+	Players.PlayerRemoving:Connect(removeHealthbar)
+	
 end;
 task.spawn(C_2ad);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
