@@ -16743,7 +16743,7 @@ local script = XLX["1ea"];
 	local playerGui = player:WaitForChild("PlayerGui")
 	local NumVar = script.Parent.Parent.Button1.NumVar
 	
-	-- Ставим 1 по умолчанию, чтобы при самом первом клике всегда включался Jitter
+	-- Изначально ставим 1
 	local lastSelectedMode = 1 
 	
 	local modeNames = {
@@ -16770,27 +16770,25 @@ local script = XLX["1ea"];
 	end
 	
 	-- ========================================================================
-	-- ЛОГИКА ОДНОЙ КНОПКИ: КЛИК НАЖИМАЕТ ВКЛ/ВЫКЛ И ЛИСТАЕТ РЕЖИМЫ КРУГОМ
+	-- ЛОГИКА ОДНОЙ КНОПКИ: ИСПРАВЛЕННЫЙ БЕСКОНЕЧНЫЙ КРУГ С 1 РЕЖИМА
 	-- ========================================================================
 	Button.MouseButton1Click:Connect(function()
 		if not NumVar then return end
 	
 		if NumVar.Value == 0 then
-			-- СТРАХОВКА: Если lastSelectedMode случайно стал 0, принудительно ставим 1 (Jitter)
-			if lastSelectedMode < 1 or lastSelectedMode > 5 then
-				lastSelectedMode = 1
-			end
-	
-			-- Включаем последний активный режим
-			NumVar.Value = lastSelectedMode
-			Button.Text = modeNames[lastSelectedMode]
+			-- ФИКС: Когда нажимаем на OFF (0), мы ВКЛЮЧАЕМ самый первый режим (JITTER)
+			NumVar.Value = 1
+			lastSelectedMode = 1
+			Button.Text = modeNames[1]
 			TweenService:Create(Button, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(38, 166, 91)}):Play()
 		else
 			local nextValue = NumVar.Value + 1
 	
 			if nextValue > 5 then
-				-- Пролистали все режимы -> ставим 0 (ВЫКЛ), но lastSelectedMode НЕ ТРОГАЕМ (он остается равен 5)
+				-- Пролистали все режимы -> ставим 0 (ВЫКЛ)
 				NumVar.Value = 0
+				-- ФИКС: Сбрасываем память кнопки на 1, чтобы следующий круг начался с Jitter, а не с GravitySpin
+				lastSelectedMode = 1 
 				Button.Text = "ANTI-AIM: OFF"
 				TweenService:Create(Button, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(219, 68, 85)}):Play()
 			else
