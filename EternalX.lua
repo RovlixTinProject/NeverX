@@ -16714,7 +16714,7 @@ local script = XLX["1dd"];
 	local playerGui = player:WaitForChild("PlayerGui")
 	local NumVar = script.Parent.Parent.Button1.NumVar
 	
-	local lastSelectedMode = 0 
+	local lastSelectedMode = 1 
 	
 	local modeNames = {
 		[0] = "ANTI-AIM: OFF",
