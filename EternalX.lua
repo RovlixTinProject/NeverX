@@ -16685,21 +16685,24 @@ local script = XLX["1e6"];
 	local NumVar = script.Parent.NumVar
 	local NumVar2 = script.Parent.NumVar2
 	
+	-- Добавлен режим StaticBackwards [6]
 	local modes = {
 		[1] = "Jitter",
 		[2] = "SpinBot",
 		[3] = "Backwards",
 		[4] = "Random",
-		[5] = "GravitySpin"
+		[5] = "GravitySpin",
+		[6] = "StaticBackwards"
 	}
 	
-	-- ИСПРАВЛЕНО: Оригинальные режимы головы твоего друга по цифрам от 0 до 4
+	-- Добавлен режим None [5]
 	local modes2 = {
 		[0] = "Downwards",
 		[1] = "Upwards",
 		[2] = "Zero",
 		[3] = "Random",
-		[4] = "Glitch"
+		[4] = "Glitch",
+		[5] = "None"
 	}
 	
 	local jitterDirection, jitterSequence = 1, 0
@@ -16725,11 +16728,12 @@ local script = XLX["1e6"];
 			hum.AutoRotate = false
 	
 			-- ========================================================================
-			-- ОРИГИНАЛЬНАЯ ЛОГИКА ДЛЯ NUMVAR2 (НАКЛОН ГОЛОВЫ / PITCH) 1 в 1
+			-- ЛОГИКА НАКЛОНА ГОЛОВЫ (PITCH)
 			-- ========================================================================
 			local currentPitchNumber = NumVar2 and NumVar2.Value or 0
 			local CURRENT_PITCH = modes2[currentPitchNumber] or "Downwards"
 			local pitchAngle = 0
+			local shouldSendPitch = true
 	
 			if CURRENT_PITCH == "Upwards" then
 				pitchAngle = 1
@@ -16740,21 +16744,24 @@ local script = XLX["1e6"];
 			elseif CURRENT_PITCH == "Random" then
 				pitchAngle = math.random(-10, 10) / 10
 			elseif CURRENT_PITCH == "Glitch" then
-				pitchAngle = 0/0 -- Тот самый хак-глитч (NaN), ломающий просчет сервера
+				pitchAngle = 0/0
+			elseif CURRENT_PITCH == "None" then
+				shouldSendPitch = false -- Вообще не отправляем ивент наклона головы
 			end
 	
-			-- Отправка пакета наклона головы на сервер Counter Blox
-			if ReplicatedStorage:FindFirstChild("Events") and ReplicatedStorage.Events:FindFirstChild("ControlTurn") then
+			if shouldSendPitch and ReplicatedStorage:FindFirstChild("Events") and ReplicatedStorage.Events:FindFirstChild("ControlTurn") then
 				ReplicatedStorage.Events.ControlTurn:FireServer(pitchAngle, false)
 			end
-			-- ========================================================================
 	
+			-- Расчет базового угла взгляда
 			local CamLook = Camera.CFrame.LookVector
 			local baseYaw = -math.atan2(CamLook.Z, CamLook.X) + math.rad(-115)
 	
 			local CURRENT_MODE = modes[currentModeNumber] or "Jitter"
 	
-			-- Выполнение режимов вращения тела (Yaw)
+			-- ========================================================================
+			-- ВЫПОЛНЕНИЕ РЕЖИМОВ ВРАЩЕНИЯ ТЕЛА (YAW)
+			-- ========================================================================
 			if CURRENT_MODE == "Jitter" then
 				if tick() - lastRandomTime >= 0.08 then
 					jitterSequence = jitterSequence + 1
@@ -16780,6 +16787,9 @@ local script = XLX["1e6"];
 				local y = math.cos(t * 0.6) * math.rad(25)
 				local z = math.sin(t * 0.3) * math.rad(25)
 				root.CFrame = root.CFrame * CFrame.Angles(x, y, z)
+			elseif CURRENT_MODE == "StaticBackwards" then
+				-- [НОВЫЙ РЕЖИМ]: Тело жестко зафиксировано задом к направлению камеры
+				root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, baseYaw + math.rad(180), 0)
 			end
 		end
 	end)
@@ -16797,7 +16807,6 @@ local script = XLX["1eb"];
 	local playerGui = player:WaitForChild("PlayerGui")
 	local NumVar = script.Parent.Parent.Button1.NumVar
 	
-	-- Изначально ставим 1
 	local lastSelectedMode = 1 
 	
 	local modeNames = {
@@ -16806,16 +16815,16 @@ local script = XLX["1eb"];
 		[2] = "MODE: SPINBOT",
 		[3] = "MODE: BACKWARDS",
 		[4] = "MODE: RANDOM",
-		[5] = "MODE: GRAVITYSPIN"
+		[5] = "MODE: GRAVITYSPIN",
+		[6] = "MODE: STATIC BACKWARDS" -- Новый режим
 	}
 	
-	-- Изначальный дизайн при старте
 	if NumVar then
 		if NumVar.Value == 0 then
-			Button.BackgroundColor3 = Color3.fromRGB(219, 68, 85) -- Красный (Выкл)
+			Button.BackgroundColor3 = Color3.fromRGB(219, 68, 85)
 			Button.Text = "ANTI-AIM: OFF"
 		else
-			Button.BackgroundColor3 = Color3.fromRGB(38, 166, 91) -- Зеленый (Вкл)
+			Button.BackgroundColor3 = Color3.fromRGB(38, 166, 91)
 			Button.Text = modeNames[NumVar.Value] or "MODE: JITTER"
 			lastSelectedMode = NumVar.Value
 		end
@@ -16823,14 +16832,10 @@ local script = XLX["1eb"];
 		Button.Text = "ERROR: NO NUMVAR"
 	end
 	
-	-- ========================================================================
-	-- ЛОГИКА ОДНОЙ КНОПКИ: ИСПРАВЛЕННЫЙ БЕСКОНЕЧНЫЙ КРУГ С 1 РЕЖИМА
-	-- ========================================================================
 	Button.MouseButton1Click:Connect(function()
 		if not NumVar then return end
 	
 		if NumVar.Value == 0 then
-			-- ФИКС: Когда нажимаем на OFF (0), мы ВКЛЮЧАЕМ самый первый режим (JITTER)
 			NumVar.Value = 1
 			lastSelectedMode = 1
 			Button.Text = modeNames[1]
@@ -16838,15 +16843,12 @@ local script = XLX["1eb"];
 		else
 			local nextValue = NumVar.Value + 1
 	
-			if nextValue > 5 then
-				-- Пролистали все режимы -> ставим 0 (ВЫКЛ)
+			if nextValue > 6 then -- Теперь лимит 6 режимов тела
 				NumVar.Value = 0
-				-- ФИКС: Сбрасываем память кнопки на 1, чтобы следующий круг начался с Jitter, а не с GravitySpin
 				lastSelectedMode = 1 
 				Button.Text = "ANTI-AIM: OFF"
 				TweenService:Create(Button, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(219, 68, 85)}):Play()
 			else
-				-- Переключаем на следующий режим и запоминаем его
 				NumVar.Value = nextValue
 				lastSelectedMode = nextValue
 				Button.Text = modeNames[nextValue]
@@ -16864,44 +16866,33 @@ local script = XLX["1ed"];
 	
 	local Button = script.Parent
 	local playerGui = player:WaitForChild("PlayerGui")
-	
-	-- ИСПРАВЛЕНО: Теперь кнопка жестко привязана к NumVar2 (для головы)
 	local NumVar2 = script.Parent.Parent.Button1.NumVar2
 	
-	-- Оригинальные пресеты твоего друга для отображения на кнопке
 	local modeNames = {
 		[0] = "PITCH: DOWNWARDS",
 		[1] = "PITCH: UPWARDS",
 		[2] = "PITCH: ZERO",
 		[3] = "PITCH: RANDOM",
-		[4] = "PITCH: GLITCH"
+		[4] = "PITCH: GLITCH",
+		[5] = "PITCH: NONE" -- Новый режим
 	}
 	
-	-- Настройка текста при старте игры
 	if NumVar2 then
 		Button.Text = modeNames[NumVar2.Value] or "PITCH: DOWNWARDS"
 	else
 		Button.Text = "ERROR: NO NUMVAR2"
 	end
 	
-	-- ========================================================================
-	-- ЛОГИКА ТРЕТЬЕЙ КНОПКИ: БЕСКОНЕЧНЫЙ ЦИКЛ НАКЛОНОВ (ОТ 0 ДО 4)
-	-- ========================================================================
 	Button.MouseButton1Click:Connect(function()
 		if not NumVar2 then return end
 	
-		-- Увеличиваем значение наклона на 1
 		local nextValue = NumVar2.Value + 1
 	
-		-- ИСПРАВЛЕНО: Всего 5 режимов (от 0 до 4). Если дошли до 5 — сбрасываем круг на 0 (Downwards)
-		if nextValue > 4 then
+		if nextValue > 5 then -- Теперь лимит 5 режимов головы (от 0 до 5)
 			nextValue = 0
 		end
 	
-		-- Записываем цифру в NumVar2, инжектор сразу это увидит
 		NumVar2.Value = nextValue
-	
-		-- Обновляем текст на кнопке
 		Button.Text = modeNames[nextValue]
 	end)
 	
