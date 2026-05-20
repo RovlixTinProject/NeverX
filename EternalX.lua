@@ -4259,6 +4259,7 @@ XLX["1e2"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 XLX["1e2"]["Size"] = UDim2.new(0.16373, 0, 0.731, 0);
 XLX["1e2"]["Position"] = UDim2.new(0.80655, 0, 0.11724, 0);
 XLX["1e2"]["Name"] = [[Slider]];
+XLX["1e2"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.UICorner
@@ -4284,6 +4285,7 @@ XLX["1e5"]["Size"] = UDim2.new(1, 0, 1, 0);
 XLX["1e5"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
 XLX["1e5"]["Text"] = [[ ]];
 XLX["1e5"]["Name"] = [[Button1]];
+XLX["1e5"]["Visible"] = false;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.server
@@ -18697,7 +18699,7 @@ local script = XLX["303"];
 	
 			if hit2 then
 				local wallThickness = (hit1.Position - hit2.Position).Magnitude
-				return wallThickness < 2.2 
+				return wallThickness < 2.1
 			end
 		else
 			if hit1.Instance:IsDescendantOf(targetModel) then
