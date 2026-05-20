@@ -4138,204 +4138,204 @@ XLX["1d3"]["LayoutOrder"] = 9;
 XLX["1d3"]["BackgroundTransparency"] = 1;
 
 
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.UIGridLayout
+XLX["1d4"] = Instance.new("UIGridLayout", XLX["1d3"]);
+XLX["1d4"]["CellSize"] = UDim2.new(0, 197, 0, 37);
+XLX["1d4"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+XLX["1d4"]["CellPadding"] = UDim2.new(0, 5, 0, 20);
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.UIPadding
+XLX["1d5"] = Instance.new("UIPadding", XLX["1d3"]);
+XLX["1d5"]["PaddingTop"] = UDim.new(0, 5);
+XLX["1d5"]["PaddingRight"] = UDim.new(0, 5);
+XLX["1d5"]["PaddingLeft"] = UDim.new(0, 5);
+XLX["1d5"]["PaddingBottom"] = UDim.new(0, 5);
+
+
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW
-XLX["1d4"] = Instance.new("Frame", XLX["1d3"]);
-XLX["1d4"]["BorderSizePixel"] = 0;
-XLX["1d4"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
-XLX["1d4"]["Size"] = UDim2.new(0.96172, 0, 0.07267, 0);
-XLX["1d4"]["Position"] = UDim2.new(-0, 0, 0.23306, 0);
-XLX["1d4"]["Name"] = [[RW]];
-XLX["1d4"]["LayoutOrder"] = 2;
-XLX["1d4"]["BackgroundTransparency"] = 1;
+XLX["1d6"] = Instance.new("Frame", XLX["1d3"]);
+XLX["1d6"]["BorderSizePixel"] = 0;
+XLX["1d6"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
+XLX["1d6"]["Size"] = UDim2.new(0.96172, 0, 0.07267, 0);
+XLX["1d6"]["Position"] = UDim2.new(-0, 0, 0.23306, 0);
+XLX["1d6"]["Name"] = [[RW]];
+XLX["1d6"]["LayoutOrder"] = 2;
+XLX["1d6"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider
-XLX["1d5"] = Instance.new("Frame", XLX["1d4"]);
-XLX["1d5"]["BorderSizePixel"] = 0;
-XLX["1d5"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
-XLX["1d5"]["Size"] = UDim2.new(0.16373, 0, 0.731, 0);
-XLX["1d5"]["Position"] = UDim2.new(0.80655, 0, 0.11724, 0);
-XLX["1d5"]["Name"] = [[Slider]];
+XLX["1d7"] = Instance.new("Frame", XLX["1d6"]);
+XLX["1d7"]["BorderSizePixel"] = 0;
+XLX["1d7"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
+XLX["1d7"]["Size"] = UDim2.new(0.16373, 0, 0.731, 0);
+XLX["1d7"]["Position"] = UDim2.new(0.80655, 0, 0.11724, 0);
+XLX["1d7"]["Name"] = [[Slider]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.UICorner
-XLX["1d6"] = Instance.new("UICorner", XLX["1d5"]);
-XLX["1d6"]["CornerRadius"] = UDim.new(1, 0);
+XLX["1d8"] = Instance.new("UICorner", XLX["1d7"]);
+XLX["1d8"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.UIGradient
-XLX["1d7"] = Instance.new("UIGradient", XLX["1d5"]);
-XLX["1d7"]["Rotation"] = -90;
-XLX["1d7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1
-XLX["1d8"] = Instance.new("TextButton", XLX["1d5"]);
-XLX["1d8"]["TextTransparency"] = 1;
-XLX["1d8"]["TextSize"] = 14;
-XLX["1d8"]["TextColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["1d8"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["1d8"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["1d8"]["ZIndex"] = 2;
-XLX["1d8"]["Size"] = UDim2.new(1, 0, 1, 0);
-XLX["1d8"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["1d8"]["Text"] = [[ ]];
-XLX["1d8"]["Name"] = [[Button1]];
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.server
-XLX["1d9"] = Instance.new("LocalScript", XLX["1d8"]);
-XLX["1d9"]["Name"] = [[server]];
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.UICorner
-XLX["1da"] = Instance.new("UICorner", XLX["1d8"]);
-XLX["1da"]["CornerRadius"] = UDim.new(1, 0);
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.NumVar
-XLX["1db"] = Instance.new("NumberValue", XLX["1d8"]);
-XLX["1db"]["Name"] = [[NumVar]];
+XLX["1d9"] = Instance.new("UIGradient", XLX["1d7"]);
+XLX["1d9"]["Rotation"] = -90;
+XLX["1d9"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button
-XLX["1dc"] = Instance.new("TextButton", XLX["1d5"]);
-XLX["1dc"]["TextWrapped"] = true;
-XLX["1dc"]["TextSize"] = 14;
-XLX["1dc"]["TextScaled"] = true;
-XLX["1dc"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["1dc"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
-XLX["1dc"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["1dc"]["ZIndex"] = 2;
-XLX["1dc"]["BackgroundTransparency"] = 1;
-XLX["1dc"]["Size"] = UDim2.new(4.1597, 0, 1, 0);
-XLX["1dc"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["1dc"]["Text"] = [[MODE: JITTER]];
-XLX["1dc"]["Name"] = [[Button]];
-XLX["1dc"]["Position"] = UDim2.new(-4.46184, 0, 0, 0);
+XLX["1da"] = Instance.new("TextButton", XLX["1d7"]);
+XLX["1da"]["TextTransparency"] = 1;
+XLX["1da"]["TextSize"] = 14;
+XLX["1da"]["TextColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["1da"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["1da"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["1da"]["ZIndex"] = 2;
+XLX["1da"]["Size"] = UDim2.new(1, 0, 1, 0);
+XLX["1da"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["1da"]["Text"] = [[ ]];
+XLX["1da"]["Name"] = [[Button]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
-XLX["1dd"] = Instance.new("LocalScript", XLX["1dc"]);
-XLX["1dd"]["Name"] = [[server]];
+XLX["1db"] = Instance.new("LocalScript", XLX["1da"]);
+XLX["1db"]["Name"] = [[server]];
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.UICorner
+XLX["1dc"] = Instance.new("UICorner", XLX["1da"]);
+XLX["1dc"]["CornerRadius"] = UDim.new(1, 0);
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.OnOrOff
+XLX["1dd"] = Instance.new("TextLabel", XLX["1d6"]);
+XLX["1dd"]["TextWrapped"] = true;
+XLX["1dd"]["ZIndex"] = 2;
+XLX["1dd"]["TextSize"] = 14;
+XLX["1dd"]["TextScaled"] = true;
+XLX["1dd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["1dd"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["1dd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["1dd"]["BackgroundTransparency"] = 1;
+XLX["1dd"]["Size"] = UDim2.new(0.68443, 0, 0.516, 0);
+XLX["1dd"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["1dd"]["Text"] = [[Autojump]];
+XLX["1dd"]["Name"] = [[OnOrOff]];
+XLX["1dd"]["Position"] = UDim2.new(0.07602, 0, 0.2225, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UICorner
-XLX["1de"] = Instance.new("UICorner", XLX["1d4"]);
+XLX["1de"] = Instance.new("UICorner", XLX["1d6"]);
 XLX["1de"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UIGradient
-XLX["1df"] = Instance.new("UIGradient", XLX["1d4"]);
+XLX["1df"] = Instance.new("UIGradient", XLX["1d6"]);
 XLX["1df"]["Rotation"] = -90;
 XLX["1df"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UIStroke
-XLX["1e0"] = Instance.new("UIStroke", XLX["1d4"]);
+XLX["1e0"] = Instance.new("UIStroke", XLX["1d6"]);
 XLX["1e0"]["Color"] = Color3.fromRGB(255, 255, 255);
 
 
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.UIGridLayout
-XLX["1e1"] = Instance.new("UIGridLayout", XLX["1d3"]);
-XLX["1e1"]["CellSize"] = UDim2.new(0, 197, 0, 37);
-XLX["1e1"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-XLX["1e1"]["CellPadding"] = UDim2.new(0, 5, 0, 20);
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.UIPadding
-XLX["1e2"] = Instance.new("UIPadding", XLX["1d3"]);
-XLX["1e2"]["PaddingTop"] = UDim.new(0, 5);
-XLX["1e2"]["PaddingRight"] = UDim.new(0, 5);
-XLX["1e2"]["PaddingLeft"] = UDim.new(0, 5);
-XLX["1e2"]["PaddingBottom"] = UDim.new(0, 5);
-
-
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW
-XLX["1e3"] = Instance.new("Frame", XLX["1d3"]);
-XLX["1e3"]["BorderSizePixel"] = 0;
-XLX["1e3"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
-XLX["1e3"]["Size"] = UDim2.new(0.96172, 0, 0.07267, 0);
-XLX["1e3"]["Position"] = UDim2.new(-0, 0, 0.23306, 0);
-XLX["1e3"]["Name"] = [[RW]];
-XLX["1e3"]["LayoutOrder"] = 2;
-XLX["1e3"]["BackgroundTransparency"] = 1;
+XLX["1e1"] = Instance.new("Frame", XLX["1d3"]);
+XLX["1e1"]["BorderSizePixel"] = 0;
+XLX["1e1"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
+XLX["1e1"]["Size"] = UDim2.new(0.96172, 0, 0.07267, 0);
+XLX["1e1"]["Position"] = UDim2.new(-0, 0, 0.23306, 0);
+XLX["1e1"]["Name"] = [[RW]];
+XLX["1e1"]["LayoutOrder"] = 2;
+XLX["1e1"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider
-XLX["1e4"] = Instance.new("Frame", XLX["1e3"]);
-XLX["1e4"]["BorderSizePixel"] = 0;
-XLX["1e4"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
-XLX["1e4"]["Size"] = UDim2.new(0.16373, 0, 0.731, 0);
-XLX["1e4"]["Position"] = UDim2.new(0.80655, 0, 0.11724, 0);
-XLX["1e4"]["Name"] = [[Slider]];
+XLX["1e2"] = Instance.new("Frame", XLX["1e1"]);
+XLX["1e2"]["BorderSizePixel"] = 0;
+XLX["1e2"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
+XLX["1e2"]["Size"] = UDim2.new(0.16373, 0, 0.731, 0);
+XLX["1e2"]["Position"] = UDim2.new(0.80655, 0, 0.11724, 0);
+XLX["1e2"]["Name"] = [[Slider]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.UICorner
-XLX["1e5"] = Instance.new("UICorner", XLX["1e4"]);
-XLX["1e5"]["CornerRadius"] = UDim.new(1, 0);
+XLX["1e3"] = Instance.new("UICorner", XLX["1e2"]);
+XLX["1e3"]["CornerRadius"] = UDim.new(1, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.UIGradient
-XLX["1e6"] = Instance.new("UIGradient", XLX["1e4"]);
-XLX["1e6"]["Rotation"] = -90;
-XLX["1e6"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
+XLX["1e4"] = Instance.new("UIGradient", XLX["1e2"]);
+XLX["1e4"]["Rotation"] = -90;
+XLX["1e4"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1
+XLX["1e5"] = Instance.new("TextButton", XLX["1e2"]);
+XLX["1e5"]["TextTransparency"] = 1;
+XLX["1e5"]["TextSize"] = 14;
+XLX["1e5"]["TextColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["1e5"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
+XLX["1e5"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["1e5"]["ZIndex"] = 2;
+XLX["1e5"]["Size"] = UDim2.new(1, 0, 1, 0);
+XLX["1e5"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["1e5"]["Text"] = [[ ]];
+XLX["1e5"]["Name"] = [[Button1]];
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.server
+XLX["1e6"] = Instance.new("LocalScript", XLX["1e5"]);
+XLX["1e6"]["Name"] = [[server]];
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.UICorner
+XLX["1e7"] = Instance.new("UICorner", XLX["1e5"]);
+XLX["1e7"]["CornerRadius"] = UDim.new(1, 0);
+
+
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.NumVar
+XLX["1e8"] = Instance.new("NumberValue", XLX["1e5"]);
+XLX["1e8"]["Name"] = [[NumVar]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button
-XLX["1e7"] = Instance.new("TextButton", XLX["1e4"]);
-XLX["1e7"]["TextTransparency"] = 1;
-XLX["1e7"]["TextSize"] = 14;
-XLX["1e7"]["TextColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["1e7"]["BackgroundColor3"] = Color3.fromRGB(55, 0, 0);
-XLX["1e7"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["1e7"]["ZIndex"] = 2;
-XLX["1e7"]["Size"] = UDim2.new(1, 0, 1, 0);
-XLX["1e7"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["1e7"]["Text"] = [[ ]];
-XLX["1e7"]["Name"] = [[Button]];
+XLX["1e9"] = Instance.new("TextButton", XLX["1e2"]);
+XLX["1e9"]["TextWrapped"] = true;
+XLX["1e9"]["TextSize"] = 14;
+XLX["1e9"]["TextScaled"] = true;
+XLX["1e9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+XLX["1e9"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+XLX["1e9"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+XLX["1e9"]["ZIndex"] = 2;
+XLX["1e9"]["BackgroundTransparency"] = 1;
+XLX["1e9"]["Size"] = UDim2.new(4.1597, 0, 1, 0);
+XLX["1e9"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
+XLX["1e9"]["Text"] = [[MODE: JITTER]];
+XLX["1e9"]["Name"] = [[Button]];
+XLX["1e9"]["Position"] = UDim2.new(-4.46184, 0, 0, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
-XLX["1e8"] = Instance.new("LocalScript", XLX["1e7"]);
-XLX["1e8"]["Name"] = [[server]];
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.UICorner
-XLX["1e9"] = Instance.new("UICorner", XLX["1e7"]);
-XLX["1e9"]["CornerRadius"] = UDim.new(1, 0);
-
-
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.OnOrOff
-XLX["1ea"] = Instance.new("TextLabel", XLX["1e3"]);
-XLX["1ea"]["TextWrapped"] = true;
-XLX["1ea"]["ZIndex"] = 2;
-XLX["1ea"]["TextSize"] = 14;
-XLX["1ea"]["TextScaled"] = true;
-XLX["1ea"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["1ea"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-XLX["1ea"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-XLX["1ea"]["BackgroundTransparency"] = 1;
-XLX["1ea"]["Size"] = UDim2.new(0.68443, 0, 0.516, 0);
-XLX["1ea"]["BorderColor3"] = Color3.fromRGB(28, 43, 54);
-XLX["1ea"]["Text"] = [[Autojump]];
-XLX["1ea"]["Name"] = [[OnOrOff]];
-XLX["1ea"]["Position"] = UDim2.new(0.07602, 0, 0.2225, 0);
+XLX["1ea"] = Instance.new("LocalScript", XLX["1e9"]);
+XLX["1ea"]["Name"] = [[server]];
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UICorner
-XLX["1eb"] = Instance.new("UICorner", XLX["1e3"]);
+XLX["1eb"] = Instance.new("UICorner", XLX["1e1"]);
 XLX["1eb"]["CornerRadius"] = UDim.new(0.2, 0);
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UIGradient
-XLX["1ec"] = Instance.new("UIGradient", XLX["1e3"]);
+XLX["1ec"] = Instance.new("UIGradient", XLX["1e1"]);
 XLX["1ec"]["Rotation"] = -90;
 XLX["1ec"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(208, 208, 208)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
 
 
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.UIStroke
-XLX["1ed"] = Instance.new("UIStroke", XLX["1e3"]);
+XLX["1ed"] = Instance.new("UIStroke", XLX["1e1"]);
 XLX["1ed"]["Color"] = Color3.fromRGB(255, 255, 255);
 
 
@@ -16613,9 +16613,38 @@ local script = XLX["1d0"];
 	
 end;
 task.spawn(C_1d0);
+-- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
+local function C_1db()
+local script = XLX["1db"];
+	local RunService = game:GetService("RunService")
+	local player = game:GetService("Players").LocalPlayer
+	
+	local Button = script.Parent -- Скрипт должен лежать внутри TextButton
+	local jumpingEnabled = false
+	
+	-- Переключатель
+	Button.MouseButton1Click:Connect(function()
+		jumpingEnabled = not jumpingEnabled
+		Button.Text = jumpingEnabled and "AutoJump: ON" or "AutoJump: OFF"
+		Button.BackgroundColor3 = jumpingEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+	end)
+	
+	RunService.RenderStepped:Connect(function()
+		if not jumpingEnabled then return end
+	
+		local character = player.Character
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	
+		if humanoid and humanoid.FloorMaterial ~= Enum.Material.Air then
+			humanoid.Jump = true
+		end
+	end)
+	
+end;
+task.spawn(C_1db);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button1.server
-local function C_1d9()
-local script = XLX["1d9"];
+local function C_1e6()
+local script = XLX["1e6"];
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -16702,10 +16731,10 @@ local script = XLX["1d9"];
 	print("🔮 Система кфг синхронизирована с NumVar. Значение 0 = ВЫКЛ, 1-5 = ВКЛ.")
 	
 end;
-task.spawn(C_1d9);
+task.spawn(C_1e6);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
-local function C_1dd()
-local script = XLX["1dd"];
+local function C_1ea()
+local script = XLX["1ea"];
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
 	local player = Players.LocalPlayer
@@ -16714,6 +16743,7 @@ local script = XLX["1dd"];
 	local playerGui = player:WaitForChild("PlayerGui")
 	local NumVar = script.Parent.Parent.Button1.NumVar
 	
+	-- Ставим 1 по умолчанию, чтобы при самом первом клике всегда включался Jitter
 	local lastSelectedMode = 1 
 	
 	local modeNames = {
@@ -16732,7 +16762,7 @@ local script = XLX["1dd"];
 			Button.Text = "ANTI-AIM: OFF"
 		else
 			Button.BackgroundColor3 = Color3.fromRGB(38, 166, 91) -- Зеленый (Вкл)
-			Button.Text = modeNames[NumVar.Value]
+			Button.Text = modeNames[NumVar.Value] or "MODE: JITTER"
 			lastSelectedMode = NumVar.Value
 		end
 	else
@@ -16740,27 +16770,31 @@ local script = XLX["1dd"];
 	end
 	
 	-- ========================================================================
-	-- ЛОГИКА ОДНОЙ КНОПКИ: КЛИК НАЖИМАЕТ ВКЛ/ВЫКЛ И ЛИСТАЕТ РЕЖИМЫ
+	-- ЛОГИКА ОДНОЙ КНОПКИ: КЛИК НАЖИМАЕТ ВКЛ/ВЫКЛ И ЛИСТАЕТ РЕЖИМЫ КРУГОМ
 	-- ========================================================================
 	Button.MouseButton1Click:Connect(function()
 		if not NumVar then return end
 	
 		if NumVar.Value == 0 then
-			-- Если был выключен (0) -> включаем последний активный режим (от 1 до 5)
+			-- СТРАХОВКА: Если lastSelectedMode случайно стал 0, принудительно ставим 1 (Jitter)
+			if lastSelectedMode < 1 or lastSelectedMode > 5 then
+				lastSelectedMode = 1
+			end
+	
+			-- Включаем последний активный режим
 			NumVar.Value = lastSelectedMode
 			Button.Text = modeNames[lastSelectedMode]
 			TweenService:Create(Button, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(38, 166, 91)}):Play()
 		else
-			-- Если уже был включен -> увеличиваем цифру (листаем дальше)
 			local nextValue = NumVar.Value + 1
 	
 			if nextValue > 5 then
-				-- Если пролистали все 5 режимов -> полностью выключаем (ставим 0)
+				-- Пролистали все режимы -> ставим 0 (ВЫКЛ), но lastSelectedMode НЕ ТРОГАЕМ (он остается равен 5)
 				NumVar.Value = 0
 				Button.Text = "ANTI-AIM: OFF"
 				TweenService:Create(Button, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(219, 68, 85)}):Play()
 			else
-				-- Иначе просто переключаем на следующий режим и запоминаем его
+				-- Переключаем на следующий режим и запоминаем его
 				NumVar.Value = nextValue
 				lastSelectedMode = nextValue
 				Button.Text = modeNames[nextValue]
@@ -16769,36 +16803,7 @@ local script = XLX["1dd"];
 	end)
 	
 end;
-task.spawn(C_1dd);
--- StarterGui.Erestive.xxx921742g.CommandFrame.Frame7.RW.Slider.Button.server
-local function C_1e8()
-local script = XLX["1e8"];
-	local RunService = game:GetService("RunService")
-	local player = game:GetService("Players").LocalPlayer
-	
-	local Button = script.Parent -- Скрипт должен лежать внутри TextButton
-	local jumpingEnabled = false
-	
-	-- Переключатель
-	Button.MouseButton1Click:Connect(function()
-		jumpingEnabled = not jumpingEnabled
-		Button.Text = jumpingEnabled and "AutoJump: ON" or "AutoJump: OFF"
-		Button.BackgroundColor3 = jumpingEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
-	end)
-	
-	RunService.RenderStepped:Connect(function()
-		if not jumpingEnabled then return end
-	
-		local character = player.Character
-		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-	
-		if humanoid and humanoid.FloorMaterial ~= Enum.Material.Air then
-			humanoid.Jump = true
-		end
-	end)
-	
-end;
-task.spawn(C_1e8);
+task.spawn(C_1ea);
 -- StarterGui.Erestive.xxx921742g.CommandFrame.Frame8.xxx114.Slider.Button.server
 local function C_1f6()
 local script = XLX["1f6"];
