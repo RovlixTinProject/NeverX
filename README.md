@@ -4,7 +4,7 @@
 
 ## Features and Functionality
 
-This section will be populated with the **specific features** and functionalities of the **EternalX** *project*.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
+This section will be populated with the **specific features** and functionalities of the **Erestive** *project*.  Since no specific code or files were provided beyond the repository information, this section will remain a placeholder until those details are available.  Example features might include:
 
 >   **[Feature 1]:** Script for every executers.
 
