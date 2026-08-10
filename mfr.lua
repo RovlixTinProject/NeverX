@@ -203,16 +203,17 @@ corner.Parent = Checkbox
             Checkmark.Visible = SelectedTargets[player.Name] ~= nil
             Checkmark.Parent = Checkbox
             
-            local NameLabel = Instance.new("TextLabel")
-            NameLabel.Size = UDim2.new(1, -35, 1, 0)
-            NameLabel.Position = UDim2.new(0, 30, 0, 0)
-            NameLabel.BackgroundTransparency = 1
-            NameLabel.Text = player.Name
-            NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-            NameLabel.TextSize = 16
-            NameLabel.Font = Enum.Font.SourceSans
-            NameLabel.TextXAlignment = Enum.TextXAlignment.Left
-            NameLabel.Parent = PlayerEntry
+			local NameLabel = Instance.new("TextLabel")
+			NameLabel.Size = UDim2.new(1, -35, 1, 0)
+			NameLabel.Position = UDim2.new(0, 30, 0, 0)
+			NameLabel.BackgroundTransparency = 1
+			NameLabel.Text = string.format('%s <font color="#999999">(%s)</font>', player.Name, player.DisplayName)
+			NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+			NameLabel.RichText = true
+			NameLabel.TextSize = 16
+			NameLabel.Font = Enum.Font.SourceSans
+			NameLabel.TextXAlignment = Enum.TextXAlignment.Left
+			NameLabel.Parent = PlayerEntry
             
             local ClickArea = Instance.new("TextButton")
             ClickArea.Size = UDim2.new(1, 0, 1, 0)
@@ -220,7 +221,7 @@ corner.Parent = Checkbox
             ClickArea.Text = ""
             ClickArea.ZIndex = 2
             ClickArea.Parent = PlayerEntry
-            
+
             ClickArea.MouseButton1Click:Connect(function()
                 if SelectedTargets[player.Name] then
                     SelectedTargets[player.Name] = nil
@@ -324,10 +325,144 @@ local FlingMethods = {
         lv.Parent = rootPart
         return lv
     end,
+	["ExplodeFling"] = function(rootPart, power, dir)
+    	local bf = Instance.new("BodyForce")
+    	bf.Force = dir * power * 999999
+    	bf.Parent = rootPart
+    
+    	local bv = Instance.new("BodyVelocity")
+    	bv.Velocity = Vector3.new(
+        	math.random(-1000, 1000),
+        	math.random(500, 1500),
+    		math.random(-1000, 1000)
+    	)
+    	bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+    	bv.Parent = rootPart
+	
+    	game:GetService("Debris"):AddItem(bf, 0.3)
+    	game:GetService("Debris"):AddItem(bv, 0.3)
+   		return {bf, bv}
+	end,
+	["RocketFling"] = function(rootPart, power, dir)
+    local rp = Instance.new("RocketPropulsion")
+    rp.Parent = rootPart
+    
+    local targetPart = Instance.new("Part")
+    targetPart.Position = rootPart.Position + dir * 100
+    targetPart.Anchored = true
+    targetPart.CanCollide = false
+    targetPart.Parent = workspace
+    rp.Target = targetPart
+    
+    rp.MaxThrust = power * 1000
+    rp.ThrustP = 1e5
+    rp.ThrustD = math.huge
+    
+    rp:Fire()
+    
+    game:GetService("Debris"):AddItem(rp, 0.5)
+    game:GetService("Debris"):AddItem(targetPart, 0.5)
+    
+    return rp
+end,
+["TorqueFling"] = function(rootPart, power, dir)
+    local torque = Instance.new("Torque")
+    torque.Parent = rootPart
+    torque.Torque = Vector3.new(power * 10000, power * 10000, power * 10000)
+    
+    game:GetService("Debris"):AddItem(torque, 0.5)
+    return torque
+end,
+["ImpulseFling1"] = function(rootPart, power, dir)
+    local bodies = {}
+    for i = 1, 100 do
+        local bv = Instance.new("BodyVelocity")
+        bv.Parent = rootPart
+        bv.Velocity = dir * power * 9e9
+        bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        table.insert(bodies, bv)
+        game:GetService("Debris"):AddItem(bv, 0.05)
+    end
+    return bodies
+end,
+["ImpulseFling2"] = function(rootPart, power, dir)
+    local bodies = {}
+    
+    for i = 1, 100 do
+        local bv = Instance.new("BodyVelocity")
+        bv.Parent = rootPart
+        bv.Velocity = dir * power * 9e9
+        bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        table.insert(bodies, bv)
+        game:GetService("Debris"):AddItem(bv, 0.05 + (i * 0.001))
+    end
+    
+    for i = 1, 100 do
+        local bf = Instance.new("BodyForce")
+        bf.Parent = rootPart
+        bf.Force = dir * power * 9e9
+        table.insert(bodies, bf)
+        game:GetService("Debris"):AddItem(bf, 0.1 + (i * 0.01))
+    end
+    
+    for i = 1, 100 do
+        local bt = Instance.new("BodyThrust")
+        bt.Parent = rootPart
+        bt.Force = dir * power * 9e9
+        bt.Location = rootPart.Position + Vector3.new(0, 1, 0) * i
+        table.insert(bodies, bt)
+        game:GetService("Debris"):AddItem(bt, 0.1 + (i * 0.01))
+    end
+    
+    for i = 1, 100 do
+        local gyro = Instance.new("BodyGyro")
+        gyro.Parent = rootPart
+        gyro.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
+        gyro.CFrame = CFrame.new(rootPart.Position, rootPart.Position + Vector3.new(1, 1, 1) * i)
+        table.insert(bodies, gyro)
+        game:GetService("Debris"):AddItem(gyro, 0.1 + (i * 0.01))
+    end
+    
+    for i = 1, 100 do
+        local bp = Instance.new("BodyPosition")
+        bp.Parent = rootPart
+        bp.Position = rootPart.Position + dir * 9e9 * i
+        bp.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        table.insert(bodies, bp)
+        game:GetService("Debris"):AddItem(bp, 0.1 + (i * 0.01))
+    end
+    
+    return bodies
+end,
+["AlignPositionFling"] = function(rootPart, power, dir)
+    local align = Instance.new("AlignPosition")
+    align.Parent = rootPart
+    
+    local att = Instance.new("Attachment")
+    att.Parent = rootPart
+    align.Attachment0 = att
+    
+    local targetPart = Instance.new("Part")
+    targetPart.Position = rootPart.Position + dir * 100
+    targetPart.Anchored = true
+    targetPart.CanCollide = false
+    targetPart.Parent = workspace
+    
+    local att2 = Instance.new("Attachment")
+    att2.Parent = targetPart
+    align.Attachment1 = att2
+    
+    align.RigidityEnabled = false
+    align.MaxForce = power * 10000
+    
+    game:GetService("Debris"):AddItem(align, 0.5)
+    game:GetService("Debris"):AddItem(targetPart, 0.5)
+    return align
+end,
 }
 
 local currentMethod = "BodyVelocity"
-local methodList = {"BodyVelocity", "BodyThrust", "BodyForce", "VectorForce", "LinearVelocity"}
+local methodList = {"BodyVelocity", "BodyThrust", "BodyForce", "VectorForce", "LinearVelocity","ExplodeFling","RocketFling","TorqueFling","ImpulseFling1","ImpulseFling2","AlignPositionFling"}
 local methodIndex = 1
 MethodButton.MouseButton1Click:Connect(function()
     methodIndex = methodIndex % #methodList + 1
@@ -435,7 +570,16 @@ local function SkidFling(TargetPlayer)
         return Message("Error", TargetPlayer.Name .. " has no valid parts", 2)
     end
     
-    body:Destroy()
+	local body = FlingMethods[currentMethod](RootPart, power, dir)
+	if type(body) == "table" then
+    	for _, obj in ipairs(body) do
+    	    if obj and obj.Destroy then
+    	        obj:Destroy()
+    	    end
+    	end
+	elseif body and body.Destroy then
+    	body:Destroy()
+	end
     Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
     workspace.CurrentCamera.CameraSubject = Humanoid
     
