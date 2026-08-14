@@ -159,6 +159,56 @@ local FlingActive = false
 local FlingConnection = nil
 getgenv().OldPos = nil
 getgenv().FPDH = workspace.FallenPartsDestroyHeight
+local function CountSelectedTargets()
+    local count = 0
+    for _ in pairs(SelectedTargets) do
+        count = count + 1
+    end
+    return count
+end
+local function UpdateStatus()
+    local count = CountSelectedTargets()
+    if FlingActive then
+        StatusLabel.Text = "Flinging " .. count .. " target(s)"
+        StatusLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+    else
+        StatusLabel.Text = count .. " target(s) selected" 
+        StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end
+
+local function hasNoCollision(character)
+    if not character then return false end
+    local hrp = character:FindFirstChild("HumanoidRootPart")
+    if hrp and hrp:IsA("BasePart") then
+        if hrp.CanCollide == false then return true end
+        if hrp.Massless == true then return true end
+        if hrp.Anchored == true then return true end
+    end
+    return false
+end
+
+spawn(function()
+    while true do
+        task.wait(1)
+        for playerName, checkboxData in pairs(PlayerCheckboxes) do
+            local player = Players:FindFirstChild(playerName)
+            if player and player.Character then
+                local hrp = player.Character:FindFirstChild("HumanoidRootPart")
+                local noCollision = hrp and (hrp.CanCollide == false or hrp.Massless == true or hrp.Anchored == true)
+                local label = checkboxData.Entry:FindFirstChildOfClass("TextLabel")
+                if label then
+                    label.Text = string.format(
+                        '<font color="#%s">%s</font> <font color="#999999">(%s)</font>',
+                        noCollision and "FF0000" or "FFFFFF",
+                        player.Name,
+                        player.DisplayName
+                    )
+                end
+            end
+        end
+    end
+end)
 
 local function RefreshPlayerList()
     for _, child in pairs(PlayerScrollFrame:GetChildren()) do
@@ -179,8 +229,8 @@ local function RefreshPlayerList()
             PlayerEntry.BorderSizePixel = 0
             PlayerEntry.Parent = PlayerScrollFrame
             local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 12)
-corner.Parent = PlayerEntry
+            corner.CornerRadius = UDim.new(0, 12)
+            corner.Parent = PlayerEntry
             
             local Checkbox = Instance.new("TextButton")
             Checkbox.Size = UDim2.new(0, 24, 0, 24)
@@ -190,8 +240,8 @@ corner.Parent = PlayerEntry
             Checkbox.Text = ""
             Checkbox.Parent = PlayerEntry
             local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 12)
-corner.Parent = Checkbox
+            corner.CornerRadius = UDim.new(0, 12)
+            corner.Parent = Checkbox
             
             local Checkmark = Instance.new("TextLabel")
             Checkmark.Size = UDim2.new(1, 0, 1, 0)
@@ -203,17 +253,23 @@ corner.Parent = Checkbox
             Checkmark.Visible = SelectedTargets[player.Name] ~= nil
             Checkmark.Parent = Checkbox
             
-			local NameLabel = Instance.new("TextLabel")
-			NameLabel.Size = UDim2.new(1, -35, 1, 0)
-			NameLabel.Position = UDim2.new(0, 30, 0, 0)
-			NameLabel.BackgroundTransparency = 1
-			NameLabel.Text = string.format('%s <font color="#999999">(%s)</font>', player.Name, player.DisplayName)
-			NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-			NameLabel.RichText = true
-			NameLabel.TextSize = 16
-			NameLabel.Font = Enum.Font.SourceSans
-			NameLabel.TextXAlignment = Enum.TextXAlignment.Left
-			NameLabel.Parent = PlayerEntry
+            local noCollision = hasNoCollision(player.Character)
+            
+            local NameLabel = Instance.new("TextLabel")
+            NameLabel.Size = UDim2.new(1, -35, 1, 0)
+            NameLabel.Position = UDim2.new(0, 30, 0, 0)
+            NameLabel.BackgroundTransparency = 1
+            NameLabel.RichText = true
+            NameLabel.Text = string.format(
+                '<font color="#%s">%s</font> <font color="#999999">(%s)</font>',
+                noCollision and "FF0000" or "FFFFFF",
+                player.Name,
+                player.DisplayName
+            )
+            NameLabel.TextSize = 16
+            NameLabel.Font = Enum.Font.SourceSans
+            NameLabel.TextXAlignment = Enum.TextXAlignment.Left
+            NameLabel.Parent = PlayerEntry
             
             local ClickArea = Instance.new("TextButton")
             ClickArea.Size = UDim2.new(1, 0, 1, 0)
@@ -243,25 +299,6 @@ corner.Parent = Checkbox
     end
     
     PlayerScrollFrame.CanvasSize = UDim2.new(0, 0, 0, yPosition + 5)
-end
-
-local function CountSelectedTargets()
-    local count = 0
-    for _ in pairs(SelectedTargets) do
-        count = count + 1
-    end
-    return count
-end
-
-local function UpdateStatus()
-    local count = CountSelectedTargets()
-    if FlingActive then
-        StatusLabel.Text = "Flinging " .. count .. " target(s)"
-        StatusLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
-    else
-        StatusLabel.Text = count .. " target(s) selected" 
-        StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    end
 end
 
 local function ToggleAllPlayers(select)
@@ -378,7 +415,7 @@ end,
     for i = 1, 100 do
         local bv = Instance.new("BodyVelocity")
         bv.Parent = rootPart
-        bv.Velocity = dir * power * 9e9
+        bv.Velocity = Vector3.new(9e9, 9e9, 9e9)
         bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
         table.insert(bodies, bv)
         game:GetService("Debris"):AddItem(bv, 0.05)
@@ -494,11 +531,11 @@ local function SkidFling(TargetPlayer)
     end
     
     if THead then
-        workspace.CurrentCamera.CameraSubject = THead
+        --workspace.CurrentCamera.CameraSubject = THead
     elseif Handle then
-        workspace.CurrentCamera.CameraSubject = Handle
+        --workspace.CurrentCamera.CameraSubject = Handle
     elseif THumanoid and TRootPart then
-        workspace.CurrentCamera.CameraSubject = THumanoid
+        --workspace.CurrentCamera.CameraSubject = THumanoid
     end
     
     if not TCharacter:FindFirstChildWhichIsA("BasePart") then
@@ -513,49 +550,60 @@ local function SkidFling(TargetPlayer)
     end
     
     local SFBasePart = function(BasePart)
-        local TimeToWait = 2
-        local Time = tick()
-        local Angle = 0
-        repeat
-            if RootPart and THumanoid then
-                if BasePart.Velocity.Magnitude < 50 then
-                    Angle = Angle + 100
-                    FPos(BasePart, CFrame.new(0, 1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle),0 ,0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, 1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle),0 ,0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, 1.5, 0) + THumanoid.MoveDirection, CFrame.Angles(math.rad(Angle),0 ,0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0) + THumanoid.MoveDirection, CFrame.Angles(math.rad(Angle), 0, 0))
-                    task.wait()
-                else
-                    FPos(BasePart, CFrame.new(0, 1.5, THumanoid.WalkSpeed), CFrame.Angles(math.rad(90), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, -THumanoid.WalkSpeed), CFrame.Angles(0, 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, 1.5, THumanoid.WalkSpeed), CFrame.Angles(math.rad(90), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(math.rad(90), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(0, 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(math.rad(90), 0, 0))
-                    task.wait()
-                    FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(0, 0, 0))
-                    task.wait()
-                end
-            end
-        until Time + TimeToWait < tick() or not FlingActive
-    end
+    local startTime = tick()
+    local angle = 0
+    local moveDir = THumanoid.MoveDirection
+    local speed = THumanoid.WalkSpeed
+
+    repeat
+        if not RootPart or not THumanoid or not BasePart or not BasePart.Parent then break end
+
+        local velMag = BasePart.Velocity.Magnitude
+        local posOffset = CFrame.new(0, 1.5, 0) + moveDir * (velMag / 1.25)
+        local negOffset = CFrame.new(0, -1.5, 0) + moveDir * (velMag / 1.25)
+
+        if velMag < 50 then
+            angle = angle + 100
+            local ang = CFrame.Angles(math.rad(angle), 0, 0)
+            
+            FPos(BasePart, posOffset, ang)
+            task.wait()
+            FPos(BasePart, negOffset, ang)
+            task.wait()
+            FPos(BasePart, posOffset, ang)
+            task.wait()
+            FPos(BasePart, negOffset, ang)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, 1.5, 0) + moveDir, ang)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, 0) + moveDir, ang)
+            task.wait()
+        else
+            local high = CFrame.Angles(math.rad(90), 0, 0)
+            local zero = CFrame.new()
+            
+            FPos(BasePart, CFrame.new(0, 1.5, speed), high)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, -speed), zero)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, 1.5, speed), high)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, 0), high)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, 0), zero)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, 0), high)
+            task.wait()
+            FPos(BasePart, CFrame.new(0, -1.5, 0), zero)
+            task.wait()
+        end
+    until tick() - startTime >= 2 or not FlingActive
+end
     
     workspace.FallenPartsDestroyHeight = 0/0
     
     local dir = Vector3.new(0, 1, 0)
-    local power = 1
+    local power = 10
     local body = FlingMethods[currentMethod](RootPart, power, dir)
     
     Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
@@ -581,7 +629,7 @@ local function SkidFling(TargetPlayer)
     	body:Destroy()
 	end
     Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
-    workspace.CurrentCamera.CameraSubject = Humanoid
+    --workspace.CurrentCamera.CameraSubject = Humanoid
     
     if getgenv().OldPos then
         repeat
@@ -650,6 +698,17 @@ local function StopFling()
     if not FlingActive then return end
     
     FlingActive = false
+    
+    local character = Player.Character
+    if character then
+        for _, v in pairs(character:GetDescendants()) do
+            if v:IsA("BodyVelocity") or v:IsA("BodyForce") or v:IsA("BodyThrust") or 
+               v:IsA("LinearVelocity") or v:IsA("VectorForce") or v:IsA("RocketPropulsion") or
+               v:IsA("AlignPosition") or v:IsA("Torque") then
+                v:Destroy()
+            end
+        end
+    end
     
     UpdateStatus()
     Message("Stopped", "Fling has been stopped", 2)
