@@ -380,6 +380,87 @@ local FlingMethods = {
     	game:GetService("Debris"):AddItem(bv, 0.3)
    		return {bf, bv}
 	end,
+    ["NaNFling"] = function(rootPart, power, dir)
+    local targetRoot = nil
+    for _, player in pairs(SelectedTargets) do
+        if player and player.Character then
+            local tr = player.Character:FindFirstChild("HumanoidRootPart")
+            if tr then targetRoot = tr break end
+        end
+    end
+    if not targetRoot then return nil end
+    
+    local nan_value = (0) / (0)
+    local nan_vector = Vector3.new(nan_value, nan_value, nan_value)
+    
+    local humanoid = rootPart.Parent:FindFirstChildOfClass("Humanoid")
+    if humanoid then humanoid.PlatformStand = true end
+    
+    rootPart.CFrame = targetRoot.CFrame
+    rootPart.AssemblyLinearVelocity = nan_vector
+    rootPart.AssemblyAngularVelocity = nan_vector
+    pcall(function()
+        sethiddenproperty(rootPart, "PhysicsRepRootPart", targetRoot)
+    end)
+    return nil
+end,
+        ["PhysicsRepFling"] = function(rootPart, power, dir)
+        if not sethiddenproperty then
+            warn("sethiddenproperty not available!")
+            return nil
+        end
+        
+        local targetRoot = nil
+        for _, player in pairs(SelectedTargets) do
+            if player and player.Character then
+                local tr = player.Character:FindFirstChild("HumanoidRootPart")
+                if tr then targetRoot = tr break end
+            end
+        end
+        
+        if not targetRoot then
+            return nil
+        end
+        
+        pcall(function()
+            sethiddenproperty(rootPart, "PhysicsRepRootPart", targetRoot)
+        end)
+        
+        rootPart.CFrame = targetRoot.CFrame
+        rootPart.Velocity = Vector3.new(9e9, 9e9, 9e9)
+        rootPart.RotVelocity = Vector3.new(9e9, 9e9, 9e9)
+        
+        return nil
+    end,
+["FlingNEW"] = function(rootPart, power, dir)
+    local bodies = {}
+    
+    local targetRoot = nil
+    for _, player in pairs(SelectedTargets) do
+        if player and player.Character then
+            local tr = player.Character:FindFirstChild("HumanoidRootPart")
+            if tr then targetRoot = tr break end
+        end
+    end
+    if not targetRoot then return nil end
+    
+    pcall(function()
+        sethiddenproperty(rootPart, "PhysicsRepRootPart", targetRoot)
+        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+    end)
+    
+    for i = 1, 100 do
+        local bv = Instance.new("BodyVelocity")
+        bv.Parent = rootPart
+        local nan = 0/0
+        bv.Velocity = Vector3.new(nan, nan, nan)
+        bv.MaxForce = Vector3.new(9e30, 9e30, 9e30)
+        table.insert(bodies, bv)
+        game:GetService("Debris"):AddItem(bv, 0.05 + (i * 0.001))
+    end
+    
+    return bodies
+end,
 	["RocketFling"] = function(rootPart, power, dir)
     local rp = Instance.new("RocketPropulsion")
     rp.Parent = rootPart
@@ -499,7 +580,7 @@ end,
 }
 
 local currentMethod = "BodyVelocity"
-local methodList = {"BodyVelocity", "BodyThrust", "BodyForce", "VectorForce", "LinearVelocity","ExplodeFling","RocketFling","TorqueFling","ImpulseFling1","ImpulseFling2","AlignPositionFling"}
+local methodList = {"BodyVelocity", "FlingNEW", "BodyThrust", "BodyForce", "VectorForce", "LinearVelocity","ExplodeFling","RocketFling","TorqueFling","ImpulseFling1","ImpulseFling2","AlignPositionFling","PhysicsRepFling","NaNFling"}
 local methodIndex = 1
 MethodButton.MouseButton1Click:Connect(function()
     methodIndex = methodIndex % #methodList + 1
@@ -545,8 +626,8 @@ local function SkidFling(TargetPlayer)
     local FPos = function(BasePart, Pos, Ang)
         RootPart.CFrame = CFrame.new(BasePart.Position) * Pos * Ang
         Character:SetPrimaryPartCFrame(CFrame.new(BasePart.Position) * Pos * Ang)
-        RootPart.Velocity = Vector3.new(9e7, 9e7 * 10, 9e7)
-        RootPart.RotVelocity = Vector3.new(9e8, 9e8, 9e8)
+        RootPart.Velocity = Vector3.new(9e9, 9e9, 9e9)
+        RootPart.RotVelocity = Vector3.new(9e9, 9e9, 9e9)
     end
     
     local SFBasePart = function(BasePart)
@@ -708,6 +789,10 @@ local function StopFling()
                 v:Destroy()
             end
         end
+        
+        pcall(function()
+            sethiddenproperty(character.HumanoidRootPart, "PhysicsRepRootPart", character.HumanoidRootPart)
+        end)
     end
     
     UpdateStatus()
